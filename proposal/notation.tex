@@ -1,0 +1,263 @@
+%!TEX root = Proposal-PhD.tex
+%
+\chapter{A Brief Discussion for the Purpose of Establishing Notation}%
+\label{chap:notation}
+\epigraph{
+  We could, of course, use any notation we want; do not laugh at notations; invent them, they are powerful. In fact, mathematics is, to a large extent, invention of better notations.
+}{
+  \EpiName{Richard P.\ Feynman (1918--1988)}
+  \EpiBio{The \emph{great} physicist, my personal hero}
+}
+
+\lettrine{U}{nless otherwise} indicated, the mathematics in this document is
+typeset with strict adherence to \ac{iso-math}\index{ISO/IEC 80000-2:2009}.
+Undocumented deviations should be considered a bug. To save the reader the
+trouble of finding and reading the standard, I shall summarise herein with
+particular care to point out anything not in common convention in North America.
+
+Quantities which are not variable across time or context (such as immutable
+constants of mathematics) are set in upright text. For examples, $\exp(1) =
+\mathup{e}$ and not the italic $e$; the ratio of a circle's diameter to its
+circumference (in flat space) is $\symup{\pi}$ and not $\pi$; the imaginary
+unit, defined by $\iu^2=-1$, is not the italic $i$, and so on. Variables,
+parameters, contextual constants, running numbers  and alike are set in
+italicized text. For example, $\sum_i a_i = 2+4\iu$ where $i$\/ is a counter
+while \iu\ is the imaginary unit.
+
+This rule of italics vs.\ upright is universally conventional for functions.
+This is why $\sin(x)$ is correct and the commonly seen italic $sin(x)$ is widely
+recognized as an error. (Some \LaTeX\ users, particularly those who tend to
+forget backslashes such as the one in \verb|\sin(x)|, are common offenders.)
+
+Vector and matrix quantities follow the convention of italics vs.\ upright, and
+are notated in bold. In addition to being bold, it will generally (but not
+necessarily) be the case that vectors will be lowercase, while matrices are
+uppercase:
+\begin{equation}\label{eq:transpose}
+  (\mathbfit{Ax})\tr\,\mathbfit{y} = \mathbfit{x}\tr\,(\mathbfit{Ay}).
+\end{equation}
+(Note, this is the foundational identity of the matrix-transpose of
+$\mathbfit{A}$. That is, the matrix $\mathbfit{A}\tr$ that makes the Left Hand
+Side (LHS) inner product equal to the Right Hand Side (RHS) inner product, for
+all suitably shaped $\mathbfit{x}$ and $\mathbfit{y}$, is by definition the
+transpose of $\mathbfit{A}$.)
+
+The $n\times n$ identity matrix is a matrix quantity, (so is set in bold and
+uppercase), but it is defined for matrices independently of context. As such,
+its symbol should be bold and upright: \eye{n}\SideNote{This marks a deviation
+from the \acs*{iso}/\acs*{iec} standard which discloses a bold italicised
+$\mathbfit{I}$ for this purpose. I view this as an oversight in the standard
+since it departs from the convention of printing mathematical constants in
+Roman. I have found good examples where others make this same
+deviation.}[-1.5cm].
+
+I find the following convention to be the most awkward to North American eyes. I
+have had reviewers mistake it for poor typesetting despite the great care I take
+with my documents. \textit{In following with the convention that context
+independent objects are upright, the differential operators are typeset
+upright.}\/ For example:
+\[
+  \diff{f}{x} = \partial_x f = \expe^{\iu x}  \implies f(x) = -\iu\,\expe^{\iu x}+c,
+\]
+not,
+\[
+  \frac{df}{dx} = \symit{\partial}_x f = \expe^{\iu x}  \implies f(x) = -\iu\,\expe^{\iu x}+c.
+\]
+The differences between the upright partial $\partial$ and \textit{italic}
+partial $\symit{\partial}$ seem trivially subtle. But the upright infinitesimal
+$\dif x$ avoids confusion with the common notation for a distance metric
+$d(\mathbfit{x}, \mathbfit{y})$. The expression $d d/d\mathbfit{x}$ is nonsense
+while $\dif d/\dif\mathbfit{x}$ is at least meaningful, even if it is
+distracting.
+
+A good notation should do some work for you. It frees the mind to bring full
+attention to bare on the real problem, and even carry you part of the way. The
+legendary mathematician Bertrand Russell is reputed to have said that \textit{a
+good notation has a subtlety and suggestiveness which at times make it almost
+seem like a live teacher.}
+
+In the spirit of the previous paragraph, I feel compelled to comment that I
+dislike this dot: $\mathbfit{a}\cdot\mathbfit{b}$ in the context of the vector
+\emph{dot} product. The great applied mathematician William Gilbert ``Gil''
+Strang even calls it unprofessional~\cite[p.~108]{Strang09}, though I feel that
+may be overstating it. Worse than useless, that dot distracts from what really
+is happening. We have been well trained to understand how matrices multiply. Let
+us simply write the dot product\index{Dot Product|see{Inner Product}} (or inner
+product\index{Inner Product}) for two column vectors
+$\mathbfit{a}\tr\mathbfit{b} = \sum_j a_j b_j$. It is unsurprising then that the
+outer product (or rank one product, or \textit{tensor} product) is
+$\mathbfit{a}\mathbfit{b}\tr$.
+
+The matrix multiplication really lets us connect with the underlying linear
+algebra. It does work for us, even when we extend linear algebra to functions
+(that is, functional analysis). Let us think about two functions of a real
+variable, $f(t)$ and $g(t)$. Let us also discretise by evaluating on a mesh of
+$t$ that is sampled with interval $T$. More concisely, $t = kT$ with
+$k=0,1,2,\ldots$ . We can then think of $f$ as a column of values $f_k = f(kT)$.
+The inner product notation now suggests a convenient form for the inner product
+of two functions:
+\[
+  f\tr g = \sum_j f_j\, g_j.
+\]
+Now, work your way back to the continuous case by allowing $T\rightarrow 0$, and
+the above sum condenses to the integral:
+\[
+  \lim_{T\rightarrow 0}\, \sum_j f_j\, g_j = \int_{-\infty}^\infty f(x)\, g(x)\,\dif x = \bigl<f,\, g\bigr>.
+\]
+It is short work from here to derive the Fourier or Laplace transformations, and
+we were well set up for it using the right notation. (If you are unsure about
+getting Fourier or Laplace out of this, consider taking the inner product of a
+function of interest with each member of a set of orthogonal basis functions,
+such as the complex sinusoids. You are decomposing the function vector in a
+Hilbert space of functions just as one would find the $x$-, $y$- and
+$z$-components of a vector in Euclidean 3-space.)
+
+I digress for a moment to appreciate that combining the above definition of the
+inner product with the transpose identity \eqref{eq:transpose} can be used to
+derive integration by parts:
+\begin{align*}
+  (\mathbfit{A\,x})\tr\,\mathbfit{y} &= \mathbfit{x}\tr\,(\mathbfit{A\,y})\\
+  \int_{-\infty}^\infty \diff{f}{t}\, g(t)\,\dif t &= \int_{-\infty}^\infty f(t)\left(-\diff{g}{t}\right)\,\dif t.
+\end{align*}
+
+The reader can expect two notations for the differential operation. I could
+hardly be accused of rebellion for adopting the common notation of Leibniz,
+\begin{equation*}
+  \diff{y}{x} = \diff{}{x}\,f,
+\end{equation*}
+for the derivative of $y$ with respect to $x$. I will also exercise the more
+compact notation for the same thing:
+\begin{equation*}
+  \diff{y}{x} = \pdop{x}{y}.
+\end{equation*}
+The former notation has the disadvantage of becoming optically obscure if $x$
+were to have super/sub-scripts, so in such cases I will fall back to
+Leibniz.\marginnote{The notation with the \emph{del}, $\partial$, is popular in
+field theory (and related areas of physics) and I believe is based on the
+notation of Oliver Heaviside which is the same except using a D in place of the
+del.}
+
+The set of real numbers is denoted by \reals\index{Real@\reals\ (real numbers)}.
+The symbol \posReals\ is a common notation for the positive real numbers. It is
+also a common short hand for the additive group of real numbers, $(\reals, +)$.
+I will surely reference the positive real numbers much more frequently, so the
+compact notation \posReals\ is reserved for that. Similarly, \posInts\index{Z
+Integers@\ints, (Integers)}\index{Integers!set of|see{\ints}}\ will represent
+positive integers, which some may refer to as natural numbers. Still others
+would not recognize these as natural numbers as there is no general agreement on
+whether natural numbers should be the positive integers, or the non-negative
+integers. To avoid confusion, I notate the non-negative integers as
+$\nonNegInts = \{\,0\,\} \cup \posInts$, and avoid the phrase \emph{natural
+numbers} everywhere but this paragraph.
+
+The Kronecker-delta, $\kron^n_m=\kron_{nm}$\index{Kronecker-delta, $\kron_n^m$},
+(which evaluates to $1$ if and only if $n=m$ and $0$ otherwise), is upright. So
+too, is the Dirac-delta\index{Dirac-delta, $\dirac(x)$}, $\dirac(x)$, which is
+zero everywhere except at $x=0$ with $\int_{-\infty}^\infty \dirac(x)\,\dif x =
+1$.
+
+In this document, there will be references to discretely sampled trajectories
+through (flat) spaces of arbitrary dimension. For example, a trajectory through
+a 7-dimensional Euclidean space. These sampled trajectories will be collected as
+a time series into a structure that looks a lot like a matrix: a row of
+column-vectors forming a rank-2 array. These will typically be notated with a
+lowercase bold italicized Latin symbol, such as \q, or \cu---breaking the
+convention of uppercase for matrices. This departure from the convention
+indicates that these structures are most usefully thought of as a time series of
+column-vectors. Take such an entity $\bia \in \reals^{n\times N}$. The $k$-th
+column-vector in the series will be notated as $\bia^k$ with $0 \le k \le N-1$.
+Since these are vector quantities, there should be no confusion with
+exponentiation. The superscript notation frees the subscript position for
+notational embellishments. This sort of notation is not strange, it is simply
+borrowed from tensor notation. In tensor notation, there is a difference between
+super-scripts (which indicate covariant components) and subscripts (which
+indicate contravariant components). However, we will be working in flat spaces
+where the two are equivalent. However, I would rather not even confuse the issue
+with such concerns. Simply keep in mind that superscripts on vectors indicate a
+column-number in a series of column vectors.
+
+Parentheses, brackets and braces will be used with consistency. Parentheses,
+$(\,\cdot\,)$, will be used as traditional delimiters.
+
+Braces, $\{\,\cdot\,\}$, identify sets. For example, $\bigl\{a_1,\,
+a_2,\ldots,a_N \bigr\}$. I also make use of the ranged brace notation, which
+expresses that last set as $\bigl\{a_k\bigr\}_{k=1}^N$.
+
+Brackets, $[\,\cdot\,]$, will be used to enclose composite structures such as
+vectors and matrices, and they will also be used as outer delimiters for tall
+set operators, such as $\sum$, $\prod$, $\int$, and $\bigcup$. For example, the
+definition of the Euclidean metric:
+\begin{equation}\label{eq:Euclidean-metric}
+  d(\bia,\,\bib) = \norm{\bia - \bib} = \Bigl(\sum_i\,\bigl[a_i-b_i\bigr]^2\Bigr)^{1/2}
+\end{equation}
+
+Of course, that definition for the Euclidean metric is based on the Euclidean,
+or $l^2$-norm:
+\begin{equation*}
+  \norm{\bix} = \Bigl(\sum_i x_i^2\Bigr)^{1/2}.
+\end{equation*}
+
+On a normed space $\Omega$, the norm is written $\norm{\cdot}_\Omega$.
+Similarly, the metric will be written $d_\Omega(\cdot,\, \cdot)$. Of course,
+that norm and metric may or may not be Euclidean, and the presence of that
+subscript should incite to question.
+
+The class of $n$-times continuously differentiable functions is denoted
+$\continuouslyDifferentiable[n]$.%
+\index{cfunctions@\continuouslyDifferentiable[n]-functions} The derivatives
+should be bounded so that the supnorm,
+%
+\begin{equation*}
+  \norm{f}_{\continuouslyDifferentiable[k](\Omega)} = \sum_{n=0}^{k}\sup_{x\in\Omega}\;\Biggl\| \diff[n]{f}{x} \Biggr\|,
+\end{equation*}
+%
+can complete the Banach space, which has important analytical consequences.
+
+\section[Conventions \emph{for} Matrix Calculus]%
+{conventions \emph{for} matrix calculus}%
+\label{sec:matrix-calc}
+
+
+Two conventions exist for organising the calculus on matrix and vector
+quantities. Namely, these are the \emph{numerator-} and
+\emph{denominator-}layouts\index{Numerator-layout}\index{Denominator-layout}.
+The two layouts are related (mostly) by transposition. For this document I adopt
+the numerator layout, which may be exemplified in the following five cases.
+\begin{enumerate}
+  \item For a scalar valued function of a vector, $y : \reals^n\rightarrow \reals$, the gradient is a row-vector: \begin{equation*}
+    \pdiff{y}{\bix} = \begin{bmatrix}
+     \pdiff{y}{x_1} & \pdiff{y}{x_2} & \cdots & \pdiff{y}{x_n}\\
+     \end{bmatrix}.
+    \end{equation*}
+  \item For a vector valued function of a scalar, $\biy : \reals\rightarrow\reals^n$, the derivative is a column-vector: \begin{equation*}
+    \pdiff{\biy}{x} = \begin{bmatrix}
+     \ipdiff{y_1}{x} \\ \ipdiff{y_2}{x} \\ \vdots \\ \ipdiff{y_n}{x}
+     \end{bmatrix}.
+    \end{equation*}
+  \item For a vector valued function of a vector, $\biy: \reals^n\rightarrow\reals^m$, the derivative is the matrix:  \begin{equation*}\renewcommand{\arraystretch}{1.8}
+    \pdiff{\biy}{\bix} = \begin{bmatrix}
+      \pdiff{y_1}{x_1} & \pdiff{y_1}{x_2} & \cdots & \pdiff{y_1}{x_n}\\
+      \pdiff{y_2}{x_1} & \pdiff{y_2}{x_2} & \cdots & \pdiff{y_2}{x_n}\\
+          \vdots       &      \vdots      & \ddots &       \vdots     \\
+      \pdiff{y_m}{x_1} & \pdiff{y_m}{x_2} & \cdots & \pdiff{y_m}{x_n}\\
+    \end{bmatrix}.
+  \end{equation*}
+  \item For a scalar valued function of a matrix, $y : \reals^{m\times n}\rightarrow \reals$, the derivative is a matrix: \begin{equation*}\renewcommand{\arraystretch}{1.8}
+    \pdiff{y}{\biX} = \begin{bmatrix}
+      \pdiff{y}{X_{11}} & \pdiff{y}{X_{21}} & \cdots & \pdiff{y}{X_{m1}}\\
+      \pdiff{y}{X_{12}} & \pdiff{y}{X_{22}} & \cdots & \pdiff{y}{X_{m2}}\\
+           \vdots       &      \vdots       & \ddots &      \vdots      \\
+      \pdiff{y}{X_{1n}} & \pdiff{y}{X_{2n}} & \cdots & \pdiff{y}{X_{mn}}\\
+    \end{bmatrix}.
+  \end{equation*}
+  \item And finally, for a matrix valued function of a scalar, $\biY : \reals\rightarrow \reals^{m\times n}$, the derivative (which is only defined in numerator-layout) is a matrix: \begin{equation*}\renewcommand{\arraystretch}{1.8}
+    \pdiff{\biY}{x} = \begin{bmatrix}
+      \pdiff{Y_{11}}{x} & \pdiff{Y_{12}}{x} & \cdots & \pdiff{Y_{1n}}{x}\\
+      \pdiff{Y_{21}}{x} & \pdiff{Y_{22}}{x} & \cdots & \pdiff{Y_{2n}}{x}\\
+          \vdots       &       \vdots       & \ddots &      \vdots     \\
+      \pdiff{Y_{m1}}{x} & \pdiff{Y_{m2}}{x} & \cdots & \pdiff{Y_{mn}}{x}\\
+    \end{bmatrix}.
+  \end{equation*}
+\end{enumerate}
+A quantity simply stated to be a \emph{vector} should be considered a
+column-vector unless otherwise indicated.

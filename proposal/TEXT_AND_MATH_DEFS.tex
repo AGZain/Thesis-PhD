@@ -1,0 +1,151 @@
+%!TEX root = Proposal-PhD.tex
+%
+
+\newcommand{\NewMathSymbol}[2]{\newcommand{#1}{\ensuremath{#2}}}
+
+
+% Names
+
+\newcommand{\virtualmeR}{virtualME\textsuperscript{®}}
+
+
+% Operators
+\NewMathSymbol{\dif}{\mathup{d}}
+\newcommand{\tr}{\ensuremath{^\mathsf{T}}}
+\newcommand{\bi}[1]{\ensuremath{\mathbfit{#1}}}
+\newcommand{\pdop}[1]{\partial_{#1}}
+\NewDocumentCommand{\ipdiff}{mm}{\ensuremath{\partial #1/\partial #2}}
+\NewDocumentCommand{\pdiff}{omm}{\ensuremath{%
+  \IfNoValueTF{#1}{%
+    \frac{\partial{#2}}{\partial{#3}}%
+  }{%
+    \frac{\partial^{#1}{#2}}{\partial{#3}^{#1}}%
+  }%
+}}
+\NewDocumentCommand{\diff}{omm}{\ensuremath{%
+  \IfNoValueTF{#1}{%
+    \frac{\dif{#2}}{\dif{#3}}%
+  }{%
+    \frac{\dif^{#1}{#2}}{\dif{#3}^{#1}}%
+  }%
+}}
+\NewDocumentCommand{\popdiff}{omm}{\ensuremath{%
+  \IfNoValueTF{#1}{%
+    \pdop{#3} #2%
+  }{%
+    \pdop{#3}^#1 #2%
+  }%
+}}
+\NewDocumentCommand{\intco}{mm}{\ensuremath{[#1,\,#2)}}
+\NewDocumentCommand{\intcc}{mm}{\ensuremath{[#1,\,#2]}}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\diag}{\mathop{\mathrm{diag}}}
+
+
+\let\oldnorm\norm   % <-- Store original \norm as \oldnorm
+\let\norm\undefined % <-- "Undefine" \norm
+% \DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\NewDocumentCommand{\norm}{m}{\lVert #1\rVert}
+
+\renewcommand{\implies}{\Rightarrow}
+
+% Mathematical Constants
+\newcommand{\ball}[1]{\ensuremath{\mathcal{B}}_{#1}}
+\NewMathSymbol{\iu}{\mathrm{i}}%\mkern1mu}
+\NewMathSymbol{\piup}{\symup{\pi}}
+\NewMathSymbol{\expe}{\mathup{e}}
+\newcommand{\eye}[1]{\ensuremath{\mathbfup{I}_{#1}}}
+
+% General symbols
+\NewMathSymbol{\bia}{\mathbfit{a}}
+\NewMathSymbol{\biA}{\mathbfit{A}}
+\NewMathSymbol{\biB}{\mathbfit{B}}
+\NewMathSymbol{\bib}{\mathbfit{b}}
+\NewMathSymbol{\bif}{\mathbfit{f}}
+\NewMathSymbol{\bigee}{\mathbfit{g}}
+\NewMathSymbol{\bih}{\mathbfit{h}}
+\NewMathSymbol{\bip}{\mathbfit{p}}
+\NewMathSymbol{\biP}{\mathbfit{P}}
+\NewMathSymbol{\bis}{\mathbfit{s}}
+\NewMathSymbol{\biu}{\mathbfit{u}}
+\NewMathSymbol{\biU}{\mathbfit{U}}
+\NewMathSymbol{\biv}{\mathbfit{v}}
+\NewMathSymbol{\biq}{\mathbfit{q}}
+\NewMathSymbol{\bir}{\mathbfit{r}}
+\NewMathSymbol{\biy}{\mathbfit{y}}
+\NewMathSymbol{\bix}{\mathbfit{x}}
+\NewMathSymbol{\biX}{\mathbfit{X}}
+\NewMathSymbol{\biY}{\mathbfit{Y}}
+\NewMathSymbol{\biz}{\mathbfit{z}}
+\NewMathSymbol{\biOmega}{\symbfit{\Omega}}
+\NewMathSymbol{\dirac}{\symup{\delta}}
+\NewMathSymbol{\ival}{t_\symup{\Delta}}
+% \NewMathSymbol{\ival}{\symit{\Delta}}
+\NewMathSymbol{\kron}{\symup{\delta}}
+\NewMathSymbol{\ldif}{\symup{\delta}}
+
+% Sets
+\NewMathSymbol{\reals}{\mathbfup{R}}
+\NewMathSymbol{\posReals}{\mathbfup{R}_+}
+\NewMathSymbol{\nonNegReals}{\mathbfup{R}_{\ge0}}
+\NewMathSymbol{\ints}{\mathbfup{Z}}
+\NewMathSymbol{\posInts}{\mathbfup{Z}_+}
+\NewMathSymbol{\nonNegInts}{\mathbfup{Z}_{\ge0}}
+\NewDocumentCommand{\lebesgueIntegrable}{O{\infty}mO{}}{\ensuremath{\mathbfup{L}^{#3}_{#1,\,\text{loc}}#2}}
+\NewDocumentCommand{\bigLebesgueIntegrable}{O{\infty}mO{}}{\ensuremath{\mathbfup{L}^{#3}_{#1,\,\text{loc}}\bigl(#2\bigr)}}
+\NewDocumentCommand{\continuouslyDifferentiable}{O{}}{\ensuremath{\mathbfup{C}^{#1}}}
+
+% For giving (optional) alignent options to AMS matrices.
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+% NMPC specific symbols
+\NewMathSymbol{\q}{\mathbfit{x}}
+\NewMathSymbol{\oq}{\q_{\star}}
+\NewMathSymbol{\qcu}{\q_\cu}
+\NewMathSymbol{\qerr}{\tilde\q}
+\NewMathSymbol{\stateSpace}{X}
+\NewMathSymbol{\p}{\symbfit{\lambda}}
+\NewMathSymbol{\op}{\p_{\star}}
+\NewMathSymbol{\cu}{\mathbfit{u}}
+\NewMathSymbol{\ocu}{\mathbfit{u}_{\star}}
+\NewMathSymbol{\ctrlSpace}{U}
+\NewMathSymbol{\ou}{\cu_{\star}}
+\NewMathSymbol{\fc}{\mathbfit{f}_\mathup{c}}
+\NewMathSymbol{\fd}{\mathbfit{f}_{+}}
+\NewMathSymbol{\fbk}{\symbfit{\mu}}
+\NewMathSymbol{\terminalSet}{\Omega}
+\newcommand{\rnc}{\ensuremath{_\text{ref}}}
+\NewMathSymbol{\Jaug}{J_{\symup{\Lambda},N}}
+
+\NewMathSymbol{\ham}{H}
+\NewMathSymbol{\delt}{\tilde{\q}}
+\NewMathSymbol{\mQ}{\mathbfit{Q}}
+\NewMathSymbol{\mS}{\mathbfit{S}}
+\NewMathSymbol{\mR}{\mathbfit{R}}
+\NewMathSymbol{\mI}{\mathbf{I}}
+
+\NewMathSymbol{\xrod}{z}
+\NewMathSymbol{\xn}{n_\text{N}}
+\NewMathSymbol{\xdn}{n_\text{C}}
+\NewMathSymbol{\xtf}{\tau_\text{f}}
+\NewMathSymbol{\xtm}{\tau_\text{m}}
+\NewMathSymbol{\xI}{\nu_\text{I}}
+\NewMathSymbol{\xX}{\nu_\text{X}}
+
+\NewMathSymbol{\alphaf}{\alpha_\text{f}}
+\NewMathSymbol{\alpham}{\alpha_\text{m}}
+\NewMathSymbol{\gammaI}{\gamma_\text{I}}
+\NewMathSymbol{\gammaX}{\gamma_\text{Xi}}
+\NewMathSymbol{\sigmaX}{\sigma_\text{X}}
+\NewMathSymbol{\lambdaI}{\lambda_\text{I}}
+\NewMathSymbol{\lambdaX}{\lambda_\text{Xi}}
+\NewMathSymbol{\lambdaC}{\lambda_\text{C}}
+\NewMathSymbol{\blk}{\mathbf{B}}
+
+\newcommand{\nom}[1]{\ensuremath{#1^\bullet}}
+\newcommand{\mc}{\multicolumn{1}{c}}

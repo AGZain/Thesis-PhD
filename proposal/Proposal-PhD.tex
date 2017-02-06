@@ -1,0 +1,491 @@
+%!TEX program = lualatex
+%
+% This file and all related are subject to copyright:
+%
+%   Copyright 2016 Timothy A. V. Teatro
+%
+%
+\documentclass[11pt, letterpaper, oneside, openany, article]{memoir}
+\usepackage{xcolor}\input{colour-pallette.tex}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{mindmap}
+\usepackage[pdftex,
+  plainpages=false,
+  pdfpagelabels,
+  bookmarksnumbered,
+  bookmarksopen,
+  colorlinks, % Removes boxes and colours links, but shows in print off.
+  linkcolor={gitish-red},
+  citecolor={gitish-red},
+  urlcolor ={gitish-red},
+  ]{hyperref}
+\usepackage{memhfixc}
+\usepackage[
+  backend=biber,
+  % style=ieee,
+  datamodel=standard,
+  % refsection=chapter,
+  ]{biblatex}
+\usepackage{microtype}
+\usepackage{ragged2e}
+\usepackage[xindy]{imakeidx}
+\usepackage[shortlabels]{enumitem}
+
+\makeatletter
+
+
+
+%%% Font selection and related definitions
+%====================================================================
+
+
+\usepackage{amsmath, mathtools}
+\usepackage{pgfornament}
+\usepackage{fontspec}
+\defaultfontfeatures{RawFeature=+calt}
+\usepackage{lualatex-math}
+\usepackage[math-style=ISO, partial=upright]{unicode-math}
+
+\setmainfont[
+  Path=/home/timtro/.fonts/type1/Libertinus/,
+  ItalicFont=libertinusserif-italic.otf,
+  BoldFont=libertinusserif-bold.otf,
+  BoldItalicFont=libertinusserif-bolditalic.otf,
+    ]{libertinusserif-regular.otf}
+\setsansfont[
+  Path=/home/timtro/.fonts/type1/Libertinus/,
+  ItalicFont=libertinussans-italic.otf,
+  BoldFont=libertinussans-bold.otf,
+    ]{libertinussans-regular.otf}
+\setmonofont[Scale=MatchLowercase]{Hack}
+
+\newfontfamily{\displayfamily}[Path=/home/timtro/.fonts/type1/Libertinus/]{libertinusserifdisplay-regular.otf}
+\newfontfamily{\semibfseries}[Path=/home/timtro/.fonts/type1/Libertinus/]{libertinusserif-semibold.otf}
+\newfontfamily{\semibfit}[Path=/home/timtro/.fonts/type1/Libertinus/]{libertinusserif-semibolditalic.otf}
+
+\setmathfont[Path=/home/timtro/.fonts/type1/Libertinus/, AutoFakeBold]{libertinusmath-regular.otf}
+% \setmathfont[range={\lbrace, \rbrace}]{Latin Modern Math}
+% \setmathfont[range={\vert, \Vert, \Vvert}]{Latin Modern Math}
+
+\captiontitlefont{\footnotesize\sffamily}
+\captionnamefont{\footnotesize\sffamily}
+
+\usepackage{lettrine}
+\newfontfamily{\infamily}{Roboto Condensed}[Scale=MatchLowercase]
+\renewcommand*{\DefaultLoversize}{0.1}
+\renewcommand{\LettrineFontHook}{\infamily}
+\renewcommand{\LettrineTextFont}{\sffamily\MakeTextUppercase}
+
+\usepackage{marginnote}
+\renewcommand{\marginfont}{\footnotesize}
+
+\usepackage{siunitx}
+
+\newcommand{\asterismFrame}[1]{\par\bigskip\noindent\hfill #1 \hfill\null\par\bigskip\@afterindentfalse\@afterheading}
+\newcommand{\linearAsterism}{\asterismFrame{$*\quad*\quad*$}}
+\newcommand{\bouquetAsterism}{\asterismFrame{%
+    \begin{tikzpicture}
+      \node[anchor=centre, rotate=120]{\pgfornament[width=.5cm]{9}}
+    \end{tikzpicture}
+  }
+}
+\newcommand{\fleurAsterism}{\asterismFrame{\adfflowerright}}
+\newcommand{\sAsterism}{\asterismFrame{\adfopenflourishleft}}
+\newcommand{\ssAsterism}{\asterismFrame{\adfdoubleflourishleft}}
+\newcommand{\sssAsterism}{\asterismFrame{\adftripleflourishleft}}
+\newcommand{\sickleAsterism}{\asterismFrame{\adfsickleflourishleft}}
+
+% \setmathfont[range={}, Path=/home/timtro/.fonts/type1/Libertinus/]{libertinusmath-regular.otf} % Reload with empty range for correct spacing
+
+%% Code between BEGIN and END tTechnicalNoteCopy was taken from my
+%% tTechnicalNote class.
+
+%%%
+%%%  %% BEGIN tTechnicalNoteCopy
+%%%
+
+%%% Page layout
+%====================================================================
+
+
+\settrims{0pt}{0pt}
+\settypeblocksize{50\onelineskip}{130mm}{*}
+\setlrmargins{10.45mm}{*}{1} % 15.45 = (215.9mm - 5mm - 60mm - 130mm)/2
+\setulmargins{*}{*}{1}
+\setmarginnotes{5mm}{60mm}{5pt}
+\setheadfoot{\baselineskip}{9mm}
+\setheaderspaces{*}{9mm}{*}
+\checkandfixthelayout
+
+
+
+%%% Numbered margin notes.
+%====================================================================
+
+
+\newcounter{sideNoteNum}[chapter]
+\NewDocumentCommand{\SideNote}{mO{0pt}}{%
+        \refstepcounter{sideNoteNum}%
+        \mbox{\textsuperscript{\arabic{sideNoteNum}}}%
+        \marginnote{\indent\mbox{\normalsize\textsuperscript{\arabic{sideNoteNum}}}\hspace{0pt}~\footnotesize #1}[#2]%
+}
+\renewcommand*{\raggedleftmarginnote}{\RaggedRight}
+\renewcommand*{\raggedrightmarginnote}{\RaggedRight}
+
+
+
+%%% Theorems, proofs, defs, etc.
+%====================================================================
+
+
+\usepackage{amsthm}
+\usepackage[framemethod=tikz]{mdframed}
+
+\newtheoremstyle{plain}
+  {\topsep}    % ABOVESPACE
+  {\topsep}    % BELOWSPACE
+  {\itshape}  % BODYFONT
+  {0pt}        % INDENT (empty value is the same as 0pt)
+  {\bfseries}  % HEADFONT
+  {.}          % HEADPUNCT
+  {5pt plus 1pt minus 1pt} % HEADSPACE
+  {}          % CUSTOM-HEAD-SPEC
+
+\newtheoremstyle{definition}
+  {\topsep}    % ABOVESPACE
+  {\topsep}    % BELOWSPACE
+  {\normalfont}  % BODYFONT
+  {0pt}        % INDENT (empty value is the same as 0pt)
+  {\bfseries}  % HEADFONT
+  {.}          % HEADPUNCT
+  {5pt plus 1pt minus 1pt} % HEADSPACE
+  {}          % CUSTOM-HEAD-SPEC
+
+\newtheoremstyle{remark}
+  {.5\topsep}    % ABOVESPACE
+  {.5\topsep}    % BELOWSPACE
+  {\normalfont}  % BODYFONT
+  {0pt}        % INDENT (empty value is the same as 0pt)
+  {\itshape}  % HEADFONT
+  {.}          % HEADPUNCT
+  {5pt plus 1pt minus 1pt} % HEADSPACE
+  {}          % CUSTOM-HEAD-SPEC
+
+\theoremstyle{plain}
+
+\newtheorem*{identity*}{Identity}
+\surroundwithmdframed[
+  hidealllines=true,
+  innerleftmargin=1em,
+  innerrightmargin=1em,
+  innertopmargin=0pt,
+  ]{identity*}
+
+\newmdtheoremenv[
+  hidealllines=true,
+  innerleftmargin=1em,
+  innerrightmargin=1em,
+  innertopmargin=0pt,
+  ]{identity}{Identity}[chapter]
+
+\newmdtheoremenv[
+  hidealllines=true,
+  leftline=true,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=0pt,
+  ]{definition}{Definition}
+
+\theoremstyle{definition}
+\newmdtheoremenv[
+  hidealllines=true,
+  innerleftmargin=1em,
+  innerrightmargin=1em,
+  subtitlefont={\itshape},
+  ]{displayAlgorithm}{Algorithm}[chapter]
+
+\theoremstyle{remark}
+\newtheorem*{remark*}{Remark}
+\surroundwithmdframed[
+  hidealllines=true,
+  leftline=true,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=0pt,
+  ]{remark*}
+
+\NewDocumentCommand{\MarginDefinition}{mO{0pt}}{%
+   \refstepcounter{definition}%
+   \@afterindentfalse\@afterheading%
+   \marginnote{\rule{\marginparwidth}{2pt}\smallbreak\noindent\footnotesize\textbf{Definition \thedefinition.}\hspace{0.5em plus 0.25em minus .1em} #1\smallbreak%
+   \noindent\rule{\marginparwidth}{.5pt}}[#2]%
+}
+
+
+
+%%% Chapter Style
+%====================================================================
+
+
+\chapterstyle{section}
+\renewcommand{\chaptitlefont}{\raggedright\color{black!85}\Huge\bfseries\sffamily}
+\setsecheadstyle{\large\sffamily}
+\setsubsecheadstyle{\itshape}
+
+
+
+%%% Page Style
+%====================================================================
+
+
+\makepagestyle{technote}
+\setlength{\headwidth}{\textwidth}
+  \addtolength{\headwidth}{\marginparsep}
+  \addtolength{\headwidth}{\marginparwidth}
+\makerunningwidth{technote}{\headwidth}
+\makeheadrule{technote}{\headwidth}{\normalrulethickness}
+\makefootrule{technote}{\headwidth}{\normalrulethickness}{5pt}
+\makeheadposition{technote}{flushright}{flushleft}{flushright}{flushleft}
+\makepsmarks{technote}{%
+  \def\chaptermark##1{\markboth{##1}{##1}}    % left mark & right marks
+  \def\sectionmark##1{\markright{%
+    \ifnum \c@secnumdepth>\z@
+      \thesection. \ %
+    \fi
+    ##1}}
+  \def\tocmark{\markboth{\contentsname}{\contentsname}}
+  \def\lofmark{\markboth{\listfigurename}{\listfigurename}}
+  \def\lotmark{\markboth{\listtablename}{\listtablename}}
+  \def\bibmark{\markboth{\bibname}{\bibname}}
+  \def\indexmark{\markboth{\indexname}{\indexname}}}
+\makepsmarks{technote}{%
+  \nouppercaseheads
+  \createmark{chapter}{both}{nonumber}{}{}
+  \createmark{section}{right}{shownumber}{}{. \space}
+  \createplainmark{toc}{both}{\contentsname}
+  \createplainmark{lof}{both}{\listfigurename}
+  \createplainmark{lot}{both}{\listtablename}
+  \createplainmark{bib}{both}{\bibname}
+  \createplainmark{index}{both}{\indexname}
+  \createplainmark{glossary}{both}{\glossaryname}}
+\makeevenhead{technote}{\normalfont\thepage}{}%
+                        {\normalfont\thetitle}
+\makeoddhead{technote}{\normalfont\thetitle}{}%
+                       {\normalfont\thepage}
+\makeevenfoot{technote}{\scriptsize ©\the\year\ \@author\ — All Rights Reserved}{}{}
+\makeoddfoot{technote}{\scriptsize ©\the\year\ \@author\ — All Rights Reserved}{}{}
+
+\aliaspagestyle{chapter}{technote}
+\setlength{\headwidth}{\textwidth}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\pagestyle{technote}
+
+
+
+%%% Make Title
+%====================================================================
+
+
+\newcommand{\theNoteType}{Technical Note}
+\NewDocumentCommand{\NoteType}{m}{\renewcommand{\theNoteType}{#1}}
+
+\aliaspagestyle{title}{technote}
+
+\renewcommand{\@maketitle}{%
+    \let\footnote\@mem@titlefootkill
+    \ifdim\pagetotal>\z@
+      \newpage
+    \fi
+    \null
+    \noindent\begin{tabular}{ll}
+      \textbf{Author:} & \@author\\
+      \textbf{Date:}   & \@date\\
+    \end{tabular}
+    \vskip 1cm
+    \begin{center}
+      {\bfseries\theNoteType}\\
+      \large\scshape\@title
+    \end{center}
+    \vskip 5mm
+  }
+
+\makeatother
+
+
+
+%%% Figures
+%====================================================================
+
+
+\usepackage[wide, outercaption]{sidecap}
+  \renewcommand{\sidecaptionsep}{5mm}
+
+
+
+%%% Text macros
+%====================================================================
+
+
+\NewDocumentCommand{\anno}{m}{\oldstylenums{#1}}
+\NewDocumentCommand{\decade}{m}{\anno{#1}s}
+
+
+%%%
+%%%  %% END tTechnicalNoteCopy
+%%%
+
+%%% Figures, units, captions, listings
+%====================================================================
+
+
+\usepackage{listings} % for code listings
+\lstloadlanguages{[11]C++}
+\lstdefinestyle{C++GIT}{ %
+  language=[11]C++,
+  xleftmargin=\parindent,
+  basewidth=0.57em,
+  breakatwhitespace=true,
+  breaklines=true,
+  keepspaces=true,
+  showstringspaces=true,
+  showtabs=false,
+  tabsize=2,
+  basicstyle=\small\ttfamily,
+  directivestyle={\color{gitish-red}},
+  keywordstyle=\bfseries\color{gitish-red},
+  commentstyle=\itshape\color{git-ltgray},
+  identifierstyle=\color{git-dkgray},
+  stringstyle=\color{git-orange},
+  numberstyle=\color{git-orange},
+  emphstyle=\color{gitish-turquoise},
+  literate=%
+    {0}{{{\color{git-orange}0}}}1
+    {1}{{{\color{git-orange}1}}}1
+    {2}{{{\color{git-orange}2}}}1
+    {3}{{{\color{git-orange}3}}}1
+    {4}{{{\color{git-orange}4}}}1
+    {5}{{{\color{git-orange}5}}}1
+    {6}{{{\color{git-orange}6}}}1
+    {7}{{{\color{git-orange}7}}}1
+    {8}{{{\color{git-orange}8}}}1
+    {9}{{{\color{git-orange}9}}}1
+}
+\lstset{
+  language=[11]C++,
+  style=C++GIT,
+  morekeywords={override},
+  moreemph={std, void, string, int, float, double, vector}
+}
+\lstMakeShortInline{|}
+
+\usepackage{lstlinebgrd}
+
+\usepackage{multirow}
+\usepackage{tikz-uml} % Must be included after \pdfminorversion is set.
+\tikzumlset{font=\scriptsize\ttfamily}
+\tikzumlset{fill class = white, fill note = white}
+\usepackage{algorithmicx, algpseudocode}
+\usepackage{import} % for Inkscape figs.
+\usepackage{transparent}
+
+
+
+%%% Bibliography stuff
+%====================================================================
+
+
+\addbibresource{library.bib}
+\addbibresource{standards.bib}
+\addbibresource{software.bib}
+
+
+
+%%% Epigraph stuff...
+%====================================================================
+
+
+\usepackage{xparse}
+\usepackage{adforn}
+\NewDocumentCommand\EpiName{m}{\adforn{64}~\textsc{#1}\\}
+\NewDocumentCommand\EpiSource{m}{\emph{#1}\\}
+\NewDocumentCommand\EpiBio{m}{\normalfont #1\\}
+\setlength\epigraphwidth{.75\textwidth}
+\setlength\epigraphrule{0pt}
+
+\newcommand{\epiAsterismFrame}[1]{\par\smallskip\noindent\hfill #1 \hfill\null\par\smallskip\@afterindentfalse\@afterheading}
+\newcommand{\epiAsterism}{\epiAsterismFrame{\adfopenflourishleft}}
+
+
+
+%%% Drafting aids:
+%====================================================================
+
+
+\usepackage{everypage}
+\AddEverypageHook{
+  \begin{tikzpicture}[remember picture,overlay]
+    % \node [rotate=asin(8.5/11),scale=8] at (current
+    % page.center) {\sffamily\color{gray!14}\huge DRAFT};
+    \node [yshift=1cm] at (current page.south) {\sffamily\color{black!30}\large Draft of \today};
+  \end{tikzpicture}
+}
+\usepackage[colorinlistoftodos]{todonotes}
+\presetkeys{todonotes}{color={white}, linecolor={git-turquoise}, bordercolor={gitish-turquoise}}{}
+% \listfiles
+
+
+\makeatother
+
+
+
+%====================================================================
+%====================================================================
+%====================================================================
+\makeindex
+\input{TEXT_AND_MATH_DEFS.tex}
+
+\usepackage[tooltip={true}]{acro}
+\input{ece-acronyms.tex}
+
+\author{Timothy A.\ V.\ Teatro}
+\date{\today}
+\NoteType{PhD Thesis Proposal}
+\title{Exploration and Advancement of Techniques for Predictive Control Systems Software Design and Construction}
+
+\begin{document}%\showindexmarks\indexmarksytle{\tiny\sffamily}
+\frontmatter
+  % {
+  %   \hypersetup{hidelinks}
+  %   \setcounter{tocdepth}{2}
+  %   \tableofcontents
+  % }
+\mainmatter\pagestyle{fullwidth}
+  \renewcommand{\theequation}{\oldstylenums{\arabic{equation}}}
+  \renewcommand{\theequation}{\oldstylenums{\arabic{chapter}.\arabic{equation}}}
+  \maketitle
+
+  \input{introduction.tex}
+  % \input{background-and-literature-review.tex}
+  % \input{the-proposal.tex}
+  % \input{conclusion.tex}
+
+  \renewcommand{\theequation}{\oldstylenums{\Alph{chapter}.\arabic{equation}}}
+  % \input{developing.tex}
+  \input{notation.tex}
+
+  \printacronyms[name={List of Acronyms, Initialisms and Selected Jargon}, heading=chapter]
+\backmatter%
+  {
+    \RaggedRight%
+    \renewcommand\bibfont{\footnotesize}
+    % \begingroup
+    % \renewcommand{\addcontentsline}[3]{}% Remove bib from ToC
+    \printbibliography%
+    % \endgroup
+  }
+  \printindex
+
+\end{document}
+% EOF
