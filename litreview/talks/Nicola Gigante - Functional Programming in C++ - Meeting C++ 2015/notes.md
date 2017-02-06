@@ -107,11 +107,23 @@ Using `std::function` for type-erasure introduces overhead, but not more than an
       return n * fact(n - 1);
   });
   ```
-  Apparently the fix point combinator factors the recursion.
+  Apparently the fixpoint combinator factors the recursion.
 
-## Question period
+* Interesting point: `std::tuple` is a product type and `std::optional` is a sum type for algebraic construction of types. Other sum types: `boost::variant`, `expected<T,E>`.
 
-  * Q: You've passed lambdas and functions by value. Wouldn't it make sense to perfectly forward them?
-    - Yes, of course. I've chosen to make the code simple by omitting std::forward everywhere. In the std library, there is a convention to pass lambdas by value, since they are stateless most of the time, and nothing is copied anyway. The `std::ref` and `std::cref` wrappers are useful for forcing pass by referenc.
+* Inheritance hierarchies may seem to cover the same uses cases as sum types. but they're actually opposites. [1h3m](https://youtu.be/SCC23W3CQc8?t=1h3m)
+  - Class hierarchies support a *fixed* set of operations over an *open* range of possibilities.
+  - Sum types support an *open* set of operations over a fixed range of possibilities.
+  - T.T. I think this means that in type algebra, the set of possible values is fixed: ints are ints, and so on. Many operations can be defined on them, and abstraction allows us to deal with how to operate on the sum and product types composed from the set. In the case of classes, the virtual members form a fixed set of operations, while inheritance allows us to complicate the set of possible values by creating children with more and more data components.
+  - Investigate the statement: "Each time you apply the Visitor Pattern, you probably need a sum type."
 
-  * Q: 
+* Languages with abstract data types usually support pattern matching. No universal way in C++. `boost::variant` offers something similar for product types.  `std::optional::value_or()` simulates it on optionals. Stroustrup comes close with a library called Mach7.
+
+* [Criticism of exceptions](https://youtu.be/SCC23W3CQc8?t=1h5m59s)—Fast on non-exceptional execution paths, but slow-to-throw. They ugly-up the code and are trivially ignored, which is a common source of bugs.
+
+* A nice term: lawful abstraction. Abstractions, like monads and monoids which are tied to laws.
+
+## Audience questions
+
+  * Q([31:36](https://youtu.be/SCC23W3CQc8?t=31m36s)): You've passed lambdas and functions by value. Wouldn't it make sense to perfectly forward them?
+    - A: Yes, of course. I've chosen to make the code simple by omitting std::forward everywhere. In the std library, there is a convention to pass lambdas by value, since they are stateless most of the time, and nothing is copied anyway. The `std::ref` and `std::cref` wrappers are useful for forcing pass reference.
