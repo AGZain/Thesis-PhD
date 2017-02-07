@@ -269,9 +269,9 @@
   \createplainmark{bib}{both}{\bibname}
   \createplainmark{index}{both}{\indexname}
   \createplainmark{glossary}{both}{\glossaryname}}
-\makeevenhead{technote}{\normalfont\thepage}{}%
+\makeevenhead{technote}{\normalfont\leftmark}{}%
                         {\normalfont\thetitle}
-\makeoddhead{technote}{\normalfont\thetitle}{}%
+\makeoddhead{technote}{\normalfont\leftmark}{}%
                        {\normalfont\thepage}
 \makeevenfoot{technote}{\scriptsize ©\the\year\ \@author\ — All Rights Reserved}{}{}
 \makeoddfoot{technote}{\scriptsize ©\the\year\ \@author\ — All Rights Reserved}{}{}
@@ -306,7 +306,7 @@
     \vskip 1cm
     \begin{center}
       {\bfseries\theNoteType}\\
-      \large\scshape\@title
+      \Large\scshape\@title
     \end{center}
     \vskip 5mm
   }
@@ -428,7 +428,7 @@
   \begin{tikzpicture}[remember picture,overlay]
     % \node [rotate=asin(8.5/11),scale=8] at (current
     % page.center) {\sffamily\color{gray!14}\huge DRAFT};
-    \node [yshift=1cm] at (current page.south) {\sffamily\color{black!30}\large Draft of \today};
+    \node [yshift=.75cm] at (current page.south) {\sffamily\color{black!40}\large Draft of \today};
   \end{tikzpicture}
 }
 \usepackage[colorinlistoftodos]{todonotes}
@@ -451,20 +451,21 @@
 
 \author{Timothy A.\ V.\ Teatro}
 \date{\today}
-\NoteType{PhD Thesis Proposal}
-\title{Exploration and Advancement of Techniques for Predictive Control Systems Software Design and Construction}
+\NoteType{PhD Proposal}
+
+\renewcommand{\theequation}{\oldstylenums{\arabic{equation}}}
+\renewcommand{\theequation}{\oldstylenums{\arabic{chapter}.\arabic{equation}}}
 
 \begin{document}%\showindexmarks\indexmarksytle{\tiny\sffamily}
-\frontmatter
-  % {
-  %   \hypersetup{hidelinks}
-  %   \setcounter{tocdepth}{2}
-  %   \tableofcontents
-  % }
-\mainmatter\pagestyle{fullwidth}
-  \renewcommand{\theequation}{\oldstylenums{\arabic{equation}}}
-  \renewcommand{\theequation}{\oldstylenums{\arabic{chapter}.\arabic{equation}}}
-  \maketitle
+
+  \input{COVERPAGE.tex}
+
+  {
+    \hypersetup{hidelinks}
+    \setcounter{tocdepth}{2}
+    \tableofcontents
+    \clearpage
+  }
 
   \input{introduction.tex}
   % \input{background-and-literature-review.tex}
