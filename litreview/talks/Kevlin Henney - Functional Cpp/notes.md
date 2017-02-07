@@ -1,5 +1,9 @@
 # Kevlin Henney - Functional C++
 
+*A talk given at Build Stuff Lithuania 2016*
+
+https://youtu.be/CIg6eyJv4dk
+
 _Author bio:_ Kevlin is an independent consultant and trainer based in the UK.
 His development interests are in patterns, programming, practice and process. He
 has been a columnist for various magazines and web sites, including Better
