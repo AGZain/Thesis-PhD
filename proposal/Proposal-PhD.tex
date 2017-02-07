@@ -31,6 +31,8 @@
 \usepackage{ragged2e}
 \usepackage[xindy]{imakeidx}
 \usepackage[shortlabels]{enumitem}
+\usepackage[english]{datetime2}
+
 
 \makeatletter
 
@@ -426,7 +428,7 @@
 \usepackage{everypage}
 \AddEverypageHook{
   \begin{tikzpicture}[remember picture,overlay]
-    \node [yshift=.75cm] at (current page.south) {\sffamily\color{black!40}\large Draft of \today};
+    \node [yshift=.75cm] at (current page.south) {\sffamily\color{black!40}\large Draft of \Today};
   \end{tikzpicture}
 }
 \usepackage[colorinlistoftodos]{todonotes}
@@ -448,7 +450,7 @@
 \input{ece-acronyms.tex}
 
 \author{Timothy A.\ V.\ Teatro}
-\date{\today}
+\date{\Today}
 \NoteType{PhD Proposal}
 
 \renewcommand{\theequation}{\oldstylenums{\arabic{equation}}}
