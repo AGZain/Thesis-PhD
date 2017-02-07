@@ -2,3 +2,877 @@
 %
 \chapter{Background}%
 \label{chap:background}
+
+In this section, the reader should find a sufficient set of descriptions to form
+a reasonable mental picture of the embodiment of the proposed research. This
+section opens with a literature review encompassing methods for software
+description of architecture and pattern based design which are necessary
+background for~\ref{contrib:design}. The contribution \ref{contrib:capital} is
+motivated partially by the recent history of the C++ language, which is reviewed
+next. The remainder of the literature review covers various aspects of optimal
+control, which underlies all of the contributions, but is particularly expressed
+in~\ref{contrib:theory}.
+
+The next section, \Sref{sec:prior-art}, describes work that potentially overlaps
+with the proposed contributions.
+
+In \Sref{sec:literature-gaps} I specifically outline the gaps in literature
+toward which I direct my efforts—localising my research goals and contributions
+within the field of engineering.
+
+In the remaining sections of the chapter, I provide a serviceable theoretical
+background in optimal control and \ac{nmpc} which supports a detailed discussion
+of the proposal for~\ref{contrib:theory}.
+
+
+
+
+\section{Literature Review}%
+\label{sec:lit-review}
+
+
+\subsection{Software Architectural Description}
+
+
+The software design (as opposed to the code) will be documented in the form of
+%
+\begin{enumerate}
+  %
+  \item patterns,
+  \item contracts, and
+  \item idioms.
+  %
+\end{enumerate}
+%
+This will include, but are not limited to descriptions compliant with
+\acl{ieee1016} and \acl{ieee420101}.
+
+\MarginDefinition{A \textbf{\textit{precondition}}\index{Precondition
+(software)} is a condition on the parameters of a method, or data within the
+scope of the method that is expected to be true for the method to behave
+properly. They are obligations of the user of the method.
+\textbf{\textit{Postconditions}}\index{Postcondition (software)} are a similar
+sort of expectation that must be true \emph{after} the method runs.
+\textbf{\textit{Invariants}}\index{Invariant (software)} are conditions on
+parameters and data that are true before \emph{and} after the method runs.}
+%
+Contracts are a communication tool. They are a precise and complete
+specification of behaviour visible to the user. They include a description of
+preconditions, postconditions and invariants. It is a specification of the
+behaviour of a routine without defining implementations.
+
+When software code is constrained by contracts, bugs are easier to define since
+a bug will be a departure from contractually defined behaviour. Well defined
+contracts make unit testing more straightforward (since it makes clear what to
+unit test).
+
+When you were learning to read, you started by learning the letters of the
+language and the sounds they encode. Next, you begin sounding out words through
+inspection of the letters. When you became good at reading, you no longer had to
+concentrate on individual letters. Instead, you grouped them visually into whole
+words. Finally, in high-school you were taught the anatomy of various forms of
+literature to tell stories.
+
+Software patterns are to software what archetypes are to literature. The
+programming language provides the dictionary of words, from which your code
+forms the sentences. But, the story is made of archetypes: the evil
+super-villain, the hero's small home town, the lone cowboy. The author is not
+constrained by archetypes, and is free to adapt and reinterpret them. But
+archetypes provide useful abstractions so that an expert reader is implicitly
+granted insight. Software design patterns similarly facilitate unwritten
+communication between program authors and the reader, and that is what design
+patterns are about.
+
+Patterns are small design units, of the sort that could be represented with
+\ac{uml} diagrams. They define a solution to common design problems. So, if you
+see one used, you also know something about the problem the programmer was
+trying to solve. The intent is communicated through the application of the
+pattern. For example, if I use the \emph{abstract factory} pattern, (one of the
+original \ac{gof} patterns~\cite{GOF}), and I write a class called
+\verb|WidgetFactory|, the nomenclature makes clear to readers of my code what is
+and how they should use the \verb|WidgetFactory|. It is self-documentation for
+appropriately literate readers.
+
+Because software patterns are a communication tool based on common solutions to
+common problems, they are useless as a personal fabrication. They must be
+identified in the structure of production software. A significant phase of
+research will require me to survey existing code, looking for these types of
+patterns. I will document, and make rigorous definitions for the patterns and
+their use in control systems programming.
+
+
+
+\subsection{Functional Programming}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Functional Reactive Programming}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{ISO/IEC Standard C++}
+
+
+The history of the C++ language began with its original creator Bjarne
+Stroustrup in \anno{1979} as ``C with classes''. The language was not compiled,
+but transpiled into C and then compiled using which ever C compiler was
+available to the user. It wasn't until \anno{1998} that the language was
+standardised by committee under the \ac{iso} and \ac{iec} and published as
+\acl{cpp98}. Between \anno{1998} and \anno{2011}, the C++ language was largely
+static, with only a minor update to the standard (with no new features) in
+\anno{2003}. A major update in \anno{2011} brought C++ into the modern era,
+facilitating styles of programming pioneered by languages such as Python and
+Haskell. At the time of this writing, the current standard is \ac{cpp14}; and
+\ac{cpp17} is feature frozen and en route to publication in \anno{2017}. The
+standards committee currently plans new releases every 3-years, with every other
+release considered \emph{major}. \ac{cpp11} was a major release, and \ac{cpp14}
+as comparatively minor, but still important. \ac{cpp17} is expected to be the
+most drastic departure from \emph{class} C++ (that is, \ac{cpp98}) yet.
+
+Bjarne Stroustrup's compendium, \emph{The C++ Programming
+Language}~\cite{Stroustrup2013}, is a very accessible plain language discussion
+of the key parts of the \ac{cpp11} standard, with an introduction to the
+language in the first chapter. The time constrained reader wanting a primer on
+modern C++ in smaller volume will appreciate Stroustrup's \emph{A Tour of
+C++}~\cite{Stroustrup2013tour}. That book is basically the first chapter
+of~\cite{Stroustrup2013}, augmented so as to be self contained.
+
+Because a core value of the C++ committee is backward compatibility with
+previous language versions, the current emphasis of the committee is on making
+the language simpler by adding the right features. As early as \anno{1994} (and
+probably earlier), Bjarne Stroustrup wrote
+%
+\begin{quote} Within C++, there is a much smaller and cleaner language
+struggling to get out.\\\null\hfill\EpiSource{The Design and Evolution of C++.
+p.207} \end{quote}
+%
+and later added,
+%
+\begin{quote} And no, that smaller and cleaner language is not Java or C\#\\
+\null\hfill\EpiSource{FAQ item ``Did you really say that?'' on
+\href{http://www.stroustrup.com/bs_faq.html\#really-say-that}{Dr. Stroustrup's
+website}}\end{quote}
+
+In order to evolve the language by adding features without removing any, the new
+features must be strategically chosen to bring about shifts in programming
+style. New features, used together, form replacements for older techniques,
+without creating direct redundancies. Code compliant with \ac{cpp98} will
+compile on a \ac{cpp14} compiler, but an informed programmer could distinguish
+\emph{Modern C++} by inspection, despite the backward compatibility.
+
+Modern code will not only make use of new the new language features, but will
+portray a style that has evolved over decades of C++ use by millions of
+programmers, computer scientists and software engineers. Such practices are
+often learned \emph{on the job}, but are also promulgated in prominent texts,
+such as Scott Meyers \emph{Effective Modern C++}~\cite{meyers2014effective}.
+However, the most monolithic effort to document and standardise best practices
+is the \emph{C++ Core Guidelines} project~\cite{CppCoreGuidelines}. Those
+guidelines are supported by the \acl{gsl}~\cite{cppgsl}.
+
+Aside from good general programming practices, lightweight abstractions and
+intuitive \acp{api}, the proposed work will focus heavily on developing
+thread-safe and parallel algorithms and patterns. The \ac{cpp11} standard was
+the first to openly support threading in the language (via the memory model) and
+in the C++ standard library. The popular text on that subject is Anthony
+Williams' book \emph{C++ Concurrency In Action}~\cite{Williams2012}. The
+\ac{cpp14} standard made only small additions to concurrency\SideNote{Such as
+\verb|shared\_timed\_mutex|\\ and \verb|shared\_lock|.}. A common criticism of
+the C++ standard for concurrency is the inteface for |std::promise| does not
+offer composability. This means that they can be processed in order of
+completion. Asynchronous event handling mechanisms in C\# and other languages
+are composable. The need for composability of synchronisation events has been
+widely recognised. The Microsoft Windows \ac{api} has |WaitForMultipleObjects|
+and Unix has the venerable |select| call.
+
+
+
+\subsection{Optimal Control and Nonlinear Systems}
+
+
+There are several well established and classic texts in optimal control theory.
+I began with an older volume by \citeauthor{Kirk2004} simply titled
+\emph{Optimal Control Theory} and subtitled \emph{an
+introduction}~\cite{Kirk2004}. There is no emphasis on programming code, but
+algorithms for solving optimal control problems are detailed. The book is very
+practical and calculation driven. It contains a sturdy introduction to the
+calculus of variations. The text focuses on indirect methods using the formalism
+of Pontryagin.
+
+Though the calculus of variations is not a necessary for solving optimal control
+problems, it is an inseparable part of the field and its literature. The reason
+that, historically, so much effort has been put into developing techniques with
+this calculus is that it provides extremely useful intellectual abstractions
+that aid in analysis and understanding.
+
+A valuable text focusing only on the \emph{Calculus of Variations} is from
+Gelfand and Fomin. The original was written in Russian and used as a course
+textbook, however the book was translated to English and revised several years
+later by Richard A.\ Silverman~\cite{gelfand2000calculus}.
+
+Another important treatise in optimal control is
+\citeauthor{stengel1986optimal}'s \emph{Optimal Control and
+Estimation}~\cite{stengel1986optimal}. This book, an aged but highly regarded
+graduate level text, may easily be the preferred introduction for anyone with a
+classical education in (linear) control systems theory. Starting from very
+naïve principles, \citeauthor{stengel1986optimal} builds a theory of optimal
+control. Developing from that, a theory of estimation which he combines into two
+chapters on \emph{stochastic optimal control.}
+
+Despite the fact that this section is dedicated to optimal control, Vidyasagar's
+\emph{Nonlinear Systems Analysis}~\cite{Vidyasagar2002} requires special
+mention. The analytical techniques it describes are entirely relevant to optimal
+control of nonlinear systems. The reader benefits greatly from the intuitive
+grasp the author imparts in every page. I fully expect that a good deal of
+background in analysis of nonlinear systems in my final thesis will be inspired
+heavily from Vidyasagar's writing.
+
+An excellent overview of numerical methods for optimal control is found in a
+survey paper by \citeauthor{rao2009survey}~\cite{rao2009survey}. Rao's survey
+lacks depth (for practical reasons), but is a valuable index for the original
+literature expounding the various techniques. This paper is well paired on a
+reading list with \citeauthor{Cannon2004}'s review of efficient algorithms for
+\ac{nmpc}~\cite{Cannon2004}. Though \citeauthor{Cannon2004}'s paper is centred
+on \ac{nmpc}, and not more broadly on optimal control, his key focus is on
+numerical techniques for the minimisation problem which is core to both domains.
+
+
+
+\subsection{NMPC}
+
+
+As an introduction to the recent state of research, I know of no better source
+than David \citeauthor{Mayne2014}'s recent survey~\cite{Mayne2014}. It is
+remarkably comprehensive and contains 170 references to books, survey works and
+seminal papers in all major sub-fields of model predictive control research. The
+paper briefly introduces the core \ac{n/mpc} problem, but is far from an
+introduction to the topic. For a more introductory review of \ac{nmpc}, I direct
+the reader to the introduction written by Findeisen and
+Allgöwer~\cite{Findeisen2002}, or James B.\ Rawlings' tutorial overview in the
+June \anno{2000} issue of IEEE Control Systems Magazine~\cite{Rawlings2000}. A
+more comprehensive introduction is provided in some of the textbooks in the
+field. For example, \citeauthor{Grune2011} in their standard
+monograph~\cite{Grune2011}.
+
+The \ac{mpc} technique was first conceptualised several times independently
+between the \decade{1960} and \decade{1980}~\cite{Grune2011,Camacho2007}, but
+was not able to find widespread use due to the modest computational technology
+of those decades—even with completely linear(ised) problems. In the
+\decade{1980}, the process control industry, with its characteristically gradual
+plant dynamics, took hold of the method following the seminal paper by Richalet
+at others~\cite{Richalet1978}. Three decades later, even consumer grade
+computing hardware can implement nonlinear-\ac{mpc} for things like unmanned
+aircraft~\cite{Eklund2005}, mobile robots~\cite{Teatro2014}, automotive
+vehicles~\cite{Abbas2011} and other systems which rapidly traverse their state
+spaces. A brief but compelling history of the early development of \ac{mpc} is
+given by \citeauthor{Camacho2007} in~\cite{Camacho2007}.
+
+When the process industry embraced \ac{mpc}, the finite horizon meant that no
+guarantees of stability existed. It was simply an act of empirically
+driven-design that horizon sizes were made large enough to give confidence in
+stability. Around \anno{2000}, \citeauthor{Mayne2000} developed the analysis
+(using Lyapunov theory) to achieve nominal stability under appropriate
+constraints~\cite{Mayne2000}.
+
+Stability in \ac{nmpc} is a difficult problem and an ongoing area of research.
+The stability problem stems from the fact that a finite sized preview horizon
+cannot provide foresight to navigate around constraint regions, leading to
+cyclical integral curves in the vector field (that is, $\fc$ or $\fd$). If the
+characteristic size of the constrained regions are small compared to the horizon
+size, they do not pose a practical problem for stability. But analytical tools
+that can inform our concerns are difficult to wield for non-experts, and those
+tools are limited, and often inject undesirable constraints into the problem.
+
+A solution is to employ navigational path planning techniques to plot a desired
+route through state-space, and then use the \ac{nmpc} algorithm to track the
+desired path. This shifts the responsibility of cycle avoidance away from the
+controller and into a higher level planner which can supervise the progress of
+the system.
+
+
+
+\subsection{Numerical Methods for NMPC}
+\label{subsec:lit:numerical-methods}
+
+
+Conventional approaches to solving \ac{ocpn} can be divided into the categories
+of \emph{direct} or \emph{indirect methods}. Indirect methods use the calculus
+of variations to determine first-order optimality conditions of the original
+control problem, leading to a two-point boundary value problem. Direct methods
+call for a discretisation of the problem. Once discretised, it can be
+transcribed in a straightforward manner to a \ac{nlp} problem. Many mature,
+efficient and well known strategies exist for solving \acp{nlp}.
+
+\citeauthor{Findeisen2002} outline various \ac{nmpc} techniques
+in~\cite{Findeisen2002}, as well as Cannon in~\cite{Cannon2004}. More detailed,
+but still brisk is Rao~\cite{rao2009survey}.
+
+Both direct and indirect methods will require numerical differential equation
+solvers and numerical integrators that can be found in any text on
+numerical-methods. However, the approach to finding the solution to the
+optimisation problems differ vastly in approach.
+
+
+
+\section{Prior Art}%
+\label{sec:prior-art}
+
+
+There is not an abundance of work with a focus on software design for model
+predictive control systems. As far as I have been able to find, there are no
+textbooks, or recent papers.
+
+In \anno{\citeyear{Jobling1994}},\ \citeauthor{Jobling1994} surveyed the impact
+of \ac{oo}-programming in control system design~\cite{Jobling1994}. A lot has
+changed about the styles and attitudes of software developers since the
+mid-\decade{1990}, but those efforts are very much in the spirit of my proposed
+work.
+
+Despite the lack of communication about design principles in the control
+application, there have indeed been endeavours to make generic software
+frameworks for control, such as the \ac{darpa} Software Enabled Control
+project\index{Software Enabled Control, \acs*{darpa} project}, or the \ac{nist}
+The Real-time Control Systems Architecture.
+
+The \ac{darpa} Software-Enabled Control project~\cite{Keviczky2004,Gill2003}
+probably represents the largest independent overlap with my proposed work.
+However, some key components of the software are proprietary, and not publicly
+available. It was part of a military project, which is made obvious by the many
+papers with application to military ground vehicles and aircraft.
+
+A similar project to produce a general framework for control came from the
+Intelligent Systems Division of the \ac{nist}\SideNote{Details at
+\url{https://www.nist.gov/intelligent-systems-division}}. The project, entitled
+the \emph{The Real-time Control Systems Architecture} has software support
+called the Real-Time Control Systems Library. There is a deep hierarchy of
+supportive technologies, such as the \ac{nist} Reference Model Architecture for
+Intelligent Systems Design, and the \ac{nist} Neutral Messaging Language, all of
+which couple with the library.
+
+Those technologies offered by \ac{nist} are no longer developed or maintained,
+and are considered \emph{legacy} projects. They are also remarkably complex
+which presents a significant barrier to entry. I am proposing something with a
+sufficiently small cognitive footprint that an enthusiastic graduate student
+could have a small project running in a week or so.
+
+The software in the components of the \ac{nist} architecture and the publicly
+available components of the \ac{darpa} project will be the subjects of my search
+for design patterns. While they may be useful as inspiration, I must emphasise
+again that I have no intention of developing design tools for control systems.
+Rather, I want to develop frameworks to support research and development of new
+control techniques based on predictive models.
+
+One of the key software design and programming paradigms I wish to explore is
+\ac{frp}~\cite{Elliott1997,Hudak1999}. Functional reactive programming is the
+conjunction of two distinct paradigms: functional programming and reactive
+programming. Neither of these were part of the original design intent for the
+C++ language. But many modern languages have adopted features to support these
+styles of programming, and the latest changes to C++ have done so too. In
+\anno{\citeyear{Al-Khanji2015}}, \citeauthor{Al-Khanji2015} produced a thesis
+wherein he implemented a subset of functional reactive programming tools in
+C++~\cite{Al-Khanji2015}.
+
+There are now several publicly available modern C++ libraries for implementing
+\ac{frp}, such as Sodium\SideNote{\url{github.com/SodiumFRP/sodium}},
+C++React\SideNote{\url{github.com/schlangster/cpp.react}}[\onelineskip], and
+David Sankel's sfrp\SideNote{\url{https://goo.gl/qoqlQP}}[3\onelineskip]. David
+Sankel's \ac{frp} implementation has an interesting history. He designed the
+program semantics for controlling a robot arm \emph{before} realising that he
+had created a functional reactive design. He tells that story in one of his
+popular talks from BoostCon
+2014\SideNote{\url{youtu.be/tyaYLGQSr4g?t=38m32s}}[\onelineskip].
+
+In \citeyear{Peterson2001}, \citeauthor{Peterson2001} produced a case study
+using \ac{frp} to control their robot in the \anno{2000} Robocup
+competition~\cite{Peterson2001}. The produced a subset of \ac{frp} using C++
+template metaprogramming techniques to create what they describe as a
+``powerful, extensible programming environment for robotics''. Some similar
+research was produced in \citeyear{Xiangtian2002} by
+\citeauthor{Xiangtian2002}~\cite{Xiangtian2002} where they explicitly describe
+their work as a \emph{domain specific embedded language} within C++.
+
+With regard to~\ref{contrib:theory}, there is some work done with \ac{nmpc}
+controllers which are able to dynamically adjust or swap predictive models
+during operation. For example, in \anno{2016} \citeauthor[and related
+work]{Zhang2016} developed a computationally aware controller that could vary
+the fidelity of the model to reduce computational burden~\cite[and related
+work]{Zhang2016}. Also in \anno{2016}, \citeauthor{Ostafew2016} produced a
+\ac{nmpc} controller which is able to learn more accurate
+models~\cite{Ostafew2016}. The concept of switching components, such as the
+predictive model, the minimisation technique and even the constraint techniques
+is something I wish to explore, and so there is overlap with these papers.
+
+\section{Literature Gaps}%
+\label{sec:literature-gaps}
+
+
+With regard to~\ref{contrib:design} and~\ref{contrib:capital}, there is very
+little literature which directly addresses the problem of engineering the
+predictive control systems software. There is a small variety of software
+available for designing and implementing fairly straightforward \ac{nmpc}
+controllers, but those tools are designed to hide implementation details and
+minimise implementation choices, and I am proposing a research framework which
+necessarily exposes those decisions.
+
+In the field of software engineering, interest has been building for software
+designs using functional and functional reactive designs. The limitations of the
+C++ language prior to \anno{2011} made it awkward to produce truly functional
+architecture, so progress was limited.
+
+With regard to~\ref{contrib:theory}, there is a lack of good literature
+regarding choices in implementation details of \ac{nmpc} controllers. I wish to
+study the impact of some of those choices.
+
+Enabled by the highly dynamical nature of the proposed framework, there is a lot
+that can be be understood about reconfiguring \ac{nmpc} controllers during
+operation. This is a fresh and open area of research.
+
+In \Sref{sec:NMPC}, I will describe techniques for discouraging the controller
+from certain behaviours—in particular, using artificial potential fields in the
+cost function. The more direct way to do this is to proscribe undesired states
+using constraint techniques in the mathematical optimisation\SideNote{For
+example, using Lagrange multipliers, or \ac{nlp}}. Techniques which penalise
+behaviour using the cost function, are called \emph{soft constraints}, while
+directly proscribed behaviours are called \emph{hard constraints}.
+
+In textbooks and elementary literature, you will find discussions comparing hard
+and soft constraints at a naïve level. There may be discussion of the fact that
+hard constraints are computationally more expensive, or that soft constraints do
+not provide guarantees against the undesired behaviour. There will be little or
+no discussion of techniques for constructing artificial potentials.
+
+
+
+\section{Optimal Control \& NMPC}%
+\label{sec:NMPC}
+
+
+\textsc{Nonlinear \acs{mpc} has}, at its core, a numerical optimal control
+problem. In this section I shall focus on theory and methods for solving optimal
+control problems as they arise in the context of online \ac{nmpc}.
+
+We will move swiftly into the discrete flavour of optimal control, but the
+origins of the problem are rooted in classic and continuous formulations. There
+are also several techniques for discretising the problem, so it will be useful
+to have a fully continuous case for reference.
+
+Optimal control is quite different from the classical control techniques which
+use model information only at design time to choose a rule which maps each state
+to a control value to obtain desired behaviour. Optimal control formulates the
+control problem in terms of a cost (or reward) functional that maps a state
+space trajectory and corresponding control space trajectory to a real number
+which quantitatively appraises the paths in terms of desirable behaviour. A
+mathematical model of the system is used to estimate a state-space trajectory
+that will result from a given control plan. We may then seek the
+state-space/control-space trajectory pair which minimise the cost.
+
+A common model for a nonlinear system is
+%
+\begin{equation}\label{eq:generalNonlinearSystemWithoutInput}
+  \dot{\bix} = \fc(t,\, \bix(t)),\quad \bix(0) = \bix_0, \quad t\ge0,
+\end{equation}
+%
+where $\fc : \reals\times\biX\rightarrow \biX$ is a time varying nonlinear map
+from a vector of state at time $t$, $\bix(t)\in\biX$, to the state velocity
+$\dot\bix$, forming an initial value problem. When \fc\ is specified,
+time-integration will yield an integral curve leading from the initial state.
+The problem is often visualised with \fc\ representing a vector field (that is,
+a velocity field) and the integral curves are the trajectories to which the
+vectors are locally tangent at every point.
+
+A controlled system model will
+extend~\eqref{eq:generalNonlinearSystemWithoutInput} with a control input, \cu:
+%
+\begin{equation}\label{eq:generalNonlinearSystem}
+  \dot{\q} = \fc(t,\, \q(t),\, \cu(t)),\quad \q(0) = \q_0,\quad t\ge0.
+\end{equation}
+%
+Depending on the specific dependency of \fc\ on $\biu(t)\in \biU$, this
+introduction allows us to control the shape of the integral curves or, more to
+the point, the shape of the underlying vector field if $\biu$ can be specified
+as a function of $\bix$: $\biu(\bix(t))$. The foundational problem of control
+systems in this context is to find a law giving the values for the elements of
+$\cu$ to ensure that all possible integral curves represent desirable behaviour.
+
+The desirability of a particular solution must be quantifiable as a \emph{cost
+function(al),} based on the trajectories through state and control space the
+solution represents. For example, if I am trying to find a minimum-time path, a
+cost functional could simply be $\int_{t_0}^{t_\mathup{f}}\,\dif t =
+t_\mathup{f} - t_0$. But that could (or will) lead to solutions which ride the
+limits of the control actuators. Perhaps what you really want is a
+\emph{minimum-effort} solution: $\int_{t_0}^{t_\mathup{f}}
+\bigl(\cu(t)\bigr)\tr\cu(t)\; \dif t$. Anything with a direct relationship to
+the choices of state and control may be penalised in this way. The term in the
+integrand responsible for accumulating cost over the trajectory is called the
+\emph{running cost}\index{Running cost}, and is usually denoted with a capital
+(and sometimes calligraphic) $L$.\SideNote{The custom of using $L$ for the
+running cost commemorates the Italian-French mathematician and astronomer
+Joseph-Louis Lagrange, who revolutionised physics by reformulating (Newtonian)
+mechanics in terms of this sort of functional minimisation.} In many
+formulations, it is desirable (for reasons to be discussed) to place an
+additional penalty on the location of the terminus of the state-space
+trajectory, denoted $e(\q(t_\mathup{f}))$.
+
+\begin{definition}\label{def:ocp}
+%
+The \emph{\textbf{\acf{ocp}}} is to solve for the free variables $\q(t)$ and
+$\cu(t)$ that satisfy the minimisation,
+%
+\begin{equation}
+\min_{\q(t),\ \cu(t)}\; \Biggl[ \int_{t_0}^{t_\mathup{f}} L(t,\, \q(t),\, \cu(t))\,\dif t + e(\q(t_\mathup{f})) \Biggr],\tag{\acs{ocp}}\label{eq:ocp}
+\end{equation}
+%
+subject to
+%
+\begin{align}
+  \q(t=0) - \q_0 &= 0\label{eq:cnt-constraint-init}\\
+  \dot{\q}(t) - \fc(\q(t),\, \cu(t)) &= 0\quad t_0 \le t \le t_\mathup{f}\label{eq:cnt-constraint-model}\\
+  g_k(\q(t),\, \cu(t)) &= 0\quad t_0 \le t \le t_\mathup{f}\label{eq:cnt-constraint-equality}\\
+  h_k(\q(t),\, \cu(t)) &\leq 0\quad t_0 \le t \le t_\mathup{f}\label{eq:cnt-constraint-inequality}\\
+  r(\q(t_\mathup{f})) &\le 0.\label{eq:cnt-constraint-terminal}
+\end{align}
+%
+\end{definition}
+The constraint~\eqref{eq:cnt-constraint-init} merely ensures that the solution
+trajectory starts at the systems known present state.
+Equation~\eqref{eq:cnt-constraint-model} ensures that the solution is consonant
+with the dynamical description in our model. The
+constraints~\eqref{eq:cnt-constraint-equality}
+and~\eqref{eq:cnt-constraint-inequality} are algebraic expressions constraining
+the solution space. For example, if the control input is limited to a ball in
+the control space, it may be expressed here. The final
+constraint,~\eqref{eq:cnt-constraint-terminal}, ensures that the terminus of the
+solution trajectory will lie in a subset of the state-space. This is key to some
+techniques to guarantee stability in \ac{nmpc}. At
+minimum,~\eqref{eq:cnt-constraint-init} and~\eqref{eq:cnt-constraint-model} are
+part of every well posed \ac{ocp}, while the others are at the discretion of the
+designer. Optimal control techniques offer and interesting choice to control
+designers, in that constraints may be express in
+\emph{hard}\index{Constraints!hard}\index{Hard constraint} or
+\emph{soft}\index{Constraints!soft}\index{Soft constraint} varieties. If the
+constraint is expressed through active enforcement
+of~\eqref{eq:cnt-constraint-equality}–\eqref{eq:cnt-constraint-terminal}, then
+it is a \emph{hard} constraint. However, the cost function can be chosen so as
+to anathematise state-control configurations without the computational overhead
+of hard constraints. This comes at the cost of certainty in the proscription of
+such regions, and so these constraints are called \emph{soft.}
+
+
+
+\subsection{\acl{nmpc}}
+
+
+Since our goal is a computer algorithm, we must sample the state and control
+trajectories on discrete intervals\index{Sampling (discrete)}. This is true
+regardless of how we approach the problem, since it is a limitation imposed by
+digital hardware. Choosing a constant sampling interval $\ival$, the system
+state at a time $t_k = k\ival$ is notated with the short hand $\bix(k\,\ival) =
+\bix^k$. The model from~\eqref{eq:generalNonlinearSystem} takes the form of a
+recurrence relation
+%
+\begin{equation}\label{eq:discreteModel}
+  \q^{k+1} = \fd(\q^k,\, \cu^k),\quad\q^0 = \q_0,\quad k = 0,1,2,\ldots
+\end{equation}
+%
+where the \emph{state transition map}\index{State transition map},
+$\fd:\stateSpace\times\ctrlSpace\rightarrow\stateSpace$, assigns a successor
+state $\q^{k+1}$ from a given state vector $\q\in\stateSpace$ and control vector
+$\cu\in\ctrlSpace$. The domains \stateSpace\ and \ctrlSpace\ may be arbitrary
+metric spaces, with metrics $d_\stateSpace(\q_1, \q_2)$ and $d_\ctrlSpace(\cu_1,
+\cu_2)$. For the time being, it is harmless to imagine that $\stateSpace =
+\reals^n$ and $\ctrlSpace = \reals^m$ for $n,m \in \posInts$, with the standard
+Euclidean metric $d_\stateSpace(\q_1, \q_2) = \norm{\q_1 - \q_2}$, (and alike
+for $d_\ctrlSpace$), but this need not be the case.
+
+Given a \emph{control sequence}\index{Control sequence, $\cu^k$!set of}
+$\bigl\{\cu^0,\cu^1,\ldots,\cu^{N-1}\bigr\} \in U^{N}$ for $N\in\posInts$, we
+can forecast a corresponding (discrete) state-space trajectory $\qcu^k$ based on
+the model. Starting from an initial position $\q^0$, simply
+iterate~\eqref{eq:discreteModel} recursively, using a previously obtained value.
+That is, starting from $\q^0$ we obtain $\q^1 = \fd(\q^0, \cu^0)$, and then
+$\q^2 = \fd(\q^1, \cu^1)$, and so on until $\q^N = \fd(\q^{N-1}, \cu^{N-1})$. In
+this context, the integer $N$ is referred to as the \emph{prediction
+horizon}\index{Horizon, prediction}, or simply as \emph{the horizon.}
+
+\begin{definition}\label{def:ocpn} The \emph{\textbf{\acf{ocpn}}} is to solve
+for the free variables in the  sequences
+%
+$\q =\bigl\{\q^0,\q^1,\ldots,\q^{N-1}\bigr\}$
+%
+and
+%
+$\cu =\bigl\{\cu^0,\cu^1,\ldots,\cu^{N-1}\bigr\}$
+%
+that satisfy the minimisation,
+%
+\begin{equation}
+  %
+  \min_{\substack{\q\in\stateSpace^{N+1}\\ \cu\in\ctrlSpace^{N+1}}}\; \Biggl[ \sum_{k=0}^{N-1} L(\q^k,\, \cu^k) + e(\q^N) \Biggr]\tag{\acs{ocpn}}\label{eq:ocpn}
+  %
+\end{equation}
+%
+subject to
+%
+\begin{align}
+  %
+  \q^0 - \q_0 &= 0\\
+  \q^{k+1} - \fd(\q^k, \cu^k) &= 0\quad k = 0,\ldots,N-1 \label{eq:ocpn-constraint-model}\\
+  g_k(\q^k, \cu^k) &= 0\quad k = 0,\ldots,N-1\\
+  h_k(\q^k, \cu^k) &\leq 0\quad k = 0,\ldots,N-1\\
+  r(\q^N) &\leq 0
+  %
+\end{align}
+%
+\end{definition}
+Here, the constraints play the same roles (now in discrete form) as they did for
+Definition~\ref{def:ocp}, the definition of the \ac{ocp}.
+
+It is not uncommon for Definitions~\ref{def:ocp}~and~\ref{def:ocpn} to be
+augmented with an algebraic problem to be solved simultaneously with the
+differential problem. Such problems have an additional set of free variables for
+the algebraic problem. It adds complexity without insight, and is not pertinent
+to the chosen examples, it is not discussed further.
+
+The objective of the minimisation in \ac{ocpn} is our discrete cost
+function\index{Cost function} which is commonly notated as
+$J_N:\stateSpace^N\times\ctrlSpace^N\rightarrow\reals$. Because the model
+constraint~\eqref{eq:ocpn-constraint-model} unambiguously maps a control
+sequence to a state-space trajectory, a large class of numerical methods for
+\ac{nmpc} eliminate the state-space variables and free variables in the
+minimisation problem. For those methods,~\eqref{eq:ocpn} might be rewritten as
+\begin{equation} \label{eq:u_optimal} \ou = \argmin_{\cu\in\ctrlSpace^N}\,
+J_N(\qcu,\, \cu). \end{equation} The ornamental `$\star$' denotes values
+relating to the solution of the optimisation problem. So \ou\ is the optimised
+control sequence (that is, the one which minimises the cost function), while
+\oq\ would represent the corresponding trajectory through state-space.
+
+In the \ac{nmpc} algorithm, \ou\ is computed repeatedly and the first element,
+$\ou^0$, is executed before solving the problem again with a newly measured
+$\q^0$. A useful notational tool is the feedback law: $\cu(t) = \fbk(\bix(t))$.
+In this context, the feedback law $\fbk_c:\stateSpace\rightarrow\ctrlSpace$ maps
+the current state to the appropriate control\SideNote{If the feedback law can be
+expressed in closed form, then simple substitution, \[ \fc(t, \bix(t),
+\fbk_c(\bix(t))) = \fc^\prime(t, \bix(t)), \] can
+transform~\eqref{eq:generalNonlinearSystem} back
+to~\eqref{eq:generalNonlinearSystemWithoutInput}, justifying my comment that
+choosing a control law can be thought of as manipulating the shape of the
+underlying vector field.}. Let us summarise the \ac{nmpc} algorithm more
+precisely: \begin{displayAlgorithm}[The general \ac{nmpc}
+algorithm]\label{alg:NMPC-general}\leavevmode%
+%leavemode avoids a bug in amsthm with theorems starting with lists.
+%
+  \begin{algorithmic}[1]
+    \Repeat\Comment{NMPC loop}
+    \State Measure or estimate the state $\q^j\in\stateSpace$
+    \State Set $\q_0 = \q^j$ and solve \ac{ocpn} for those initial conditions
+    \State Define the feedback control value $\fbk(\q^j) \coloneq \ou^0\in\ctrlSpace$ and execute
+    \Until{control process is inactivated}
+  \end{algorithmic}
+\end{displayAlgorithm}
+
+
+
+\subsubsection{The Cost Function}
+
+
+The choice of the cost function impacts the behaviour and performance of the
+controller in the most thorough sense. The cost function is how the designer
+expresses the notions of good and bad behaviour. But since this function is core
+the optimisation problem---the most computationally intensive portion of the
+controller---a balance is to be struck between a thorough quantification of
+behavioural characteristics and the practical performance of the controller.
+
+The cost function\index{Cost function} is commonly expressed as a sum of
+\emph{running cost terms}\index{Cost function!Running cost} over the horizon,
+with an additional term depending only on the terminal state, called the
+\emph{terminal cost}\index{Cost function!Terminal cost}:
+%
+\begin{equation}\label{eq:costfn-aliased}
+  J_N(\q,\, \cu) \coloneq \sum_{k=0}^{N-1} L(\q^k,\,\cu^k) + e(\q^N).
+\end{equation}
+
+
+
+\subsubsection{The Running Cost}
+
+
+The function $L:\stateSpace\times\ctrlSpace\rightarrow\reals$ appearing
+in~\eqref{eq:costfn-aliased} is the \emph{running cost}\index{Running cost} and
+expresses the operational costs of traversing state-space-time.
+
+Without loss of generality, the controllers described here are designed to track
+a reference path in state space:\index{Running cost!tracking error}
+%
+\begin{equation*}
+  \q\rnc=\bigl\{\q\rnc^0,\ \q\rnc^1,\ldots,\q\rnc^{N-1}\bigr\}.
+\end{equation*}
+%
+To track the above path is to minimise the error function $\qerr = \q\rnc -
+\q_\cu$\index{Error function}. This desire quantified quadratically in the
+running cost function as
+%
+\begin{equation}\label{L-err}
+  L\bigl(\qcu^k,\cdot\bigr) \coloneq \bigl(\qerr^k\bigr)\tr\mQ\,\qerr^k
+\end{equation}
+%
+where \mQ\ is positive-definite matrices of weighting coefficients. The
+positive-definiteness of \mQ\ ensures that, all other things being equal,
+$\norm{\q_1} > \norm{\q_2} \iff L(\q_1,\cdot) > L(\q_2,\cdot)$.
+
+If the the elements of the reference sequence are all equal (that is to say the
+reference is static) then the tracking controller becomes a set-point
+controller.
+
+Minimising the tracking error in the way described, surprisingly to some, may
+lead to very undesirable behaviour. Plain error minimisation without further
+regard will drive actuators to their limits because the \emph{only} desire
+expressed in formulation is adherence to the reference trajectory. Even if you
+constrain your optimisation to respect the limits of your actuators, the
+controller will tend to extremes—casually running at the operational limits you
+prescribe in the constraints.
+
+Solutions which balance the tracking error against the control effort must be
+explicitly called for.\index{Running cost!control effort} A quadratic penalty on
+control effort, in addition to the tracking error terms will balance needless
+aggression in the controller against tracking accuracy. (Assuming the notion of
+\emph{needless} aggression means anything in your application.)
+
+An individual element in the control sequence is, in general, a time varying
+function $\cu^k(t)$ with a duration equal to \ival. Since the cost and
+cumulative effect of a control is computed by integration, $\cu^k(t)$ should
+locally Lebesgue integrable. Let \lebesgueIntegrable{\Omega}[s] denote the set
+of all locally Lebesgue integrable functions that map $\Omega$ to $\reals^s$.
+Then the control space\index{Control space, \ctrlSpace} is expressed as
+$\ctrlSpace = \lebesgueIntegrable{\intco{0}{\ival}}[m]$. In such cases, the
+control effort penalty would take the form,
+%
+\begin{equation}\label{eq:L-integral-u}
+  L(\cdot,\,\cu^k) \coloneq \cdots + \frac{1}{\ival}\int_0^{\ival}\bigl(\cu^k(t)\bigr)\tr\mR\,\cu^k(t)\,\dif t.
+\end{equation}
+%
+where, as it was with \mQ, the matrix of coefficients, \mR, should also be
+positive definite.
+
+I previously wrote that the reader may harmlessly think of \ctrlSpace\ as simply
+$\reals^m$, and the attentive reader may be wondering about the apparent
+dissonance I am creating with this discussion of \ctrlSpace\ as a function
+space. This tension is broken when we implement the so called \emph{zero-order
+hold}\index{Zero-order hold} for the control sequences, in which controls are
+held constant between sampling nodes\SideNote{If the sampling interval is
+sufficiently short, then the zero-order hold is a very practical choice to make.
+More elaborate choices are indicated when the sampling interval is longer, or
+the physics of the underlying mechanism do not allow for constancy between
+sampling nodes.}. The choice eases mathematical rigour and reduces the
+computational burden of the final algorithm. The set of all constant functions
+mapping the interval $\intco{0}{\ival}$ to $\reals^m$ are a subset of
+\lebesgueIntegrable{\intco{0}{\ival}}[m], so the choice is algebraically sound.
+Under the zero-order hold condition, the contribution of the control effort to
+the running cost simplifies from~\eqref{eq:L-integral-u} to
+%
+\begin{equation}\label{eq:L-u}
+  L(\cdot,\cu^k) \coloneq \cdots + \bigl(\cu^k\bigr)\tr\mR\,\cu^k.
+\end{equation}
+%
+While the zero-order hold is a very common convention, the explorations of the
+section on \emph{numerical methods of \ac{nmpc}}, \Sref{subsec:lit:numerical-methods},
+will describe alternative ways to discretise the problem.
+
+\sAsterism
+
+\textsc{In most} applications of \ac{nmpc}, the running cost consists only of the terms described in Equations~\eqref{L-err} and~\eqref{eq:L-u}. In summary,
+%
+\begin{equation}\label{L-err-u}
+  L(\qcu^k,\,\cu^k) \coloneq \bigl(\qerr^k\bigr)\tr\mQ\,\qerr^k + \bigl(\cu^k\bigr)\tr\mR\,\cu^k.
+\end{equation}
+
+In some applications, it is useful to disproportionately discourage paths
+through a particular portion of state-space. Take, as an example, the case of a
+self-driving car which may want to move slowly near blind corners (thus
+discouraging states of high velocity near those areas). These regions of
+state-space may be cast as inauspicious with a scalar field\index{Running
+cost!soft constraints}\index{Running cost!scalar field} which is accumulated in
+the running cost. The field $\Phi:\stateSpace\rightarrow\reals$ takes on high
+(positive) values in regions of $\stateSpace$\ which the designer wishes to ward
+against. If $\Phi$ is finite, it does not preclude trajectories from entering
+those regions with large $\Phi$, but it does discourage such trajectories as
+solutions of cost minimisation. We therefore call such constraints \emph{soft
+constraints.}\index{Constraints!soft} This brings us to our final and most
+comprehensive formulation of the running cost,
+%
+\begin{equation}\label{eq:L-err-u-Phi}
+  L(\qcu^k,\,\cu^k) \coloneq \bigl(\qerr^k\bigr)\tr\mQ\,\qerr^k + \bigl(\cu^k\bigr)\tr\mR\,\cu^k + \Phi(\q^k).
+\end{equation}
+%
+the value of which is increased by deviations from a reference path, non-zero
+control action and placement in state space regions characterised by large
+values of $\Phi$.
+
+
+
+\subsubsection{The Terminal Cost}
+
+
+The terminal cost (or terminal penalty) from~\eqref{eq:costfn-aliased} is the
+function $E\mathcolon\stateSpace\rightarrow\reals$ which depends only on the
+terminal state $\q^{N-1}$. It is used to insinuate the trajectory towards a
+particular state. The term conventionally shares the quadratic form with the
+error and control penalties in the running cost. Specifically,
+%
+\begin{equation}\label{eq:terminal-cost}
+  e(\q) \coloneq (\biy-\q)\tr\mS\,(\biy-\q)
+\end{equation}
+%
+with  $\biy\in\terminalSet\subseteq\stateSpace$ and weighting matrix \mS\
+sharing the same properties as \mQ. A lot of stability analysis of \ac{n/mpc}
+centres around choosing the terminal set \terminalSet, and the terminal target
+\biy\ need not have any relationship to $\q\rnc$.
+
+It should be superficially clear that the terminal cost in  term is minimised
+when the optimal state trajectory \oq\ ends a closely as possible to \biy. It is
+useful to further appreciate that since \oq\ is constrained by the state
+succession relationship, the influence of this term is propagated backward
+through the trajectory during the minimisation. Speaking qualitatively, this
+gives the appearance of a somewhat rigidly connected set of points forming the
+state trajectory. If one were to pinch the end of the ridged line and push it
+around, the path would give some hindrance as the effect of the constraint
+resists forbidden motions.\SideNote{Later on, we will see that this effect I
+characterise as rigidity, is actually the influence of Lagrange multipliers
+working to constrain the system during the mathematical optimisation.}
+
+Traditionally, \ac{n/mpc} schemes with guaranteed stability for nonlinear
+systems impose conditions on the allowed regions for terminus of the state-space
+trajectory, or other such demanding hypotheses on the system which make the
+on-line computation of the open loop optimal control difficult. Softly
+constraining the terminus with the quadratic error penalty eases the
+calculations, but sacrifices guarantees of stability.

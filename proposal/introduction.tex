@@ -2,3 +2,441 @@
 %
 \chapter{Introduction}%
 \label{chap:introduction}
+
+\epigraph{
+  %
+  … we must avoid the temptation to think of software as simply the language of
+  the implementation. Control code … is a dynamic system. It has an internal
+  state, responds to inputs, and produces outputs. It has time scales,
+  transients, and saturation points. It can also be adaptive and distributed. …
+  if we take this software dynamic system and couple it to the plant dynamics
+  through the sensor and actuator dynamics, we have a composite system whose
+  properties cannot be decided from the subsystems in isolation.
+  %
+}{
+  \EpiName{HELEN GILL and JOHN BAY}
+  \EpiSource{Software-Enabled Control:\hskip13em\null\\ Information Technology for Dynamical Systems~\cite[p.~4]{Gill2003}}
+}
+
+\lettrine{T}{he expertise} of a control systems engineer is, of course, in the
+design of mechanisms to control machines to desired behaviour. However, that
+engineer will likely occupy most of his or her time on implementation, rather
+than the design. Very often, that implementation takes the form of computer
+software and as the infrastructure of the first-world leans ever more heavily on
+software driven electronics, our profession has spawned an entire branch
+dedicated to the engineering of software. But in academia, there is rarely much
+attention devoted to the engineering of \emph{control systems software} in
+particular.
+
+The contribution of my proposed thesis is threefold. One of my major interests
+is in developing software engineering patterns using modern programming
+paradigms for crafting readable, reliable, testable, correct and
+\emph{\textbf{performant}} predictive control software. A significant
+contribution to the field will be:
+%
+\begin{enumerate}[label=(C\arabic*)]
+  %
+  \item the software design description—the general description of the software
+  components and their interactions and the learned design principles.
+  %
+\end{enumerate}
+%
+Those designs will be implemented in a portable and reusable framework, with a
+contribution represented in:
+%
+\MarginDefinition{\emph{\textbf{Software capital}}\index{Software capital}, as
+coined by Dean Zarras in \anno{1996} is—the cumulative technology that can be
+re-deployed to new situations.
+(See~\url{http://goo.gl/y2EHPs})}[2\baselineskip]
+%
+\begin{enumerate}[label=(C\arabic*), resume]
+  %
+  \item \textit{\textbf{software capital}}, published through open source
+  licensing with thorough documentation.
+  %
+\end{enumerate}
+%
+My primary motivation for developing the software is to enable novel research in
+the field of \emph{optimal control} systems. Before now, the majority of my
+research has focused on aspects of optimal control theory, and software
+development has been a mere means for those activities. However, the challenge
+of implementing these systems well has stimulated my attention in the
+engineering of the software itself. Theoretical research in optimal control
+remains a paramount goal. Therefore, a continued and concurrent contribution of
+my research will be:
+%
+\begin{enumerate}[label=(C\arabic*), resume]
+  %
+  \item novel theoretical research in the field of optimal control systems.
+  %
+\end{enumerate}
+
+\MarginDefinition{A software \textbf{\textit{contract}}\index{Contract
+(software)} is a formal, precise and verifiable interface specification for
+software components, which extend the ordinary definition of abstract data types
+with preconditions, postconditions and invariants. The term is a conceptual
+metaphor with the conditions and obligations of business contracts. (See
+Wikipedia entry for \href{https://goo.gl/nfOWRN}{\emph{design by contract}}, at
+\url{https://goo.gl/nfOWRN})}
+%
+
+In the remainder of this section, I will motivate and outline the scope of the
+work. I will demonstrate that the time is ripe for this research, as we approach
+a critical and opportune phase in our technological evolution.
+
+
+
+\section{Motivation}%
+\label{sec:motivation}
+
+
+In the opening paragraphs of this chapter, I enumerated my proposed
+contributions by discussing the software I wanted to design
+(contributions~\ref{contrib:design} and~\ref{contrib:capital}), in order to
+facilitate research in control systems (contribution~\ref{contrib:theory}).
+However, when discussing the motivation, the logical ordering is reversed. The
+software is what enables the control systems research, but progress in control
+systems is the primary motivator. So, I begin with a discussion of some
+directions of novel control systems research.
+
+American cognitive scientist and philosopher Daniel C.\ Dennett, in his book
+\emph{Kinds of Minds}~\cite{Dennett1997} describes the workings of the human
+mind:\index{Brain-like control systems}
+%
+\begin{quote} The task of the mind is to produce future, as the poet Paul Valéry
+once put it. A mind is fundamentally an anticipator, an expectation-generator.
+It mines the present for clues, which it refines with the help of the materials
+it has saved from the past, turning them into anticipations of the future. And
+then it acts, rationally, on the basis of those hard-won anticipations.
+\end{quote}
+
+So, what will happen if you run down the sidewalk with a full bucket of water?
+\emph{Your feet will get wet,} of course; the water will slosh out.\SideNote{I
+borrow this example from Prof.\ Patrick Winston's lectures in artificial
+intelligence at MIT.} You have probably never been told that fact. You are not
+likely to find that fact through any reasonable amount of web-searching or
+inspection of literature. That fact was generated in your mind through a
+multiphysical simulation based on rules, intuitions, and information learned
+from past experiences.
+
+Notice how the models running in your brain that inform your intuition in the
+bucket example are different from the models you might use to make decisions
+about your mortgage. Your mind requires multiple models in order to make the
+decisions across multiple domains of experience.
+
+Complex dynamical systems, such as those of mobile robots, have state spaces
+which are too varied and unpredictable to analyse thoroughly. Therefore, we have
+no ways to guarantee performance in a sufficiently wide set of circumstances.
+However, we know that resiliency can be achieved by just having a controller
+that processes information in the right way, refines models and adapts to use
+them. We know this because it is what we do. It is what you are doing right
+now—and what I am doing. Our brains are self-modelling, self-aware control
+systems for human apes, that are unrivalled in scope and resiliency by the
+artificial control systems of today. What if a robot could reason about its
+frame and its environment in the same way that we can?
+
+I do not claim to know that brain-like control systems are the \emph{only} way
+to achieve the sort of resiliency we desire from our machines. But
+animals—particularly the human animal—is the best example we know of that
+behaviour. Until we invent or discover something better, the best we can do is
+aspire to the standard set in our own biology.
+
+Brain-like control systems are not the topic of the proposed work, but it is an
+important part of the motivation. A significant technology gap separates us from
+any plausible attempt at brain-like control systems. In the meantime, there is a
+lot to be understood about self-modelling control systems\index{Self modeling
+control systems}.
+
+At the current state of the art, self-modelling mobile robots have been given
+the ability to learn how to move after suffering physical trauma, such as the
+loss of a limb~\cite{Bongard2006}. Self modelling robots have even been given a
+primitive sense of ethics with regard to protecting the welfare of human beings
+in their environment~\cite{Winfield2014}\index{Ethics (Robotics)}\index{Robot
+ethics}. This is a very young field of research that has been historically
+constrained by the computationally expensive nature of the calculations involved
+with modelling, and the search for control actions that produce desired
+simulation results.
+
+My personal history in physical science biases me toward optimal control
+techniques, which are as mathematically beautiful as they are effective. The
+underlying structure of the optimal control problem is the purchase upon which
+all of modern physics is based. The most widely employed of optimal control
+techniques is \ac{n/mpc}. Despite the fact that optimal control techniques are
+not easily wielded by the novice, \ac{nmpc} is a remarkably intuitive way to
+control nonlinear \ac{mimo} systems—especially with state or control space
+constraints—making them very popular.
+
+The application of machine learning techniques to \ac{nmpc} is a fairly recent
+development and there is a lot to explore. Practical results are extremely
+promising. For example, see Reference~\cite{Ostafew2016}, where in researchers
+at University of Toronto describe automated, learning machines capable of
+strikingly precise manoeuvres over learned paths.
+
+Software to make those sorts of techniques accessible to mainstream researchers
+or practitioners is not publicly available. I want to design a software
+framework that makes those sorts of algorithms very natural to develop and
+implement. I want to facilitate rapid development while constraining the space
+of possible designs as little as possible. More concisely, I want to minimise
+development effort while maximising flexibility—something much easier said than
+done.
+
+It is widely understood that the major problems faced in the software
+engineering industry today, centre around parallelism and complexity management.
+Designing control systems to rival the human mind will require collision with
+both of those issues. My focus on software design and construction techniques
+will encompass our current best solutions to both issues.
+
+
+
+\sAsterism%
+
+
+The benefits of building a productive software enterprise upon a durable, high
+quality, generically programmed codebase are now widely recognised in the
+software industry. More to the point, the dangers and costs of not doing so, are
+changing corporate attitudes toward software assets. Companies such as Google,
+Apple, Microsoft, facebook and Bloomberg have taken pains to develop rules and
+guides for their developers and spent millions of dollars on training, with the
+focus of improving software quality. Books have risen to popular status in
+software engineering, describing techniques for developing clean and reliable
+code~\cite[for
+examples]{McConnell2004,Martin2009,Beck2003,Beck2007,McConnell2004}. Because so
+much of the world infrastructure is built upon legacy code, a great deal of
+attention is also devoted to safely and reliably modernising existing code to
+conform to reflect modern principles and values~\cite{Fowler1999,Feathers2004}.
+
+Progress in processor clock speeds has plateaued around the
+\SIrange{2.5}{3.5}{\giga\hertz} range. In place of clock-speed, hardware
+progress has directed toward multiplication of cores within a single system. At
+the time of this writing, it is not uncommon for consumer grade laptops to have
+\numrange{4}{8} \ac{cpu}\index{Central Processing Unit@\acf*{cpu}} cores, with
+up to 16 thread processors, not including \ac{gpu} cores. Modern supercomputing
+hardware is making use of \acp{gpu}\index{Graphics Processing Unit@\acf*{gpu}}
+with thousands of thread-processors. This state of hardware has created demand
+for parallel software design at a scope and scale that would have been
+unthinkable just twenty years ago.
+
+Mobile computing, embedded and large-scale computing markets both maintain a
+high value on efficient software. Simultaneously, the need to distribute
+computation across many cores places importance on good design and code which is
+easy to reason about. (If you've ever tried to debug parallel software, you
+might understand the potential to lose thousands of man-hours to an obscure race
+condition.)
+
+ In~\cite[\S5.2.1]{Samad2003}, Wills, Kannan, Sander, \textit{et al}.\ summarise
+ some of the limitations of controls software design practices. They emphasise
+ one that I find particularly pertinent:
+%
+\begin{quote}
+%
+  The modules in a typical modern control system tend to be tightly coupled;
+  that is, there are direct communication links between the various components
+  that share information. This can make the system faster but may make changes
+  to the system harder to achieve, particularly with respect to the constraints
+  imposed by the data transfer protocol, as mentioned above. With the advent of
+  ever-faster processors, tight coupling is not necessary to gain efficiency,
+  particularly at the expense of reduced ability to update the control system
+  quickly and easily. It would be much easier to make changes to the system if
+  its components were less coupled and if functionally similar components could
+  be easily interchanged in a ``plug-and-play'' fashion. This requires an open
+  software infrastructure that supports a component-based control system
+  design.
+%
+\end{quote}
+
+Tight coupling, objects sharing state, and functions and methods which depend on
+shared state are the root of all problems in parallel programming. If two
+routines enter the same piece of memory at the same time, one with the intent to
+mutate the memory, then a race condition is created. The execution path of the
+code will now depend on whether the memory is read before or after the mutation.
+A common solution is to lock the memory and to allow only sequential access to
+concurrent processes. This produces a bottleneck which can eliminate the
+benefits of concurrent execution, or even make it slower than an equivalent
+sequential routine.
+
+Even in sequential software, the concept of a program's state becomes extremely
+complicated if mutable state is shared among many components of the software.
+This concept is well understood, and is the root of common admonishments against
+the use of global variables. If a function changes the state of a program apart
+from its return value, it is said to have
+\emph{side-effects}\index{Side-effects}. If a function's return value depends
+not only on the arguments but also on some external piece of state, the function
+is said to be \emph{impure}\index{Impurity (Software)} or \emph{referentially
+opaque}\index{Referential opacity}.
+
+Side-effects and referential opacity are mechanisms for obfuscating software.
+They expand the multitude of possible states in which a program might exist, and
+worse, they obscure that fact from the programmer who uses these abstractions in
+an honest attempt to \emph{clarify} their reasoning of the code.
+
+A failure to reason about program state is the root of most problems in both
+sequential and concurrent programs. A novice might simply suggest we eliminate
+mutable state from our programs, and would immediately face ill-concealed
+laughter from many experts. Yet, the idea is one taken very seriously in
+computer science.
+
+The concept of \emph{funtional programming} is a collection of ideals, among
+which immutable state, function purity and referential transparency. This idea
+is shocking to many. Take a moment to think about programming without using
+assignment. (That is, no `|=|' operator.) Without side effects, input and output
+as most people know it is impossible. It is often joked that the only effect of
+a purely functional program is to warm up a room.
+
+Suffice to say that functional programming is a very different way of thinking
+about programming. It leads to programming patterns which can be used to solve
+very difficult real-world programming problems. Programs and data structures
+designed in a functional style are susceptible of mathematically analytical
+forms of reasoning that are simply impossible with more conventional paradigms.
+Additionally, programs have natural modular separations because of the lack of
+coupling. Most modules of a functional program are truly generic and reusable.
+
+Functional programming is the basis of \ac{frp}\index{Functional reactive
+programming}. The \ac{frp} framework is a set of design patterns and
+abstractions for modeling hybrid systems. An a \ac{frp}-program, events and
+signals drive the execution of the program, and not the flow control structures.
+The functional patterns, such as \emph{monads}\index{Monad},
+\emph{monoids}\index{Monoid} and \emph{functors}\index{Functor} are used to
+build a set of mutually compatible abstractions around time and event oriented
+data structures.
+
+The functional programming and \ac{frp} abstractions transcend the language of
+implementation. However, the native language features will determine the
+fidelity with which the abstractions may be implemented. Some of the critical
+language features for a faithful realisation of functional programming include
+anonymous functions (lambda-functions), the ability to pass functions as
+parameters, the ability of functions to return functions and tail call recursion
+optimisation.
+
+\index{C++!recent developments} The major language of implementation in the
+control systems industry is C or C++. They are standardised, portable, widely
+known and are unrivalled in the potential to produce efficient machine code.
+Compilers are available for nearly any target platform from the embedded Atmel
+AVR to AMD64. They are designed as systems programming languages, meaning they
+integrate well with hardware and emphasise efficiency and flexibility. The C++
+language is, for most intents and purposes, a superset of the C language,
+additionally offering zero-overhead or low-overhead abstractions. Historically,
+many of those abstractions have been geared toward \ac{oo} programming.
+
+Until recently, C++ lacked many features that are common in most modern
+languages. In the \anno{2011} iteration of the C++ standard, \ac{cpp11}, the
+language underwent major revamping that continues to gain momentum. The steering
+committee for the \ac{iso} C++ standard is gradually bringing the language to
+feature parity with other modern languages.
+
+This research is opportune, as C++ enters feature freeze for its \anno{2017}
+standardisation as \ac{cpp17}. The new version of the standard introduces
+language features that allow functional programming patterns to be safely,
+portably and naturally expressed. This is important because such techniques open
+code up for mathematical analysis using type algebra and the \index{Lambda
+Calculus@$\symup{\lambda}$-calculus}
+$\symup{\lambda}$-calculus~\cite{Church1941}\SideNote{See also the
+\href{http://plato.stanford.edu/entries/lambda-calculus/}{Lambda-Calculus} at
+the Stanford Encyclopedia of Philosophy, \url{https://goo.gl/NQfCs}}. This
+introduction of features into C++ is a good reason to reevaluate how we
+implement control systems software.
+
+
+
+\section{A Brief History \& Summary of Prior Progress}%
+\label{sec:historyANDprogress}
+
+
+In early \anno{2013}, I began developing control software for an omnidirectional
+3-wheeled mobile robot called the \virtualmeR\ by CrossWing Inc.\ Based on the
+\ac{nmpc} algorithm, I first prototyped the software in GNU Octave/\acs{matlab}.
+However, the performance of the software was unacceptable for the online
+calculation required to control virtualME, with its modest on-board computing
+resources. So, I began writing a full implementation in C compliant with
+\acf{c99} in a sequential, imperative style.
+
+The \ac{c99} version of the software worked efficiently. However, the software
+was ridged,\MarginDefinition{By common convention, software is called
+\emph{\textbf{rid\-ged}}\index{Ridged (software)} if a small change in one part
+of the code enjoins on the programmer a cascade of subsequent changes due to a
+high degree of interdependency. This is not a standardised term.} making it
+difficult to perform research and development. Also, the needs of virtualME
+demanded a level of runtime flexibility not easily offered by sequential code.
+Another rewrite was inevitable.
+
+The \ac{c99} code was, however, sufficient for interesting research. In
+\anno{2012} we published a conference paper in the proceedings of the Canadian
+Conference on Electrical and Computer Engineering~\cite{Teatro2013}. The paper
+attracted an invitation for an extended version in a special edition of the
+Canadian Journal of Electrical and Computer Engineering~\cite{Teatro2014}. See
+\Sref{sec:virtualME} for a description of that research.
+
+Around this time, I had also begun to rewrite the software to control and
+maintain criticality of a Russian \ac{vver} nuclear reactor. That work was
+published in the proceedings of the International Conference on Nuclear
+Engineering 23, in \anno{2015}~\cite{Teatro2015}. See \Sref{sec:nuclear-reactor}
+for full details on the \ac{vver}-reactor research.
+
+Also around this time, I noticed the unusual frequency with which I was
+duplicating my own effort, and quite attracted to the flexibility on offer from
+an object oriented design which took full advantage of polymorphism. If I could
+only define a series of interfaces between classes, making changes would be a
+matter of creating new implementations without making any serious design
+decisions.
+
+I rewrote the code for virtualME, and while doing so, began to realise that I
+could generalise the interface so that the business of the \ac{nmpc} controller
+need not be directly coupled with the lower level concerns of the robot. This
+separation of concerns meant that I could remove and reuse much of the
+controller code. This lead to software design that I presented in the
+\anno{2016} Canadian Conference on Electrical and Computer
+Engineering~\cite{Teatro2016}. I used this design to re-implement the controller
+for virtualME and presented the research to the executives at CrossWing Inc.
+
+In the months after that, I began exploring theory of software design and
+programming paradigms in different languages. I wanted to engineer a framework
+that was capable of supporting my future research efforts, without knowing
+exactly the direction it would take. Meanwhile, I was searching the control
+systems literature for new and interesting directions. I became fascinated with
+the idea of \emph{intelligent control} and started thinking about the fusion of
+those novel concepts with \ac{nmpc}. The hope would be that such a fusion would
+improve on the versatility and resiliency of the \ac{nmpc} control, while
+preserving the applicability of the rich theory and analytical techniques that
+come from optimal control.
+
+As I studied and planned and tested ideas, I began to see how modern software
+development techniques and programming paradigms could ease the development
+process of these novel control techniques. I needed, once again, to redesign and
+rewrite my framework, with deep consideration of best practices.
+
+In realising the monumental scale of the design and development task ahead—the
+computer science, software engineering, control systems engineering, numerical
+modeling and simulation, the distributed real-time computing—I discovered my PhD
+contribution.
+
+
+\section[Overview]{overview}
+
+
+\Sref{chap:background}—\emph{Background} aims to provide a foundation in the
+theoretical aspects and locates the proposed work within the context of
+literature and history. The chapter opens with a review of literature in
+software architecture, modern techniques with the C++ language, optimal control
+systems and \ac{nmpc}. The literature review establishes a foundation for the
+proposed work, while the \emph{prior art} section describes work which has some
+overlap, or resemblance, to the proposed work. Gaps in the prior art are
+identified, which localises the proposed work in the state of the art. The
+chapter concludes with a review of the theory of optimal control and
+\ac{nmpc}.\SideNote{If you, the reader is made uncomfortable by the notation in
+this section, I \emph{highly} recommend you browse \Aref{chap:notation}, which
+establishes and justifies the chosen conventions for notation in mathematics.}
+
+\Sref{chap:proposal}—\emph{The Proposal} repeats the contributions
+\ref{contrib:design}, \ref{contrib:capital} and \ref{contrib:theory}, and
+describes them. The sections to follow describe objectives for each of those
+contributions. Because the proposal is quite preliminary, in lieu of a time-line
+I describe a \emph{sequence of research milestones} that I expect to cross, and
+the \emph{approach and methodology} by which to progress.
+
+% \Sref{chap:accomplishments}—\emph{Research Accomplishments} describes work which
+% I have completed prior to this document in the field of control systems. It is a
+% summaries of the conference papers and articles which I have coauthored with
+% Professors Eklund and Milman. The first section,
+% \Sref{sec:NMPC-gradient-solver}, describes a gradient based \ac{nmpc} algorithm
+% that was used to produce the control code for the \virtualmeR\ robot (described
+% in \Sref{sec:virtualME}) and a \ac{vver} nuclear reactor (described in
+% \Sref{sec:nuclear-reactor}).
