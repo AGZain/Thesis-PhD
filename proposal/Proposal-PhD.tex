@@ -471,8 +471,10 @@
   \input{background-and-literature-review.tex}
   \input{the-proposal.tex}
   \input{conclusion.tex}
-
+  \clearpage
+  \appendix
   \renewcommand{\theequation}{\oldstylenums{\Alph{chapter}.\arabic{equation}}}
+  \chapterstyle{default}
   \input{notation.tex}
 
   \printacronyms[name={List of Acronyms, Initialisms and Selected Jargon}, heading=chapter]
