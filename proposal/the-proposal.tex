@@ -41,3 +41,365 @@ of these paradigms is a panacea. The best way to think about predictive control
 systems is certainly found in a balance between these two philosophies. I wish
 to explore that balance and describe some rules and patterns which merge the
 best from each.
+
+
+
+\section{Research Objectives for the Software Design}
+
+
+\textsc{Item} \ref{contrib:design} in my list of contributions is the
+architectural description of the software framework, the \ac{sdd}. It can, in
+places, be difficult to decouple \ref{contrib:design} from
+\ref{contrib:capital}, which embodies the actual code. The architecture consists
+of descriptions that comport with \acl{ieee1016} (and possibly
+\acl{ieee420101}), and can be implemented in any \emph{Turing complete}
+language. But the language can have a large impact on the form of patterns and
+contracts.
+
+For example, in a strongly typed language like C++ or Java, interface
+specifications are an important component of polymorphism. In \emph{duck typed}
+languages like Python, interfaces are meaningless, and inheritance is only used
+to share implementation between classes.
+
+The \ac{sdd} will outline the software components, their contractual obligation
+to the user and their expected interrelationships. However, the design of any
+given component should be flexible and open to easy modification and adaptation.
+So, I expect that some of the strongest contributions will be in the form of
+patterns and reusable design solutions for common problems in control systems
+software.
+
+For example, I want to explore the use of \ac{frp}~\cite{Elliott1997}. In
+\ac{frp}, values such as data from sensors, are modelled as functions on a
+continuous time domain called \emph{behaviours}, and discrete events are,
+appropriately enough, called \emph{events}, and behaviours can be expressed in
+terms of reactions to events. When combined with the constraints imposed by
+functional programming, this model offers analytical tools to help ensure
+correctness, an architecture that is trivially parallelisable and distributable.
+
+This style of programming may be extremely useful in a control systems context.
+Describing designs for control systems components that leverage it may be an
+important part of \ref{contrib:design}, if I uncover practical value in that
+vein of research. Moreover, architectural descriptions within the context of the
+\ac{frp} model can be expressed in any language with libraries and features
+supporting \ac{frp}, such as Java, JavaScript, C\#, Haskell, OCaml, and so on.
+
+Furthermore, I will attempt to identify patterns (especially \ac{oo}-patterns)
+in existing controls software, such as the \ac{nist} Real-Time Control Systems
+Library, the \ac{darpa} Software Enabled Control project and their publicly
+available components.
+
+
+
+\section{Research Objectives for the Software Capital}%
+\label{sec:ObjectivesForSoftwareCapital}
+
+
+\begin{flushright}
+\begin{minipage}{0.85\textwidth}
+  \footnotesize
+  {\color{git-ltgray}
+  \begin{verbatim}
+    Python 3.5.2
+    Type "help", "copyright", "credits" or "license" for more information.
+  \end{verbatim}
+  }\null\vskip-3\baselineskip
+  {\ttfamily
+  \noindent {>}{>}{>} \textcolor{git-red}{import} this
+  }
+  \begin{verbatim}
+    The Zen of Python, by Tim Peters
+
+    Beautiful is better than ugly.
+    Explicit is better than implicit.
+    Simple is better than complex.
+    Complex is better than complicated.
+    Flat is better than nested.
+    Sparse is better than dense.
+    Readability counts.
+    Special cases aren't special enough to break the rules.
+    Although practicality beats purity.
+    Errors should never pass silently.
+    Unless explicitly silenced.
+    In the face of ambiguity, refuse the temptation to guess.
+    There should be one-- and preferably only one --obvious way to do it.
+    Although that way may not be obvious at first unless you're Dutch.
+    Now is better than never.
+    Although never is often better than *right* now.
+    If the implementation is hard to explain, it's a bad idea.
+    If the implementation is easy to explain, it may be a good idea.
+    Namespaces are one honking great idea -- let's do more of those!
+  \end{verbatim}
+\end{minipage}\\
+\EpiName{Tim Peters}
+\EpiSource{The Zen of Python}
+\end{flushright}
+
+\noindent\textsc{I open this section with a poem} by the great Tim Peters, the
+software engineer and computer scientist of \texttt{timsort}\SideNote{timsort is
+the algorithm used in the standard sorting commands in Python, Java SE 7, on
+Android and in GNU Octave.} fame. (And if you did not know about it, yes, you
+can import the |this| module in python, and it prints out Peters' poem.) The
+poem, called \emph{The Zen of Python}, expresses some values of software
+craftsmanship that comport well with the goals of the software component of the
+proposed research. Those values largely emphasise readability and clarity over
+clever shortcuts.
+
+\begin{description}
+  %
+  \item[Compliant.] It should comply strictly with \acl{cpp17} and the C++ Core
+  Guidelines~\cite{CppCoreGuidelines}\SideNote{From the GitHub project
+  description: \emph{The C++ Core Guidelines are a set of tried-and-true
+  guidelines, rules, and best practices about coding in C++}}. This will include
+  use of the \ac{gsl} wherever appropriate.
+  %
+  \item[Practical.] Code which is high quality and production ready. It should
+  be efficient enough for real-world use. It should be straightforward to use,
+  read and maintain. It will conform to a formatting style that optimises for
+  readability. My metric-standard for this item will be this: can a clever and
+  well motivated graduate student get a project up-and-running in less than a
+  week.
+  %
+  \item[Unit Tested.] The entire codebase, including examples, should be covered
+  by unit tests. If a user begins a new design based on the example code, they
+  can adapt the tests as needed. Of course, \SI{100}{\percent} test coverage is
+  a rarely achieved goal, but it is always a good goal to have.
+  %
+  \item[Lightweight.] The framework itself should be lean enough that a control
+  system designer can, if they are able to cope with the numerics, deploy the
+  framework on modest hardware, such as Arduino, Raspberry PI, Intel Edison, or
+  TI Beagle Bones. Emphasis will be placed on abstraction that is zero-overhead
+  or low-overhead, but never at the cost of clarity.
+  %
+  \item[Portable.] It should compile with the latest \ac{gcc} C++ compiler and
+  Clang++ compilers. The code will compile without warnings using the
+  |--pedantic| compiler flag.
+  %
+  \item[Pattern-oriented.] Emphasis is placed on using patterns in order to make
+  the code more easily understood. The framework needs to be readily extensible
+  by control systems researchers. The use of patterns makes the code more
+  expressive, and suggests good techniques and practices to those extending the
+  code.
+  %
+  \item[Stateless.] In the context of software, a stateful routine is one that
+  stores objects which can change values at runtime. Whenever you write code
+  with an equals-sign, you are modifying state. In stateless routines, each
+  interaction request has to be handled based entirely on information that comes
+  with it, and there is no dependency on the state of memory outside the scope
+  of the routine. I am relatively certain it is impossible to design this
+  software without state. But there are good reasons to avoid needless use of
+  state.
+
+  State introduces complexity and opportunities for bugs, especially in parallel
+  applications. Control systems researchers who are extending the code should
+  not have to worry about subtleties of the framework obstructing their
+  research.
+
+  Truly stateless programming is part of \emph{pure functional programming}.
+  However, it is not practical, and part of the research is discovering a
+  balance which is practical within the context of modern C++.
+  %
+\end{description}
+
+The code will be documented, and a suite of examples will serve as illustrative
+documentation, templates or starting points for users. Those examples will
+include common problems from optimal control textbooks. Some of the selected
+textbook questions include:
+%
+\begin{itemize}
+  \item \ac{pid} control of a damped, driven harmonic oscillator
+  \item \ac{nmpc} control of a train-like vehicle with throttle and break control.~\cite[p.~5]{Kirk2004}
+  \item \ac{nmpc} control of artificial satellite altitude adjustment, as in~\cite[p.~1]{Vinter2010}
+\end{itemize}
+
+
+
+\section{Research Objectives in Control Systems Theory}
+
+
+\textsc{The following subsections} each describe (briefly) an avenue for
+research in the theory of optimal control and \ac{nmpc}, with a view
+toward~\ref{contrib:theory}. However, many of these projects also provide sample
+code and documentation for contributions~\ref{contrib:design}
+and~\ref{contrib:capital}.
+
+
+\subsection{Analysis of Hard and Soft Constraints}
+
+While designing the controller for virtualME\SideNote{For details on the
+virtualME controller, see \Sref{sec:virtualME}.} I created a useful software
+design for handling artificial potential fields. The software still needs
+refinement and extension before it is complete.
+
+One of my interest lies in analysis and design of artificial potential fields,
+and the possibility of switching constraints between hard and soft flavours
+during runtime. Since soft constraints are computationally lighter, this can be
+a route to increasing efficiency and reliablility.
+
+
+\subsection{Robotic Reflexes}
+
+With the \ac{nmpc} algorithm in dynamic state spaces, or with dynamically
+configuration artificial potential fields, there is always a concern that the
+optimisation step may take too long, when the system must react very quickly to
+avoid disaster. Search based optimisation strategies are faster when the
+starting \emph{guess} is close to the optimum. The techniques for providing
+better guesses is called \emph{hot-starting}.
+
+I would like to try using a neural network to give a robotic system a behviour
+which resembles our human reflexes. The artificial potential field around the
+robot can be sampled on a mesh. That mesh can be used as in input to the neural
+network, which can either hot-start the optimisation step, or even circumvent
+the optimisation step providing a suitable approximation to the \ac{nmpc}
+solution.
+
+
+\subsection{Comparison Among Gradient Based Search Strategies}
+
+When I was struggling with the original \ac{c99} controller, there was a study I
+was particularly interested in performing. The framework I am designing would
+make it nearly trivial.
+
+In this study, I would like to extend my already existing gradient based
+controller (see \Sref{sec:NMPC-gradient-solver}) with a new optimiser. I would
+like to build an \emph{adaptor}-class\SideNote{See the \emph{adaptor pattern} in
+the \ac{gof} book~\cite{GOF}.} for the \ac{gnu-sl} optimisation routines. It
+will then be trivial to switch between them.
+
+It would be interesting to explore which routines may be most effective when
+paired with certain types of artificial potential field. This relates to the
+analysis of hard and soft constraints, described in the previous subsection.
+
+
+\subsection{Comparison Between Gradient and \acs*{nlp} Optimisation}
+
+The choice between gradient based and \ac{nlp} based algorithms is one faced by
+control designers each time they implement an \ac{nmpc} controller. Despite that
+fact, there seems to be a lack of literature comparing the two in a rigorous
+way.
+
+It is a near certainty that one technique will have advantages over the other in
+certain conditions. One of my research curiosities is in the possibility of
+switching between the two representations of the problem, leveraging the
+advantages of each.
+
+
+\subsection{Dynamic model adaptation}
+
+Functional software design makes it extremely natural to compose functions. This
+means that optimisation techniques such as \emph{genetic algorithms} are
+relatively straightforward to implement.
+
+I would like to design a supervisory algorithm which evolves the predictive
+model, to learn, improve and adapt the model under dynamic conditions. This
+research parallels the work done by \citeauthor{Bongard2006} in
+\cite{Bongard2006}.
+
+
+
+\section{Sequence of Research Milestones}
+
+
+%
+\begin{enumerate}
+  %
+  \item Once I have identified relevant patterns, I can continue designing the
+  final architecture. The patterns will provide a layer of communication through
+  nomenclature, while the more ridged components are expressed through
+  contracts.
+  %
+  \item In the next phase, common textbook example questions will be implemented
+  as examples for use. Since the solutions to these problems are well known and
+  documented, they are good tests. And, their implementation as example code is
+  a useful form of documentation that allows users to focus on implementation
+  without the additional complexity of an unfamiliar problem.
+
+  Some of the selected textbook questions include:
+  %
+  \begin{itemize}
+    %
+    \item \ac{pid} control of a damped, driven harmonic oscillator
+    %
+    \item \ac{nmpc} control of a train-like vehicle with throttle and break
+    control.~\cite[p.~5]{Kirk2004}
+    %
+    \item \ac{nmpc} control of artificial satellite altitude adjustment, as
+    in~\cite[p.~1]{Vinter2010}
+    %
+  \end{itemize}
+  %
+  \item At this stage, I should reasses the research avenues
+  for~\ref{contrib:theory}, (as described
+  in~\Sref{sec:ObjectivesForControlSystemsTheory}), and determine an appropriate
+  order for implementing those.
+  %
+  \item In the final stage of development, I want to re-implement the virtualME
+  controller and augment it with an algorithm to learn and improve the system
+  model, as described in~\Sref{sec:ObjectivesForControlSystemsTheory}.
+  %
+\end{enumerate}
+%
+
+
+
+\section{Approach and Methodology}
+
+
+I am developing software to further my own research goals, as
+per~\Sref{sec:ObjectivesForControlSystemsTheory}. I have also laid out in
+several simple example problems as part of the documentation and testing. I have
+outlined comprehensive unit-test coverage as a goal in~
+\Sref{sec:ObjectivesForSoftwareCapital}.
+
+This is an ideal situation for a tight cycle of development driven by test-first
+principles, such as the \acf{tdd} model of \citeauthor{Beck2003}, as expounded
+in his \citeyear{Beck2003} book \citetitle{Beck2003}~\cite{Beck2003}. The
+\ac{tdd} method has proven very effective, and is often considered to be a
+component of the \emph{Agile software development} and \emph{Extreme
+programming} development methods, and others.
+
+The benefits of \ac{tdd} include
+%
+\begin{itemize}
+  %
+  \item allowing us to catch bugs before the cause problems,
+  %
+  \item future-proofs against new bugs in an evolving codebase
+  %
+  \item projects an image of dependability and a mechanism for proving it
+  %
+  \item facilitates safe re-factoring when users adapt it to their needs.
+  %
+\end{itemize}
+
+There are many popular books prescribing \ac{tdd}, such as
+\citeauthor{Martin2009}'s \citetitle{Martin2009}~\cite{Martin2009}, or the
+aforementioned \citeauthor{Beck2003}~\cite{Beck2003} or his later
+\citetitle{Beck2007}~\cite{Beck2007}. But most importantly, there are also
+academic works advocating for the method. For example, the HydroShare case study
+in \citetitle{Carver2016} by \citeauthor{Carver2016}~\cite{Carver2016}, or the
+book \citetitle{Kandt2006} by \citeauthor{Kandt2006}~\cite{Kandt2006}.
+\citeauthor{Kandt2006}'s book expounds the use of \emph{extreme programming}, of
+which \ac{tdd} is an integral part.
+
+Most pertinently, a \anno{2005} study commissioned by Canada's National Research
+Council found that \ac{tdd} can lead to higher productivity~\cite{Erdogmus2005}.
+In particular, they conclude
+%
+\begin{quote}
+  %
+  Our main result is that Test-First programmers write more tests per unit of
+  programming effort. In turn, a higher number of programmer tests lead to
+  proportionally higher levels of productivity. Thus, through a chain effect,
+  Test- First appears to improve productivity. We believe that advancing
+  development one test at a time and writing tests before implementation
+  encourage better decomposition, improves understanding of the underlying
+  requirements, and reduces the scope of the tasks to be performed.
+  %
+\end{quote}
+
+I also want to investigate the fusion of \acf{dbc}~\cite{Meyer1992} with
+\ac{tdd} in C++. The \ac{cpp17} standard has no native support for contract
+specification, though there are some implementations where some have adapted
+|assert| for those purposes. However, I think \ac{tdd} provides a mechanism to
+define and test contractually defined behaviour. Each \emph{precondition},
+\emph{postcondition} and \emph{invariant} can be the subject of a unit-test.

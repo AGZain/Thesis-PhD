@@ -90,7 +90,7 @@ a critical and opportune phase in our technological evolution.
 \label{sec:motivation}
 
 
-In the opening paragraphs of this chapter, I enumerated my proposed
+\textsc{In the opening paragraphs} of this chapter, I enumerated my proposed
 contributions by discussing the software I wanted to design
 (contributions~\ref{contrib:design} and~\ref{contrib:capital}), in order to
 facilitate research in control systems (contribution~\ref{contrib:theory}).
@@ -257,8 +257,8 @@ sequential routine.
 Even in sequential software, the concept of a program's state becomes extremely
 complicated if mutable state is shared among many components of the software.
 This concept is well understood, and is the root of common admonishments against
-the use of global variables. If a function changes the state of a program apart
-from its return value, it is said to have
+the use of global variables. If a function changes the state of a program
+outside of its scope, and apart from its return value, it is said to have
 \emph{side-effects}\index{Side-effects}. If a function's return value depends
 not only on the arguments but also on some external piece of state, the function
 is said to be \emph{impure}\index{Impurity (Software)} or \emph{referentially
@@ -276,23 +276,31 @@ laughter from many experts. Yet, the idea is one taken very seriously in
 computer science.
 
 The concept of \emph{funtional programming} is a collection of ideals, among
-which immutable state, function purity and referential transparency. This idea
-is shocking to many. Take a moment to think about programming without using
-assignment. (That is, no `|=|' operator.) Without side effects, input and output
-as most people know it is impossible. It is often joked that the only effect of
-a purely functional program is to warm up a room.
+which are immutable state, function purity and referential transparency. This
+idea is shocking to many. Take a moment to think about programming without using
+assignment. (That is, no `|=|' operator except for initialisation.) Without side
+effects, input and output, as most people know it, is impossible. It is often
+joked that the only effect of a purely functional program is to warm up the
+room.
 
-Suffice to say that functional programming is a very different way of thinking
-about programming. It leads to programming patterns which can be used to solve
-very difficult real-world programming problems. Programs and data structures
-designed in a functional style are susceptible of mathematically analytical
-forms of reasoning that are simply impossible with more conventional paradigms.
-Additionally, programs have natural modular separations because of the lack of
-coupling. Most modules of a functional program are truly generic and reusable.
+Suffice to say that the functional programming paradigm represents a very
+different way of thinking about software. It leads to programming patterns which
+can be used to solve very difficult real-world programming problems. Programs
+and data structures designed in a functional style are susceptible of
+mathematically analytical forms of reasoning that are simply impossible with
+more conventional paradigms. Additionally, programs have natural modular
+separations because of the lack of coupling. Most modules of a functional
+program are truly generic and reusable.
+
+The basis for many patterns in functional programming come out of a tight
+relationship between functional programming and pure mathematics. Many of the
+patterns are named after their counterparts in \emph{category theory.} For
+examples, the \emph{monoid} pattern, the \emph{monad} pattern, the
+\emph{functor} pattern and so on.
 
 Functional programming is the basis of \ac{frp}\index{Functional reactive
 programming}. The \ac{frp} framework is a set of design patterns and
-abstractions for modeling hybrid systems. An a \ac{frp}-program, events and
+abstractions for modeling hybrid systems. In an \ac{frp}-program, events and
 signals drive the execution of the program, and not the flow control structures.
 The functional patterns, such as \emph{monads}\index{Monad},
 \emph{monoids}\index{Monoid} and \emph{functors}\index{Functor} are used to
@@ -315,7 +323,8 @@ AVR to AMD64. They are designed as systems programming languages, meaning they
 integrate well with hardware and emphasise efficiency and flexibility. The C++
 language is, for most intents and purposes, a superset of the C language,
 additionally offering zero-overhead or low-overhead abstractions. Historically,
-many of those abstractions have been geared toward \ac{oo} programming.
+many of those abstractions have been geared toward \ac{oo} programming, but C++
+is considered a multi-paradigm language.
 
 Until recently, C++ lacked many features that are common in most modern
 languages. In the \anno{2011} iteration of the C++ standard, \ac{cpp11}, the
@@ -323,12 +332,12 @@ language underwent major revamping that continues to gain momentum. The steering
 committee for the \ac{iso} C++ standard is gradually bringing the language to
 feature parity with other modern languages.
 
-This research is opportune, as C++ enters feature freeze for its \anno{2017}
-standardisation as \ac{cpp17}. The new version of the standard introduces
-language features that allow functional programming patterns to be safely,
-portably and naturally expressed. This is important because such techniques open
-code up for mathematical analysis using type algebra and the \index{Lambda
-Calculus@$\symup{\lambda}$-calculus}
+The proposed research is opportune, as C++ enters feature freeze for its
+\anno{2017} standardisation as \ac{cpp17}. The new version of the standard
+introduces language features that allow functional programming patterns to be
+safely, portably and naturally expressed. This is important because such
+techniques open code up for mathematical analysis using type algebra and the
+\index{Lambda Calculus@$\symup{\lambda}$-calculus}
 $\symup{\lambda}$-calculus~\cite{Church1941}\SideNote{See also the
 \href{http://plato.stanford.edu/entries/lambda-calculus/}{Lambda-Calculus} at
 the Stanford Encyclopedia of Philosophy, \url{https://goo.gl/NQfCs}}. This
@@ -341,13 +350,13 @@ implement control systems software.
 \label{sec:historyANDprogress}
 
 
-In early \anno{2013}, I began developing control software for an omnidirectional
-3-wheeled mobile robot called the \virtualmeR\ by CrossWing Inc.\ Based on the
-\ac{nmpc} algorithm, I first prototyped the software in GNU Octave/\acs{matlab}.
-However, the performance of the software was unacceptable for the online
-calculation required to control virtualME, with its modest on-board computing
-resources. So, I began writing a full implementation in C compliant with
-\acf{c99} in a sequential, imperative style.
+\textsc{In early} \anno{2013}, I began developing control software for an
+omnidirectional 3-wheeled mobile robot called the \virtualmeR\ by CrossWing
+Inc.\ Based on the \ac{nmpc} algorithm, I first prototyped the software in GNU
+Octave/\acs{matlab}. However, the performance of the software was unacceptable
+for the online calculation required to control virtualME, with its modest
+on-board computing resources. So, I began writing a full implementation in C
+compliant with \acf{c99} in a sequential, imperative style.
 
 The \ac{c99} version of the software worked efficiently. However, the software
 was ridged,\MarginDefinition{By common convention, software is called
@@ -409,23 +418,23 @@ modeling and simulation, the distributed real-time computing—I discovered my P
 contribution.
 
 
-\section[Overview]{overview}
+\section{Overview}
 
 
-\Sref{chap:background}—\emph{Background} aims to provide a foundation in the
-theoretical aspects and locates the proposed work within the context of
-literature and history. The chapter opens with a review of literature in
-software architecture, modern techniques with the C++ language, optimal control
-systems and \ac{nmpc}. The literature review establishes a foundation for the
-proposed work, while the \emph{prior art} section describes work which has some
-overlap, or resemblance, to the proposed work. Gaps in the prior art are
-identified, which localises the proposed work in the state of the art. The
+\textsc{Section}~\ref{chap:background}—\emph{Background} aims to provide a
+foundation in the theoretical aspects and locates the proposed work within the
+context of literature and history. The chapter opens with a review of literature
+in software architecture, modern techniques with the C++ language, optimal
+control systems and \ac{nmpc}. The literature review establishes a foundation
+for the proposed work, while the \emph{prior art} section describes work which
+has some overlap, or resemblance, to the proposed work. Gaps in the prior art
+are identified, which localises the proposed work in the state of the art. The
 chapter concludes with a review of the theory of optimal control and
 \ac{nmpc}.\SideNote{If you, the reader is made uncomfortable by the notation in
 this section, I \emph{highly} recommend you browse \Aref{chap:notation}, which
 establishes and justifies the chosen conventions for notation in mathematics.}
 
-\Sref{chap:proposal}—\emph{The Proposal} repeats the contributions
+Section \ref{chap:proposal}—\emph{The Proposal} repeats the contributions
 \ref{contrib:design}, \ref{contrib:capital} and \ref{contrib:theory}, and
 describes them. The sections to follow describe objectives for each of those
 contributions. Because the proposal is quite preliminary, in lieu of a time-line

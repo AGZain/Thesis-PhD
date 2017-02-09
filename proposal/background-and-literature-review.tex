@@ -3,27 +3,25 @@
 \chapter{Background}%
 \label{chap:background}
 
-In this section, the reader should find a sufficient set of descriptions to form
+In this section, the aim is to provide a sufficient set of descriptions to form
 a reasonable mental picture of the embodiment of the proposed research. This
 section opens with a literature review encompassing methods for software
 description of architecture and pattern based design which are necessary
 background for~\ref{contrib:design}. The contribution \ref{contrib:capital} is
 motivated partially by the recent history of the C++ language, which is reviewed
-next. The remainder of the literature review covers various aspects of optimal
-control, which underlies all of the contributions, but is particularly expressed
-in~\ref{contrib:theory}.
+next, followed by functional programming and \ac{frp}. The remainder of the
+literature review covers various aspects of optimal control, which underlies all
+of the contributions, but is particularly expressed in~\ref{contrib:theory}.
 
 The next section, \Sref{sec:prior-art}, describes work that potentially overlaps
-with the proposed contributions.
+with the proposed contributions. The next section, \Sref{sec:literature-gaps}, I
+specifically outline the gaps in literature and prior-art toward which I direct
+my efforts—localising my research goals and contributions within the field of
+engineering.
 
-In \Sref{sec:literature-gaps} I specifically outline the gaps in literature
-toward which I direct my efforts—localising my research goals and contributions
-within the field of engineering.
-
-In the remaining sections of the chapter, I provide a serviceable theoretical
-background in optimal control and \ac{nmpc} which supports a detailed discussion
-of the proposal for~\ref{contrib:theory}.
-
+In the remaining sections, I provide a serviceable theoretical background in
+optimal control and \ac{nmpc} which supports a detailed discussion of the
+proposal for~\ref{contrib:theory}.
 
 
 
@@ -34,7 +32,8 @@ of the proposal for~\ref{contrib:theory}.
 \subsection{Software Architectural Description}
 
 
-The software design (as opposed to the code) will be documented in the form of
+\textsc{The software design} (as opposed to the code) will be documented in the
+form of
 %
 \begin{enumerate}
   %
@@ -45,7 +44,7 @@ The software design (as opposed to the code) will be documented in the form of
 \end{enumerate}
 %
 This will include, but are not limited to descriptions compliant with
-\acl{ieee1016} and \acl{ieee420101}.
+\acf{ieee1016} and \acf{ieee420101}.
 
 \MarginDefinition{A \textbf{\textit{precondition}}\index{Precondition
 (software)} is a condition on the parameters of a method, or data within the
@@ -64,7 +63,9 @@ behaviour of a routine without defining implementations.
 When software code is constrained by contracts, bugs are easier to define since
 a bug will be a departure from contractually defined behaviour. Well defined
 contracts make unit testing more straightforward (since it makes clear what to
-unit test).
+unit test). Clearly defined contractual behaviour combined with the lawful
+constraints of functional programming precipitates the opportunity for
+mathematical analysis and provable correctness.
 
 When you were learning to read, you started by learning the letters of the
 language and the sounds they encode. Next, you begin sounding out words through
@@ -106,49 +107,126 @@ their use in control systems programming.
 
 
 
+Probably the most common and venerable introduction to
+functional\index{Functional programming} programming is John Hughes classic
+paper \citetitle{Hughes1989}~\cite{Hughes1989}. A bit of history is to be found
+in David Turner's \citetitle{Turner2013}~\cite{Turner2013}.
 
+Systematic approaches to explaining functional programming often begin the
+chronology in the \decade{1930} with Alonzo Church and the
+$\symup{\lambda}$-calculus~\cite{Church1936, Church1941}. The
+$\symup{\lambda}$-calculus is a mathematical theory to generalise untyped
+functions and make rigorous the rules for composition and substitution. This
+naturally requires a way of describing functions anonymously, giving rise to the
+\emph{lambda} binding notation. For example,  $\symup{\lambda}x.x^2$, binds free
+occurrences of $x$ to $x^2$. This is the origin of the convention to name
+anonymous functions \emph{lambdas} in programming.
 
+Church attempted to demonstrate that functions could be used to encode numerals,
+and could therefore be a formal basis for all mathematics.
 
+LISP and Algol 60 are often cited as the first languages to implement concepts
+from the $\symup{\lambda}$-calculus. But in \anno{1966}, Peter Landin published
+a landmark paper called \citetitle{landin1966next}~\cite{landin1966next} in
+which he gives semantics for ISWIM, a language based directly on Church's
+$\symup{\lambda}$-calculus.
 
+In \anno{1977}, John Backus's in his Turing award speech~\cite{Backus1978}
+describes an algebra of programs and is often credited with popularising the
+notion of functional programming. His talk directed attention to the work of
+Church, Landin and others, inspiring the invention and academic development of a
+series of functional languages. In late \decade{1980} a committee was convened
+to integrate decades of work in functional programming into a single language:
+\emph{Haskell}.
 
+A thorough review of these seminal works will give the reader little idea of
+what functional programming looks like today in practice. Sources for this are
+numerous, and language dependant, but in general I have found most useful
+sources to be instructional material for the Haskell language. Haskell is the
+primary language for academic research in the field. A great deal of modern work
+involves the use of category theory to develop principled and lawful
+abstractions and patterns that improve efficiency, push application boundaries
+and ensure safe parallelism and distributed computation.
 
+A book I am fond of is \citeauthor{Allen2016}'s
+\citetitle{Allen2016}~\cite{Allen2016}, but there are numerous others which I
+have yet to consume. I started with it, because it appears to be one of the more
+recent introductory volumes. I have found a useful introduction to category
+theory in \citeauthor{Spivak2014}'s \citetitle{Spivak2014}~\cite{Spivak2014}.
 
+A great deal of work in functional programming and \ac{frp} is indexed in the
+publications listing of the Yale Haskell group at \begin{center}
+\url{http://haskell.cs.yale.edu/publications/} \end{center} The group was
+founded by Paul Hudak (\anno{1952}--\anno{2015}) who was a co-founder of
+\ac{frp}. The publications are from only one group, but they were very
+productive, and cite a lot of relevant literature.
 
-
-
-
-
+Because I wish to target control applications which often use embedded hardware
+that is potentially modest, my work will be implemented in C++. There is very
+little formal work on functional programming in C++. A book by Ivan Čukić is in
+development for Manning Publications~\cite{Cukic2017} and its expected to be
+released later this year. Based on several conference talks from professionals
+at companies like Netflix, Facebook, Twitter and Google, there is functional C++
+code being written and used.
 
 
 
 \subsection{Functional Reactive Programming}
 
 
+In \anno{1997} Conal Elliott and Paul Hudak published what was to become a
+popular paper entitled \citetitle{Elliott1997a}~\cite{Elliott1997a}. In it, they
+describe \textit{Fran} (Functional Reactive Animation)\index{Fran (Software)}, a
+domain specific language embedded in Haskell for abstracting the composition of
+computerised graphical animations. This was the birth of the patterns and
+paradigm that would become known simply as
+\acf{frp}~\cite{Wan2000,Nilsson2002a}. Since then, \ac{frp} has been ported to
+create other domain specific languages. For examples, \textit{FVision} for
+visual tracking~\cite{Peterson2001b}, \textit{Frob} for
+Robotics~\cite{PeHa99,phh99} and at least 6 other domain specific
+implementations of the paradigm.
 
+The \ac{frp} paradigm is a set of abstractions for making time varying signals
+and events first class objects. These abstractions are based on a rich substrate
+of mathematics and is shown to model hybrid systems exactly in the limit of
+small time-sampling. Functional abstractions based on category theoretical
+concepts facilitate automatic conversion of non-\ac{frp} functions to work on
+behaviours and events. This allows the user to think at a high level of
+abstraction, near the mathematical description of elements in the problem and
+solution domains.
 
+My focus will be on hybrid systems modeling in distributed environments. In
+particular, the research Hudak, Peterson, Nilsson and others. Key works include
+\cite{Hudak2003,Nilsson2003,Courtney2003b}. John Peterson specifically addresses
+issues of parallelism in~\cite{Peterson2000}. Performance issues that affect
+real-time applications are addressed in~\cite{Hudak2003} and references therein.
 
+The richest source of literature I have found on the implementation of \ac{frp}
+in C++ is Louai Al-Khanji's Master's thesis,
+\citetitle{Al-Khanji2015}~\cite{Al-Khanji2015}. In the thesis he describes a C++
+implementation of the paradigm which self-admittedly is lacking in refinement.
 
-
-
-
-
-
-
-
-
-
-
-
-
+There are now several publicly available modern C++ libraries for implementing
+\ac{frp}, such as Sodium\SideNote{\url{github.com/SodiumFRP/sodium}},
+C++React\SideNote{\url{github.com/schlangster/cpp.react}}[\onelineskip], and
+David Sankel's sfrp\SideNote{\url{https://goo.gl/qoqlQP}}[3\onelineskip]. David
+Sankel's \ac{frp} implementation has an interesting history. He designed the
+program semantics for controlling a robot arm \emph{before} realising that he
+had created a functional reactive design. He tells that story in one of his
+popular talks from BoostCon
+2014\SideNote{\url{youtu.be/tyaYLGQSr4g?t=38m32s}}[\onelineskip]. His entire
+personal library, including C++ headers for functional programming and \ac{frp}
+are available on his bitbucket repository~\cite{sbase}.
 
 
 \subsection{ISO/IEC Standard C++}
 
 
+
 The history of the C++ language began with its original creator Bjarne
 Stroustrup in \anno{1979} as ``C with classes''. The language was not compiled,
 but transpiled into C and then compiled using which ever C compiler was
-available to the user. It wasn't until \anno{1998} that the language was
+available to the user. It was not until \anno{1998} that the language was
 standardised by committee under the \ac{iso} and \ac{iec} and published as
 \acl{cpp98}. Between \anno{1998} and \anno{2011}, the C++ language was largely
 static, with only a minor update to the standard (with no new features) in
@@ -187,10 +265,10 @@ website}}\end{quote}
 
 In order to evolve the language by adding features without removing any, the new
 features must be strategically chosen to bring about shifts in programming
-style. New features, used together, form replacements for older techniques,
-without creating direct redundancies. Code compliant with \ac{cpp98} will
-compile on a \ac{cpp14} compiler, but an informed programmer could distinguish
-\emph{Modern C++} by inspection, despite the backward compatibility.
+style. New features, used together idiomatically, form replacements for older
+techniques, without creating direct redundancies. Code compliant with \ac{cpp98}
+will compile on a \ac{cpp14} compiler, but an informed programmer could
+distinguish \emph{Modern C++} by inspection, despite the backward compatibility.
 
 Modern code will not only make use of new the new language features, but will
 portray a style that has evolved over decades of C++ use by millions of
@@ -209,8 +287,8 @@ in the C++ standard library. The popular text on that subject is Anthony
 Williams' book \emph{C++ Concurrency In Action}~\cite{Williams2012}. The
 \ac{cpp14} standard made only small additions to concurrency\SideNote{Such as
 \verb|shared\_timed\_mutex|\\ and \verb|shared\_lock|.}. A common criticism of
-the C++ standard for concurrency is the inteface for |std::promise| does not
-offer composability. This means that they can be processed in order of
+the C++ standard for concurrency is that the interface for |std::promise| does
+not offer composability. This means that they can be processed in order of
 completion. Asynchronous event handling mechanisms in C\# and other languages
 are composable. The need for composability of synchronisation events has been
 widely recognised. The Microsoft Windows \ac{api} has |WaitForMultipleObjects|
@@ -265,7 +343,7 @@ literature expounding the various techniques. This paper is well paired on a
 reading list with \citeauthor{Cannon2004}'s review of efficient algorithms for
 \ac{nmpc}~\cite{Cannon2004}. Though \citeauthor{Cannon2004}'s paper is centred
 on \ac{nmpc}, and not more broadly on optimal control, his key focus is on
-numerical techniques for the minimisation problem which is core to both domains.
+numerical techniques for the minimisation problem which is core to both.
 
 
 
@@ -349,7 +427,7 @@ optimisation problems differ vastly in approach.
 \label{sec:prior-art}
 
 
-There is not an abundance of work with a focus on software design for model
+\textsc{There is no abundance of work} with a focus on software design for model
 predictive control systems. As far as I have been able to find, there are no
 textbooks, or recent papers.
 
@@ -372,7 +450,7 @@ available. It was part of a military project, which is made obvious by the many
 papers with application to military ground vehicles and aircraft.
 
 A similar project to produce a general framework for control came from the
-Intelligent Systems Division of the \ac{nist}\SideNote{Details at
+Intelligent Systems Division of the \ac{nist}\SideNote{Details at\\
 \url{https://www.nist.gov/intelligent-systems-division}}. The project, entitled
 the \emph{The Real-time Control Systems Architecture} has software support
 called the Real-Time Control Systems Library. There is a deep hierarchy of
@@ -393,29 +471,9 @@ again that I have no intention of developing design tools for control systems.
 Rather, I want to develop frameworks to support research and development of new
 control techniques based on predictive models.
 
-One of the key software design and programming paradigms I wish to explore is
-\ac{frp}~\cite{Elliott1997,Hudak1999}. Functional reactive programming is the
-conjunction of two distinct paradigms: functional programming and reactive
-programming. Neither of these were part of the original design intent for the
-C++ language. But many modern languages have adopted features to support these
-styles of programming, and the latest changes to C++ have done so too. In
-\anno{\citeyear{Al-Khanji2015}}, \citeauthor{Al-Khanji2015} produced a thesis
-wherein he implemented a subset of functional reactive programming tools in
-C++~\cite{Al-Khanji2015}.
-
-There are now several publicly available modern C++ libraries for implementing
-\ac{frp}, such as Sodium\SideNote{\url{github.com/SodiumFRP/sodium}},
-C++React\SideNote{\url{github.com/schlangster/cpp.react}}[\onelineskip], and
-David Sankel's sfrp\SideNote{\url{https://goo.gl/qoqlQP}}[3\onelineskip]. David
-Sankel's \ac{frp} implementation has an interesting history. He designed the
-program semantics for controlling a robot arm \emph{before} realising that he
-had created a functional reactive design. He tells that story in one of his
-popular talks from BoostCon
-2014\SideNote{\url{youtu.be/tyaYLGQSr4g?t=38m32s}}[\onelineskip].
-
-In \citeyear{Peterson2001}, \citeauthor{Peterson2001} produced a case study
+In \citeyear{Peterson2001a}, \citeauthor{Peterson2001a} produced a case study
 using \ac{frp} to control their robot in the \anno{2000} Robocup
-competition~\cite{Peterson2001}. The produced a subset of \ac{frp} using C++
+competition~\cite{Peterson2001a}. The produced a subset of \ac{frp} using C++
 template metaprogramming techniques to create what they describe as a
 ``powerful, extensible programming environment for robotics''. Some similar
 research was produced in \citeyear{Xiangtian2002} by
@@ -433,12 +491,14 @@ models~\cite{Ostafew2016}. The concept of switching components, such as the
 predictive model, the minimisation technique and even the constraint techniques
 is something I wish to explore, and so there is overlap with these papers.
 
+
+
 \section{Literature Gaps}%
 \label{sec:literature-gaps}
 
 
-With regard to~\ref{contrib:design} and~\ref{contrib:capital}, there is very
-little literature which directly addresses the problem of engineering the
+\textsc{With regard to}~\ref{contrib:design} and~\ref{contrib:capital}, there is
+very little literature which directly addresses the problem of engineering the
 predictive control systems software. There is a small variety of software
 available for designing and implementing fairly straightforward \ac{nmpc}
 controllers, but those tools are designed to hide implementation details and
@@ -455,22 +515,23 @@ regarding choices in implementation details of \ac{nmpc} controllers. I wish to
 study the impact of some of those choices.
 
 Enabled by the highly dynamical nature of the proposed framework, there is a lot
-that can be be understood about reconfiguring \ac{nmpc} controllers during
+that can be be understood about re-configuring \ac{nmpc} controllers during
 operation. This is a fresh and open area of research.
 
 In \Sref{sec:NMPC}, I will describe techniques for discouraging the controller
-from certain behaviours—in particular, using artificial potential fields in the
-cost function. The more direct way to do this is to proscribe undesired states
-using constraint techniques in the mathematical optimisation\SideNote{For
-example, using Lagrange multipliers, or \ac{nlp}}. Techniques which penalise
-behaviour using the cost function, are called \emph{soft constraints}, while
-directly proscribed behaviours are called \emph{hard constraints}.
+from certain behaviours using potential fields in the cost function (see
+Eq.~\eqref{eq:L-err-u-Phi}). The more direct way to do this is to proscribe
+undesired states using constraint techniques in the mathematical
+optimisation\SideNote{For example, using Lagrange multipliers, or \ac{nlp}}.
+Techniques which penalise behaviour using the cost function, are called
+\emph{soft constraints}, while directly proscribed behaviours are called
+\emph{hard constraints}.
 
 In textbooks and elementary literature, you will find discussions comparing hard
 and soft constraints at a naïve level. There may be discussion of the fact that
 hard constraints are computationally more expensive, or that soft constraints do
 not provide guarantees against the undesired behaviour. There will be little or
-no discussion of techniques for constructing artificial potentials.
+no discussion of techniques for constructing potential fields.
 
 
 
@@ -590,7 +651,8 @@ such regions, and so these constraints are called \emph{soft.}
 
 
 
-\subsection{\acl{nmpc}}
+\subsection{\acl{nmpc}}%
+\index{Nonlinear model predictive control (\ac{nmpc})}
 
 
 Since our goal is a computer algorithm, we must sample the state and control
@@ -703,7 +765,8 @@ algorithm]\label{alg:NMPC-general}\leavevmode%
 
 
 
-\subsubsection{The Cost Function}
+\subsubsection{The Cost Function}%
+\index{Cost function}
 
 
 The choice of the cost function impacts the behaviour and performance of the
@@ -724,7 +787,8 @@ with an additional term depending only on the terminal state, called the
 
 
 
-\subsubsection{The Running Cost}
+\subsubsection{The Running Cost}%
+\index{Cost function!Running cost}
 
 
 The function $L:\stateSpace\times\ctrlSpace\rightarrow\reals$ appearing
@@ -822,13 +886,14 @@ self-driving car which may want to move slowly near blind corners (thus
 discouraging states of high velocity near those areas). These regions of
 state-space may be cast as inauspicious with a scalar field\index{Running
 cost!soft constraints}\index{Running cost!scalar field} which is accumulated in
-the running cost. The field $\Phi:\stateSpace\rightarrow\reals$ takes on high
-(positive) values in regions of $\stateSpace$\ which the designer wishes to ward
-against. If $\Phi$ is finite, it does not preclude trajectories from entering
-those regions with large $\Phi$, but it does discourage such trajectories as
-solutions of cost minimisation. We therefore call such constraints \emph{soft
-constraints.}\index{Constraints!soft} This brings us to our final and most
-comprehensive formulation of the running cost,
+the running cost. The field $\Phi:\stateSpace\rightarrow\reals$\index{Cost
+function!Potential field term} takes on high (positive) values in regions of
+$\stateSpace$\ which the designer wishes to ward against. If $\Phi$ is finite,
+it does not preclude trajectories from entering those regions with large $\Phi$,
+but it does discourage such trajectories as solutions of cost minimisation. We
+therefore call such constraints \emph{soft constraints.}\index{Constraints!soft}
+This brings us to our final and most comprehensive formulation of the running
+cost,
 %
 \begin{equation}\label{eq:L-err-u-Phi}
   L(\qcu^k,\,\cu^k) \coloneq \bigl(\qerr^k\bigr)\tr\mQ\,\qerr^k + \bigl(\cu^k\bigr)\tr\mR\,\cu^k + \Phi(\q^k).
@@ -840,7 +905,8 @@ values of $\Phi$.
 
 
 
-\subsubsection{The Terminal Cost}
+\subsubsection{The Terminal Cost}%
+\index{Cost function!terminal cost}
 
 
 The terminal cost (or terminal penalty) from~\eqref{eq:costfn-aliased} is the
