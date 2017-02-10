@@ -425,14 +425,14 @@
 %====================================================================
 
 
-\usepackage{everypage}
-\AddEverypageHook{
-  \begin{tikzpicture}[remember picture,overlay]
-    \node [yshift=.75cm] at (current page.south) {\sffamily\color{black!40}\large Draft of \Today};
-  \end{tikzpicture}
-}
-\usepackage[colorinlistoftodos]{todonotes}
-\presetkeys{todonotes}{color={white}, linecolor={git-turquoise}, bordercolor={gitish-turquoise}}{}
+% \usepackage{everypage}
+% \AddEverypageHook{
+%   \begin{tikzpicture}[remember picture,overlay]
+%     \node [yshift=.75cm] at (current page.south) {\sffamily\color{black!40}\large Draft of \Today};
+%   \end{tikzpicture}
+% }
+% \usepackage[colorinlistoftodos]{todonotes}
+% \presetkeys{todonotes}{color={white}, linecolor={git-turquoise}, bordercolor={gitish-turquoise}}{}
 % \listfiles
 
 
@@ -459,7 +459,8 @@
 \begin{document}%\showindexmarks\indexmarksytle{\tiny\sffamily}
 
   \input{COVERPAGE.tex}
-
+  \input{abstract.tex}
+  \clearpage
   {
     \hypersetup{hidelinks}
     \setcounter{tocdepth}{2}
@@ -476,7 +477,7 @@
   \renewcommand{\theequation}{\oldstylenums{\Alph{chapter}.\arabic{equation}}}
   \chapterstyle{default}
   \input{notation.tex}
-  \clearoage
+  \clearpage
   \printacronyms[name={List of Acronyms, Initialisms and Selected Jargon}, heading=chapter]
   \clearpage
   \chapter{Our Robotics Publications}%
@@ -492,7 +493,7 @@
     \label{chap:Pubs-Nuclear}
     This appendix indexes a copy of the following article:
     \begin{itemize}
-      \fullcite{Teatro2015}
+      \item\fullcite{Teatro2015}
     \end{itemize}
     If you are reading a hard copy of this document, an individually stapled copy of this document is placed hereafter. Readers of an electronic copy of this document may find it in in PDF form in the same directory.
 \clearpage
@@ -500,7 +501,7 @@
     \label{chap:Pubs-Software}
     This appendix indexes a copy of the following article:
     \begin{itemize}
-      \fullcite{Teatro2016}
+      \item\fullcite{Teatro2016}
     \end{itemize}
     If you are reading a hard copy of this document, an individually stapled copy of this document is placed hereafter. Readers of an electronic copy of this document may find it in in PDF form in the same directory.
 \clearpage

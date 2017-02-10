@@ -213,7 +213,8 @@ textbook questions include:
 
 
 
-\section{Research Objectives in Control Systems Theory}
+\section{Research Objectives in Control Systems Theory}%
+\label{sec:ObjectivesForControlSystemsTheory}
 
 
 \textsc{The following subsections} each describe (briefly) an avenue for
@@ -226,14 +227,14 @@ and~\ref{contrib:capital}.
 \subsection{Analysis of Hard and Soft Constraints}
 
 While designing the controller for virtualME\SideNote{For details on the
-virtualME controller, see \Sref{sec:virtualME}.} I created a useful software
-design for handling artificial potential fields. The software still needs
-refinement and extension before it is complete.
+virtualME controller, see \Aref{chap:Pubs-Robotics}.} I created a useful
+software design for handling artificial potential fields. The software still
+needs refinement and extension before it is complete.
 
 One of my interest lies in analysis and design of artificial potential fields,
 and the possibility of switching constraints between hard and soft flavours
 during runtime. Since soft constraints are computationally lighter, this can be
-a route to increasing efficiency and reliablility.
+a route to increasing efficiency and reliability.
 
 
 \subsection{Robotic Reflexes}
@@ -245,7 +246,7 @@ avoid disaster. Search based optimisation strategies are faster when the
 starting \emph{guess} is close to the optimum. The techniques for providing
 better guesses is called \emph{hot-starting}.
 
-I would like to try using a neural network to give a robotic system a behviour
+I would like to try using a neural network to give a robotic system a behaviour
 which resembles our human reflexes. The artificial potential field around the
 robot can be sampled on a mesh. That mesh can be used as in input to the neural
 network, which can either hot-start the optimisation step, or even circumvent
@@ -260,10 +261,10 @@ was particularly interested in performing. The framework I am designing would
 make it nearly trivial.
 
 In this study, I would like to extend my already existing gradient based
-controller (see \Sref{sec:NMPC-gradient-solver}) with a new optimiser. I would
-like to build an \emph{adaptor}-class\SideNote{See the \emph{adaptor pattern} in
-the \ac{gof} book~\cite{GOF}.} for the \ac{gnu-sl} optimisation routines. It
-will then be trivial to switch between them.
+controller (see \Aref{chap:Pubs-Robotics}) with a new optimiser. I would like to
+build an \emph{adaptor}-class\SideNote{See the \emph{adaptor pattern} in the
+\ac{gof} book~\cite{GOF}.} for the \ac{gnu-sl} optimisation routines. It will
+then be trivial to switch between them.
 
 It would be interesting to explore which routines may be most effective when
 paired with certain types of artificial potential field. This relates to the
