@@ -10,6 +10,7 @@
 \usepackage{tikz}
 \usetikzlibrary{calc}
 \usetikzlibrary{mindmap}
+\PassOptionsToPackage{hyphens}{url}
 \usepackage[pdftex,
   plainpages=false,
   pdfpagelabels,
@@ -23,9 +24,8 @@
 \usepackage{memhfixc}
 \usepackage[
   backend=biber,
-  % style=ieee,
+  style=ieee,
   datamodel=standard,
-  % refsection=chapter,
   ]{biblatex}
 \usepackage{microtype}
 \usepackage{ragged2e}
@@ -112,7 +112,7 @@
 
 
 \settrims{0pt}{0pt}
-\settypeblocksize{50\onelineskip}{130mm}{*}
+\settypeblocksize{49\onelineskip}{130mm}{*}
 \setlrmargins{10.45mm}{*}{1} % 15.45 = (215.9mm - 5mm - 60mm - 130mm)/2
 \setulmargins{*}{*}{1}
 \setmarginnotes{5mm}{60mm}{5pt}
