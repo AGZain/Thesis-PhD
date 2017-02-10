@@ -35,13 +35,6 @@ misuse of attention and energy. So, I will focus on describing, in general
 terms, parameters and values that will guide and inform my decisions along the
 way.
 
-The \ac{oo}-paradigm organises code to encapsulate the moving parts. Functional
-code reduces the number of moving parts. When implemented puritanically, neither
-of these paradigms is a panacea. The best way to think about predictive control
-systems is certainly found in a balance between these two philosophies. I wish
-to explore that balance and describe some rules and patterns which merge the
-best from each.
-
 
 
 \section{Research Objectives for the Software Design}
@@ -62,32 +55,10 @@ languages like Python, interfaces are meaningless, and inheritance is only used
 to share implementation between classes.
 
 The \ac{sdd} will outline the software components, their contractual obligation
-to the user and their expected interrelationships. However, the design of any
-given component should be flexible and open to easy modification and adaptation.
-So, I expect that some of the strongest contributions will be in the form of
-patterns and reusable design solutions for common problems in control systems
-software.
-
-For example, I want to explore the use of \ac{frp}~\cite{Elliott1997}. In
-\ac{frp}, values such as data from sensors, are modelled as functions on a
-continuous time domain called \emph{behaviours}, and discrete events are,
-appropriately enough, called \emph{events}, and behaviours can be expressed in
-terms of reactions to events. When combined with the constraints imposed by
-functional programming, this model offers analytical tools to help ensure
-correctness, an architecture that is trivially parallelisable and distributable.
-
-This style of programming may be extremely useful in a control systems context.
-Describing designs for control systems components that leverage it may be an
-important part of \ref{contrib:design}, if I uncover practical value in that
-vein of research. Moreover, architectural descriptions within the context of the
-\ac{frp} model can be expressed in any language with libraries and features
-supporting \ac{frp}, such as Java, JavaScript, C\#, Haskell, OCaml, and so on.
-
-Furthermore, I will attempt to identify patterns (especially \ac{oo}-patterns)
-in existing controls software, such as the \ac{nist} Real-Time Control Systems
-Library, the \ac{darpa} Software Enabled Control project and their publicly
-available components.
-
+to the user and their interrelationships. However, the design of any given
+component should be flexible and open to easy modification and adaptation. So, I
+expect that some of the strongest contributions will be in the form of patterns
+and reusable design solutions for common problems in control systems software.
 
 
 \section{Research Objectives for the Software Capital}%
@@ -144,6 +115,28 @@ craftsmanship that comport well with the goals of the software component of the
 proposed research. Those values largely emphasise readability and clarity over
 clever shortcuts.
 
+As I learn and understand more about functional programming, I realise that
+there may be value in code that is \emph{hard to explain}, seemingly in
+contrition to Peters' dictum. But the difficulty in explaining functional
+designs is not from needless complexity. It comes from a cultural barrier. As
+students, we simply are not taught to think and understand functional patterns
+in programming and one incurs that overhead, at least once, when seeing it for
+the first time. Once someone has overcome the learning curve, functional designs
+can be very clean and understandable when compared to equivalent procedural
+code. (For a practical but anecdotal investigation, see the \ac{darpa} sponsored
+study by \citeauthor{Haskell-vs-ada} in
+\citetitle{Haskell-vs-ada}~\cite{Haskell-vs-ada}.)
+
+The \ac{oo}-paradigm organises code to encapsulate the moving parts. Functional
+code reduces the number of moving parts. When implemented puritanically, neither
+of these paradigms is a panacea. The best way to think about predictive control
+systems is certainly found in a balance between these two philosophies. I wish
+to explore that balance and describe some rules and patterns which merge the
+best from each.
+
+Regardless of the principles I uncover in the course of the proposed research,
+the following list of design goals will remain at high priority:
+%
 \begin{description}
   %
   \item[Compliant.] It should comply strictly with \acl{cpp17} and the C++ Core
@@ -155,9 +148,9 @@ clever shortcuts.
   \item[Practical.] Code which is high quality and production ready. It should
   be efficient enough for real-world use. It should be straightforward to use,
   read and maintain. It will conform to a formatting style that optimises for
-  readability. My metric-standard for this item will be this: can a clever and
-  well motivated graduate student get a project up-and-running in less than a
-  week.
+  readability. My metric for this item will be this question: \emph{can a clever
+  and well motivated graduate student get a project up-and-running in less than
+  a week?}
   %
   \item[Unit Tested.] The entire codebase, including examples, should be covered
   by unit tests. If a user begins a new design based on the example code, they
@@ -180,23 +173,24 @@ clever shortcuts.
   expressive, and suggests good techniques and practices to those extending the
   code.
   %
-  \item[Stateless.] In the context of software, a stateful routine is one that
-  stores objects which can change values at runtime. Whenever you write code
-  with an equals-sign, you are modifying state. In stateless routines, each
-  interaction request has to be handled based entirely on information that comes
-  with it, and there is no dependency on the state of memory outside the scope
-  of the routine. I am relatively certain it is impossible to design this
-  software without state. But there are good reasons to avoid needless use of
+  \item[Minimal mutable state.] In the context of software, a mutable state is a
+  feature of routines that store objects and change values during runtime.
+  Whenever you write code with an assignment outside of initialisation, you are
+  modifying state. I am relatively certain the product of my research will not
+  be without mutable state. But there are good reasons to avoid needless use of
   state.
 
-  State introduces complexity and opportunities for bugs, especially in parallel
-  applications. Control systems researchers who are extending the code should
-  not have to worry about subtleties of the framework obstructing their
-  research.
+  Mutable state introduces complexity and opportunities for bugs, especially in
+  parallel applications. Control systems researchers who are extending the code
+  should not have to worry about subtleties of the framework obstructing their
+  research. Where mutable state is sufficiently sensible, I will attempt to
+  abstract it away from the \ac{api}, so it does not complicate parallelism or
+  distribution of the computational tasks.
 
-  Truly stateless programming is part of \emph{pure functional programming}.
-  However, it is not practical, and part of the research is discovering a
-  balance which is practical within the context of modern C++.
+  Truly stateless programs are a feature of \emph{pure functional programming}.
+  However, it is not practical as a public solution, and a major part of the
+  proposed research is discovering a balance that is practical within the
+  context of modern C++ and the control systems community.
   %
 \end{description}
 
