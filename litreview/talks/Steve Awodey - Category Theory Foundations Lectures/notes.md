@@ -135,11 +135,11 @@ For every category $\mathcal{C}$ there is a dial, or *opposite* $\mathcal{C}^\te
 
 The concept may seem superficial, but its a formal relationship that has important uses.
 
-* A contravariant functor is a functor on the dual catagory.
+* A contravariant functor is a functor on the dual category.
 
 ### [Examples of contravariant functors](https://youtu.be/ZKmodCApZwk?t=1h8m11s)
 
-* Sets: for any two sets in the catagory of sets, you can build the set of all functions from one to the other. Sets $A, B$ and $B^A$ is the set of all functions from $A$ to $B$: $B^A = \{f:A\rightarrow B\}$. This is a functor in the argument $B$:
+* Sets: for any two sets in the category of sets, you can build the set of all functions from one to the other. Sets $A, B$ and $B^A$ is the set of all functions from $A$ to $B$: $B^A = \{f:A\rightarrow B\}$. This is a functor in the argument $B$:
   * For fixed $A$, we get a functor $X^A \longrightarrow_{f_*} Y^A$ from $f:X\rightarrow Y$. So, given any $f$ from $X$ to $Y$, there is an induced map $f_*$
   ![](contravariant-functor-sets-1.svg)
 
