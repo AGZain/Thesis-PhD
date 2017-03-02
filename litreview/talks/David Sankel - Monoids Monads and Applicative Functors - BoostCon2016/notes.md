@@ -28,7 +28,7 @@ https://youtu.be/DiisKQAkGM4
       return rhs;
     else {
       if (rhs) // both sides non-empty
-        return std::optional<SomeMonoid>(*lhs $\bigoplus$ * rhs);
+        return std::optional<SomeMonoid>(*lhs ⨁ *rhs);
       else
         return lhs;
     }
@@ -39,7 +39,7 @@ https://youtu.be/DiisKQAkGM4
   ```
   std::function<SomeMonoid(A)> append(std::function<SomeMonoid(A)> lhs,
                                       std::function<SomeMonoid(A)> rhs) {
-    return [lhs, rhs](A a) { return lhs(a) $\bigoplus$ rhs(a); }
+    return [lhs, rhs](A a) { return lhs(a) ⨁ rhs(a); }
   ```
   with identity
   ```
