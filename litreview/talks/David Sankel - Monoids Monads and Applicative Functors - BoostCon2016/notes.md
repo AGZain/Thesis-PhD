@@ -28,7 +28,7 @@ https://youtu.be/DiisKQAkGM4
       return rhs;
     else {
       if (rhs) // both sides non-empty
-        return std::optional<SomeMonoid>(*lhs $\bigoplus$ * rhs);
+        return std::optional<SomeMonoid>(*lhs ⨁ *rhs);
       else
         return lhs;
     }
