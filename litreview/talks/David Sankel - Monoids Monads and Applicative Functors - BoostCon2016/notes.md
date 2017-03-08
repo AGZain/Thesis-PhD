@@ -390,13 +390,14 @@ template <typename T, typename F> auto map(F f, const std::vector<T> &a) {
   - functions with single parameter of type `A`.
 
 
-* Monad bind operation (`a >> f`) The monadic bind operation is deૠned in terms of the other operations. For a given Monad<T>::
+* The monadic bind operation is defined in terms of the other operations. For a given Monad<T>:
   ```
   template <typename T, typename U>
   Monad<U> bind(Monad<T> m, std::function<Monad<U>(T)> f) {
     return join(apply(pure(f), m));
   }
   ```
+  The monad bind operation is notated as an overload of shift: `a >> f`. I believe Haskell uses `>>=`.
 
 * Example:
   ```
