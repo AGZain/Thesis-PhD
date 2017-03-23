@@ -1,0 +1,20 @@
+graph LR;
+
+functional_programming("Functional Programming")
+category_theory("Category Theory")
+lambda_calculus("λ-Calculus")
+functional_reactive_programming("Functional Reactive Programming");
+
+category_theory --> functional_programming;
+lambda_calculus --> functional_programming;
+functional_programming --> functional_reactive_programming;
+
+hybrid_systems("Hybrid Systems")
+my_work("My Proposed Work")
+
+
+hybrid_systems --> functional_reactive_programming;
+
+control_systems("Control Systems") --> my_work;
+functional_reactive_programming --> my_work;
+cpp("Modern C++") --> my_work;

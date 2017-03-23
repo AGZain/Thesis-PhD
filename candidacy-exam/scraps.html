@@ -1,0 +1,417 @@
+<section data-background="../img/nature-1.jpg">
+  <div class="stretch" style="position: absolute; top: 200%; left: 50%;">
+    <h2 style="width: 40%; text-align:left;">Functional patterns <i>are</i></h2>
+    <h2 style="width: 40%; text-align:right; color: #A6E22E;">Patterns in <i>Nature</i></h2>
+  </div>
+</section>
+
+<section>
+  <p style="text-align: left;"><i>not</i> a tool for</p>
+  <h2 style="color: #F92672;"><i>competence without comprehension</i></h2>
+</section>
+
+<section>
+  <p style="text-align: left;">a <i>framework</i> for</p>
+  <h2 style="color: #F92672;"><i>composable control algorithms</i></h2>
+</section>
+
+<section>
+  <p style="text-align: left;">a <i>study</i> of</p>
+  <h2 style="color: #F92672;"><i> composable patterns and idioms for predictive control systems software</i></h2>
+</section>
+
+<section>
+  <h4>Composability</h4> <br>
+
+  $$f: A\rightarrow B\qquad g: B\rightarrow C$$ <br>
+
+  <div class="fragment">
+    $$g\circ f : A\rightarrow C$$
+  </div>
+</section>
+
+<section data-background-color="#FFF" data-background="../img/category-cloud-disection.jpeg" data-background-size="contain"></section>
+
+<section data-background-color="#FFF" data-background="../img/functor-clouds.jpeg" data-background-size="contain"></section>
+
+
+
+<section data-background="img/mcconnell.jpg">
+</section>
+
+<section data-background="img/mcconnell.jpg" data-state="dimbg">
+<blockquote> Researchers in both the software industry and academic settings have discovered effective practices that eliminate most of the programming problemsthat have been precalent since the 1970s.</blockquote>
+<p class="QuoteAuthor">Steve McConnell<br>
+<i>Code Complete, 2nd Ed.</i><br>
+Microsoft Press (2004)</p>
+</section>
+
+<section>
+<blockquote> Because these practices aren't often reported outside the pages of highly specialised technical journals, however, most programming organisations aren't yet using them today.</blockquote>
+<p class="QuoteAuthor">Steve McConnell<br>
+<i>Code Complete, 2nd Ed.</i><br>
+Microsoft Press (2004)</p>
+</section>
+
+<section data-background="../img/GoF.jpg" data-background-size="contain"></section>
+
+
+<section>
+  <img src="../img/nmpc-block-diagram-white.svg" class="undecorated">
+  $$\boldsymbol{u}^{*} = \mathop{\mathrm{arg\,min}}_{\boldsymbol{u}}\ J(\boldsymbol{x}, \boldsymbol{u})$$
+</section>
+
+
+<section data-background="../img/vME_White-Green.png" data-background-color="#2B0B30">
+  <h2 style="text-align: right;">virtualME</h2>
+</section>
+
+<section>
+  <h1>Useful Resources </h1>
+  <ul>
+    <li> <a href="https://www.gitbook.com/book/drboolean/mostly-adequate-guide/details">Professor Frisby’s Mostly Adequate Guide to Functional Programming</a> </li>
+    <li> <a href="http://learnyouahaskell.com/">Learn you a Haskell for Great Good</a></li>
+  </ul>
+</section>
+
+<section>
+  <h1><a href="http://homepages.inf.ed.ac.uk/wadler/realworld/erlang.html">Erlang</a></h1>
+
+  <p style="text-align: left;">Erlang is a functional programming language used for implementing very large scale, real-time, concurrent, industrial applications.<br> In use: Since 1987.</p>
+</section>
+
+<section>
+  <h1><a href="http://fsharp.org/">F#</a></h1>
+
+  <p style="text-align: left;">F# is a mature, open source, cross-platform, functional-first programming language. It empowers users and organizations to tackle complex computing problems with simple, maintainable and robust code.<br>Ships as a first class language in the Microsoft Visual Studio</p>
+</section>
+
+<section>
+  <h1><a href="http://faust.grame.fr/">Faust Programming Language</a></h1>
+
+  <p style="text-align: left;">FAUST (Functional Audio Stream) is a functional programming language specifically designed for real-time signal processing and synthesis. FAUST targets high-performance signal processing applications and audio plug-ins for a variety of platforms and standards.<br>The Faust compiler translates Faust code into C++.</p>
+</section>
+
+
+<section>
+  <h1><a href="https://www.linkedin.com/pulse/slow-adoption-functional-programming-banks-abdul-muhit">Banking software</a></h1>
+
+  <p style="text-align: left;">Growing in popularity due to high demand for reliability and parallel/distributed processing. Slow adoption due to lack of industry specific tools. Java 8 is expected to make progress.</p>
+</section>
+
+
+<section>
+  <h1><a href="http://www.astree.ens.fr/">Astrée Static Analyzer</a></h1>
+
+  <p style="text-align: left;">Prove automatically the absence of runtime errors in the primary flight control software of the Airbus A340 and A380 fly-by-wire systems. Aslso used to verify Jules Vernes Automated Transfer Vehicle (ATV) enabling ESA to transport payloads to the International Space Station.</p>
+
+  <p>See also <a href="http://www.apmep.fr/IMG/pdf/P3-22-pre_cc_81sentation.pdf" target="_blank">these slides</a> from a talk given by David Delmas, Airbus Opérations SAS</p>
+</section>
+
+<section>
+  <blockquote cite="https://youtu.be/MXJ-zpJeY3E?t=9m14s">
+    I make my living by understanding one field, <em>X</em>, a taking some ideas from that and applying it to <em>Y</em>. But I couldn't do that if there weren't people who are working very deeply in field <em>X</em>.
+  </blockquote>
+  <p class="QuoteAuthor">Terence Tao<br>
+  Fields Medalist</p>
+</section>
+
+
+
+
+<section>
+  <p style="text-align: left; color: #A6E22E;">Q: Why do software engineers like functional programming?</p>
+  <blockquote cite="https://www.quora.com/Why-do-software-engineers-like-functional-programming" style="font-size: .8em;">
+    Because it's the only practical way to write concurrent programs. Trying to write concurrent programs in imperative languages is not only hard but it leads to bugs that are very hard to discover, reproduce, and fix. In particular, [functional programming] offers the right kind of abstractions that hide the details of implementation that are not relevant to concurrency while exposing the ones that are relevant -- like the presence of mutation. Imperative and, in particular, object oriented languages are notorious for hiding mutation and the inadvertent sharing of data, and therefore are extremely prone to data races.
+  </blockquote>
+  <p class="QuoteAuthor">Bartosz Milewski</p>
+</section>
+
+
+
+<section data-background="../img/FRP-HS-timeline-wt.svg" data-background-size="contain"></section>
+
+<section>
+  <pre><code>cat hs_err_pid10404.log | grep ERR | wc -l</code></pre>
+</section>
+
+<section>
+  <pre><code>
+  int sum = accumulate( view::ints(1) // inf list of ints from 1
+    | view::transform([](int x){return x*x;})
+    | view::take(10), 0);
+  </code></pre>
+</section>
+
+<section>
+  <h1>[](){}</h1>
+  <h1 class="fragment">[](){}()</h1>
+</section>
+
+<section data-background="../img/Observer-classdiag-wt.svg" data-background-size="contain"></section>
+
+
+
+<section>
+  <img src="../img/nmpc-block-diagram-white.svg" class="undecorated">
+  $$\boldsymbol{u}^{*} = \mathop{\mathrm{arg\,min}}_{\boldsymbol{u}}\ J(\boldsymbol{x}, \boldsymbol{u})$$
+    <aside class="notes">
+      <ol>
+        <li>Interesting problem, both analytically and computationally.</li>
+        <li>I got deeply interested in how to write such software well.</li>
+        <li>My research is based on this type of controller</li>
+        <li>SEG: I started my proposal with a quote:</li>
+      </ol>
+    </aside>
+</section>
+
+
+<section data-background="../img/dennett.jpg"></section>
+<section data-background="../img/dennett.jpg" data-state="dimbg">
+  <blockquote cite="">
+    The task of the mind is to produce future, as the poet Paul Valéry
+  once put it. A mind is fundamentally an anticipator, an expectation-generator.
+  It mines the present for clues, which it refines with the help of the materials
+  it has saved from the past, turning them into anticipations of the future. And
+  then it acts, rationally, on the basis of those hard-won anticipations.
+  </blockquote>
+  <p class="QuoteAuthor">Daniel C. Dennett<br>
+  <i>Kinds of Minds</i></p>
+    <aside class="notes">
+      <ol>
+        <li>SEG: What is rational? It's to maximise what we value…</li>
+      </ol>
+    </aside>
+</section>
+
+<section>
+  <i>On control systems software</i>
+  <blockquote style="font-size: .9em;">
+
+    <p>Few practitioners know the rules of software reliability or take the time
+    to study how to create reliable software. Why? This is in part because it
+    appears deceptively easy to create software. Software tool manufacturers
+    work hard to promote this.</p><br><br>
+
+    <p>We cannot, however, ignore the importance of software reliability. As
+    control systems grow in functionality and complexity, we depend on an
+    increasing amount of software.</p>
+
+  </blockquote>
+  <p class="QuoteAuthor">Dr. William M. Goble<br>
+    Principal Partner, www.exida.com</p>
+    <aside class="notes">
+      <ol>
+        <li>That doesn't cut it in research, where tools don't exist</li>
+        <li>Researchers not working on critical code</li>
+        <li>But complexity will become a huge problem for us.</li>
+        <li>SEG: CS researchers will be forced into soft. eng., and we will have to face this criticism…</li>
+      </ol>
+    </aside>
+</section>
+
+<section>
+  <pre style="width: 100%;"><code>
+
+  researcher@alab:~/projects/new$ vim amazing_control_system.█
+
+
+
+
+
+
+
+
+  </code></pre>
+</section>
+
+<section>
+  <p style="text-align: left;"><i>not</i> a tool for</p>
+  <h2 style="color: #F92672;"><i>competence without comprehension</i></h2>
+</section>
+
+<section>
+  <p style="text-align: left;">a <i>framework</i> for</p>
+  <h2 style="color: #F92672;"><i>composable control algorithms</i></h2>
+</section>
+
+<section data-background="img/careertech-hinds-computer-programmer-code.jpg" data-state="dimbg">
+    <h1>Overview</h1>
+    <ol class="stretch">
+      <li>Big picture <i>&amp;</i> Motivation</li>
+      <li>Problems to attack and ground to win</li>
+      <li>Theoretical underpinnings</li>
+      <ul>
+        <li style="display: inline-block;">Control systems</li>
+        <li style="display: inline-block;"><span style="color:YellowGreen">&bull;</span> Computer science</li>
+        <li style="display: inline-block;"><span style="color:YellowGreen">&bull;</span> Pure math</li>
+      </ul>
+      <li>The Proposal</li>
+    </ol>
+    <aside class="notes">
+      <ol>
+        <li>Mirror the structure of the proposal</li>
+      </ol>
+    </aside>
+</section>
+
+
+<section data-background="../img/software-construction-1.jpg" data-state="dimbg">
+  <blockquote>
+    construction has been neglected by researchers and writers [because of] the mistaken idea that, compared to other software-development activities, construction is a relatively mechanical process that presents little opportunity for improvement. <b><i>Nothing could be further from the truth.</i></b>
+  </blockquote>
+  <p class="QuoteAuthor">Steve McConnell<br>
+  <i>Code Complete, 2nd Ed.</i><br>
+  Microsoft Press (2004)</p>
+    <aside class="notes">
+      <ol>
+        <li>I think software engineering has changed since then,</li>
+        <li>SEG: Control systems, in general, has been slower to adapt, because of conventient tools.</li>
+      </ol>
+    </aside>
+</section>
+
+<section>
+  <blockquote>
+    The gap between the best software engineering practice and the average practice is very wide—perhaps wider than in any other engineering discipline. A tool that disseminates good practice would be important
+  </blockquote>
+  <p class="QuoteAuthor">Frederick P. Brooks Jr.<br>
+    <i>The Mythical Man-Month</i><br>
+    Pearson Education (1995)</p>
+      <aside class="notes">
+        <ol>
+          <li>This tool is what I want to work on.</li>
+          <li>SEG: revisit the quote…</li>
+        </ol>
+      </aside>
+</section>
+
+
+<section>
+  <blockquote>
+    The gap between the best software engineering practice and the average practice is very wide—perhaps wider than in any other engineering discipline. A tool that disseminates good practice would be important
+  </blockquote>
+  <p class="QuoteAuthor">Frederick P. Brooks Jr.<br>
+    <i>The Mythical Man-Month</i><br>
+    Pearson Education (1995)</p>
+      <aside class="notes">
+        <ol>
+          <li>This tool is what I want to work on.</li>
+          <li>SEG: revisit the quote…</li>
+        </ol>
+      </aside>
+</section>
+
+
+<pre><code class="cpp" data-noescape>
+  template &lt;typename T, typename U&gt;
+  optional&lt;U&gt; map(function&lt;U(T)&gt; f, optional&lt;T&gt; a) {
+    if (a)
+      return optional&lt;U&gt;(f(*s));
+    else
+      return nullopt;
+</code></pre>
+
+<section data-background="img/careertech-hinds-computer-programmer-code.jpg" data-state="dimbg">
+  <blockquote style="font-size:.75em">
+  … we must avoid the temptation to think of software as simply the language of
+  the implementation. Control code … is a dynamic system. It has an internal
+  state, responds to inputs, and produces outputs. It has time scales,
+  transients, and saturation points. It can also be adaptive and distributed. …
+  if we <span style="color: YellowGreen; font-weight: bold;">take this software
+  dynamic system and couple it to the plant dynamics through the sensor and
+  actuator dynamics, we have a composite system whose properties cannot be
+  decided from the subsystems in isolation.</span>
+  </blockquote>
+  <p class="QuoteAuthor">HELEN GILL <i>and</i>&nbsp; JOHN BAY<br>
+    <i>Software-Enabled Control: Information Technology for Dynamical Systems</i><br>
+    Wiley-IEEE Press (2003)
+  </p>
+  <aside class="notes">
+    <ol>
+      <li>SEG: HOW DO WE MODEL THE REST OF THE SYSTEM?</li>
+    </ol>
+  </aside>
+</section>
+
+
+
+
+<section>
+  <pre><code class="cpp">
+    void print_range() {
+      for (int i = 1; i < 11; ++i) {
+        printf("%d\n", i);
+      }
+    }
+  </code></pre>
+</section>
+<section>
+  <pre><code class="cpp" data-noescape>
+    void print_range() {
+      for (<mark class="yuck">int i = 1; i < 11; ++i</mark>) {
+        printf("%d\n", i);
+      }
+    }
+  </code></pre>
+</section>
+
+<section>
+  <pre><code class="cpp" data-noescape>
+    void print_iterable(Container&lt;int&gt; x) { // was print_range
+      for (auto thing : x) {
+        printf("%d\n", thing);
+      }
+    }
+  </code></pre>
+</section>
+
+<section>
+  <pre><code class="cpp" data-noescape>
+    void print_iterable(Container&lt;int&gt; x) { // was print_range
+      for (auto thing : x) {
+        <mark class="yuck">printf("%d\n", thing)</mark>;
+      }
+    }
+  </code></pre>
+</section>
+
+<section>
+  <pre><code class="cpp" data-noescape>
+    // was print_iterable
+    void map(function&lt;void(int)&gt; f, Container&lt;int&gt; x) {
+      for (auto thing : x) {
+        f(thing);
+      }
+    }
+  </code></pre>
+    <aside class="notes">
+      <ol>
+        <li></li>
+      </ol>
+    </aside>
+</section>
+
+
+
+
+
+
+
+<section>
+    <p class="fragment grow">grow</p>
+    <p class="fragment shrink">shrink</p>
+    <p class="fragment fade-out">fade-out</p>
+    <p class="fragment fade-up">fade-up (also down, left and right!)</p>
+    <p class="fragment current-visible">visible only once</p>
+    <p class="fragment highlight-current-blue">blue only once</p>
+    <p class="fragment highlight-red">highlight-red</p>
+    <p class="fragment highlight-green">highlight-green</p>
+    <p class="fragment highlight-blue">highlight-blue</p>
+</section>
+
+<section data-background-iframe="file:///home/timtro/Documents/Talks/2017_seminar-course/slides.svg">
+</section>
+
+<!-- Undocumented feature to include a webpage overlay: -->
+<a href="file:///home/timtro/Documents/Talks/2017_seminar-course/slides.svg" data-preview-link>Hakim El Hattab</a>

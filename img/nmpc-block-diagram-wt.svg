@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1337.236"
+   height="646.293"
+   viewBox="0 0 353.8103 170.9984"
+   version="1.1"
+   id="svg66"
+   sodipodi:docname="nmpc-block-diagram.svg"
+   inkscape:version="0.92.1 unknown">
+  <metadata
+     id="metadata70">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#000000"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1056"
+     id="namedview68"
+     showgrid="false"
+     inkscape:zoom="0.80763607"
+     inkscape:cx="637.18892"
+     inkscape:cy="332.05799"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg66" />
+  <defs
+     id="defs8">
+    <marker
+       orient="auto"
+       id="a"
+       overflow="visible">
+      <path
+         d="M-1.2 0l-1 1 3.5-1-3.5-1z"
+         fill-rule="evenodd"
+         stroke="#000"
+         stroke-width=".267"
+         id="path2" />
+    </marker>
+    <marker
+       orient="auto"
+       id="b"
+       overflow="visible">
+      <path
+         d="M1.2 0l1-1-3.5 1 3.5 1z"
+         fill-rule="evenodd"
+         stroke="#000"
+         stroke-width=".267"
+         id="path5" />
+    </marker>
+  </defs>
+  <text
+     word-spacing="0"
+     letter-spacing="0"
+     font-size="3.741"
+     font-weight="400"
+     style="line-height:0%"
+     x="11.861"
+     font-family="sans-serif"
+     stroke-width=".312"
+     id="text10" />
+  <path
+     d="M -0.52916669,64.889 H 37.346833"
+     id="path12"
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#ffffff;stroke-width:2.38199997;marker-end:url(#a)" />
+  <circle
+     r="21.103001"
+     cy="64.889"
+     cx="58.449833"
+     id="circle14"
+     style="fill:none;stroke:#ffffff;stroke-width:1.19099998" />
+  <path
+     d="M 79.552833,64.889 H 111.20683"
+     id="path16"
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#ffffff;stroke-width:2.38199997;marker-end:url(#a)" />
+  <path
+     d="m 121.75883,107.094 h -10.552 V 22.683 h 10.552 m 63.308,84.411 h 10.552 V 22.683 h -10.552"
+     id="path18"
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#ffffff;stroke-width:1.19099998" />
+  <rect
+     width="73.860001"
+     height="27.837999"
+     x="116.42583"
+     y="26.499001"
+     ry="0"
+     id="rect20"
+     style="fill:none;stroke:#ffffff;stroke-width:1.19099998" />
+  <text
+     word-spacing="0"
+     letter-spacing="0"
+     font-size="14.111"
+     font-weight="400"
+     style="font-weight:400;font-size:14.11100006px;line-height:0%;font-family:'Merriweather Sans';-inkscape-font-specification:'Merriweather Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0;word-spacing:0;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.27500001;stroke:none;fill:#ffffff;"
+     x="153.18684"
+     y="43.41"
+     id="text24">
+    <tspan
+       x="153.18684"
+       y="43.41"
+       style="line-height:1.05999994;-inkscape-font-specification:'Merriweather Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;stroke:none;fill:#ffffff;"
+       id="tspan22">Optimizer</tspan>
+  </text>
+  <rect
+     ry="0"
+     y="75.851997"
+     x="116.42583"
+     height="27.837999"
+     width="73.860001"
+     id="rect26"
+     style="fill:none;stroke:#ffffff;stroke-width:1.19099998" />
+  <text
+     word-spacing="0"
+     letter-spacing="0"
+     font-size="14.111"
+     font-weight="400"
+     y="94.609001"
+     x="153.35985"
+     style="font-weight:400;font-size:14.11100006px;line-height:0%;font-family:'Merriweather Sans';-inkscape-font-specification:'Merriweather Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0;word-spacing:0;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.31200001;stroke:none;fill:#ffffff;"
+     id="text30">
+    <tspan
+       y="94.609001"
+       x="153.35985"
+       style="line-height:1.05999994;-inkscape-font-specification:'Merriweather Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;stroke:none;fill:#ffffff;"
+       id="tspan28">Model</tspan>
+  </text>
+  <path
+     d="M 153.41283,75.44 V 54.337"
+     id="path32"
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#ffffff;stroke-width:2.38199997;marker-start:url(#b);marker-end:url(#a)" />
+  <path
+     d="m 195.61883,64.889 h 31.654"
+     id="path34"
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#ffffff;stroke-width:2.38199997;marker-end:url(#a)" />
+  <rect
+     width="73.860001"
+     height="42.206001"
+     x="227.27284"
+     y="43.785999"
+     ry="0"
+     id="rect36"
+     style="fill:none;stroke:#ffffff;stroke-width:1.19099998" />
+  <text
+     word-spacing="0"
+     letter-spacing="0"
+     font-size="14.111"
+     font-weight="400"
+     style="font-weight:400;font-size:14.11100006px;line-height:0%;font-family:'Merriweather Sans';-inkscape-font-specification:'Merriweather Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0;word-spacing:0;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.31200001;stroke:none;fill:#ffffff;"
+     x="264.22284"
+     y="69.742996"
+     id="text40">
+    <tspan
+       x="264.22284"
+       y="69.742996"
+       style="line-height:1.05999994;-inkscape-font-specification:'Merriweather Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;stroke:none;fill:#ffffff;"
+       id="tspan38">Plant</tspan>
+  </text>
+  <path
+     d="m 301.13283,64.889 h 43.813"
+     id="path42"
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#ffffff;stroke-width:2.38199997;marker-end:url(#a)" />
+  <rect
+     ry="0"
+     y="128.19701"
+     x="227.27284"
+     height="42.206001"
+     width="73.860001"
+     id="rect44"
+     style="fill:none;stroke:#ffffff;stroke-width:1.19099998" />
+  <path
+     d="M 322.28083,65.514 V 149.3 h -21.148 m -73.86,0 H 59.719833 V 85.991 M 153.41283,149.3 v -42.206"
+     id="path46"
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#ffffff;stroke-width:2.38199997;marker-end:url(#a)" />
+  <text
+     word-spacing="0"
+     letter-spacing="0"
+     font-size="14.111"
+     font-weight="400"
+     y="56.057999"
+     x="334.88766"
+     style="font-weight:400;font-size:14.11100006px;line-height:0%;font-family:'Merriweather Sans';-inkscape-font-specification:'Merriweather Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0;word-spacing:0;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;stroke:none;stroke-width:0.31200001"
+     id="text54">
+    <tspan
+       y="56.057999"
+       x="334.88766"
+       style="line-height:1.05999994;-inkscape-font-specification:'Merriweather Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;fill:#ffffff;stroke:none"
+       id="tspan52">State</tspan>
+  </text>
+  <text
+     word-spacing="0"
+     letter-spacing="0"
+     font-size="14.111"
+     font-weight="400"
+     y="48.263"
+     x="92.107834"
+     style="font-weight:400;font-size:14.11100006px;line-height:0%;font-family:'Merriweather Sans';-inkscape-font-specification:'Merriweather Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0;word-spacing:0;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.31200001;stroke:none;fill:#ffffff;"
+     id="text58">
+    <tspan
+       y="48.263"
+       x="92.107834"
+       style="line-height:1.05999994;-inkscape-font-specification:'Merriweather Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;stroke:none;fill:#ffffff;"
+       id="tspan56">Err</tspan>
+  </text>
+  <text
+     word-spacing="0"
+     letter-spacing="0"
+     font-size="14.111"
+     font-weight="400"
+     y="146.39301"
+     x="264.19983"
+     style="font-weight:400;font-size:14.11100006px;line-height:0%;font-family:'Merriweather Sans';-inkscape-font-specification:'Merriweather Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0;word-spacing:0;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.31200001;stroke:none;fill:#ffffff;"
+     id="text64">
+    <tspan
+       y="146.39301"
+       x="264.19983"
+       style="line-height:1.05999994;-inkscape-font-specification:'Merriweather Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;stroke:none;fill:#ffffff;"
+       id="tspan60">State</tspan>
+    <tspan
+       y="161.351"
+       x="264.19983"
+       style="line-height:1.05999994;-inkscape-font-specification:'Merriweather Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;stroke:none;fill:#ffffff;"
+       id="tspan62">Estimator</tspan>
+  </text>
+</svg>

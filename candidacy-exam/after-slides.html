@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+
+<title>Teatro PhD Candidacy</title>
+<meta name="author" content="Timothy A. V. Teatro">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="css/reveal.css">
+<link rel="stylesheet" href="css/theme/black.css" id="theme">
+<!-- Theme used for syntax highlighting of code -->
+<link rel="stylesheet" href="lib/css/monokai.css">
+<!-- Printing and PDF exports -->
+<script>
+  var link = document.createElement( 'link' );
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+  document.getElementsByTagName( 'head' )[0].appendChild( link );
+</script>
+
+<style media="screen">
+  .slides img.shortened {
+    max-width: 50%;
+    max-height: 50%;
+  }
+</style>
+<style>
+  .lots-of-code code {
+      font-size: 0.5em;
+      line-height: 1.5;
+    }
+  .reveal .QuoteAuthor {
+    font-size: 0.5em;
+    line-height: 1.5em;
+    text-align: right;
+  }
+  .reveal section img.undecorated {
+    background:none;
+    border:none;
+    box-shadow:none;
+  }
+  .SplitScreenBg {
+    width: 100%;
+    height: 400%;
+    position: absolute;
+    top: -100%;
+    left: -50%;
+    z-index: -1;
+  }
+  .SplitScreenLeft {
+    width: 45%;
+    margin-right: 5%;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .SplitScreenRight {
+    width: 45%;
+    margin-left: 5%;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .reveal .DropShadowTextBk {
+    text-shadow: .03em .03em .1em #000;
+  }
+  .reveal .DropShadowTextWt {
+    text-shadow: .03em .03em .1em #FFF;
+  }
+  html.dimbg .slide-background {
+    opacity: 0.4 !important;
+  }
+  mark {
+    background-color: rgba(170, 117, 255, 0.65);
+    /*color: inherit;*/
+  }
+  .BlurryTextBk {
+     color: transparent;
+     text-shadow: 0 0 .2em rgba(0,0,0,0.5);
+  }
+  .BlurryTextWt {
+     color: transparent;
+     text-shadow: 0 0 .2em rgba(255,255,255,0.5);
+  }
+</style>
+</head>
+<body>
+
+	<div class="reveal">
+		<div class="slides">
+
+<!-- colours -->
+<!--
+#272822
+#F92672
+#66D9EF
+#A6E22E
+#FD971F
+#210825 old #2B0B30
+#5c157d
+-->
+
+<section data-background="img/careertech-hinds-computer-programmer-code.jpg" data-state="dimbg">
+	<h2><em>Toward a</em><br>FUNCTIONAL REACTIVE
+PREDICTIVE CONTROL FRAMEWORK</h2>
+	<p>
+		Question Period
+	</p>
+  <aside class="notes">
+    <ol>
+      <li>null</li>
+    </ol>
+  </aside>
+</section>
+
+
+
+<section>
+  <h1>std::optional&lt;int&gt; functor</h1>
+  <pre><code class="cpp" data-noescape>
+    optional&lt;int&gt;
+    map(function&lt;int(int)&gt; f, optional&lt;int&gt; a) {
+      if (a)
+        return optional&lt;int&gt;(f(*s));
+      else
+        return nullopt;
+  </code></pre>
+</section>
+
+<section>
+  <h1>std::optional&lt;T&gt; functor</h1>
+  <pre><code class="cpp" data-noescape>
+    template &lt;typename T, typename U&gt;
+    optional&lt;U&gt; map(function&lt;U(T)&gt; f, optional&lt;T&gt; a) {
+      if (a)
+        return optional&lt;U&gt;(f(*s));
+      else
+        return nullopt;
+  </code></pre>
+</section>
+
+<section data-background-color="#FFF" data-background="../img/category-cloud-disection.jpeg" data-background-size="contain"></section>
+
+<section data-background-color="#FFF" data-background="../img/functor-clouds.jpeg" data-background-size="contain"></section>
+
+<section data-background="../img/Observer-classdiag-wt.svg" data-background-size="contain"></section>
+
+<section>
+  <h1><a href="http://homepages.inf.ed.ac.uk/wadler/realworld/erlang.html">Erlang</a></h1>
+
+  <p style="text-align: left;">Erlang is a functional programming language used for implementing very large scale, real-time, concurrent, industrial applications.<br> In use: Since 1987.</p>
+</section>
+
+<section>
+  <h1><a href="http://fsharp.org/">F#</a></h1>
+
+  <p style="text-align: left;">F# is a mature, open source, cross-platform, functional-first programming language. It empowers users and organizations to tackle complex computing problems with simple, maintainable and robust code.<br>Ships as a first class language in the Microsoft Visual Studio</p>
+</section>
+
+<section>
+  <h1><a href="http://faust.grame.fr/">Faust Programming Language</a></h1>
+
+  <p style="text-align: left;">FAUST (Functional Audio Stream) is a functional programming language specifically designed for real-time signal processing and synthesis. FAUST targets high-performance signal processing applications and audio plug-ins for a variety of platforms and standards.<br>The Faust compiler translates Faust code into C++.</p>
+</section>
+
+<section>
+  <h1><a href="https://www.linkedin.com/pulse/slow-adoption-functional-programming-banks-abdul-muhit">Banking software</a></h1>
+
+  <p style="text-align: left;">Growing in popularity due to high demand for reliability and parallel/distributed processing. Slow adoption due to lack of industry specific tools. Java 8 is expected to make progress.</p>
+</section>
+
+
+<section>
+  <h1><a href="http://www.astree.ens.fr/">Astrée Static Analyzer</a></h1>
+
+  <p style="text-align: left;">Prove automatically the absence of runtime errors in the primary flight control software of the Airbus A340 and A380 fly-by-wire systems. Aslso used to verify Jules Vernes Automated Transfer Vehicle (ATV) enabling ESA to transport payloads to the International Space Station.</p>
+
+  <p>See also <a href="http://www.apmep.fr/IMG/pdf/P3-22-pre_cc_81sentation.pdf" target="_blank">these slides</a> from a talk given by David Delmas, Airbus Opérations SAS</p>
+</section>
+
+<section>
+<p align="left">
+<b>Definition:</b> A <b><i>monoid</i></b> is a type $T$ with binary operation $\oplus$ which combines its values.
+<ul>
+  <li>$\oplus$ must be associative: $(a \oplus b) \oplus c = a \oplus (b \oplus c)$.</li>
+  <li>$T$ has a unity element $e$ such that $e\oplus x = x\oplus e = x$ for all $x\in T$.</li>
+</ul>
+</p>
+</section>
+
+<section>
+<p align="left">
+<b>Definition:</b> A <b><i>functor</i></b> is a class template (<code>Functor&lt;T&gt;</code>) with a single template parameter and a callable (map) which has the following properties:
+<ul>
+  <li><code>map(f, a)</code> is a legal expression when:
+      <ul>
+        <li><code>a</code> is a value of type <code>Functor&lt;T&gt;</code> for some type <code>T</code>.</li>
+        <li><code>f</code> is a callable that accepts a single argument of type <code>T</code>.</li>
+        <li>Let <code>U</code> be the return type of <code>f(t)</code> for <code>t</code>$\in$<code>T</code>. The result of <code>map(f, a)</code> is type <code>Functor&lt;U&gt;</code></li>
+      </ul>
+  </li>
+  <li><code class="C++">map(g, map(f, a)) = map(gf, a)</code>, where
+  <pre><code>
+      auto gf = [f, g](auto t) { return g(f(t)); }
+  </code></pre></li>
+</ul>
+</p>
+</section>
+
+
+		</div> <!-- /slides -->
+	</div>
+
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+
+  <script>
+  	// More info https://github.com/hakimel/reveal.js#configuration
+  	Reveal.initialize({
+  		controls: false,
+  		progress: true,
+  		history: true,
+  		center: true,
+      touch: true,
+
+  		transition: 'fade', // none/fade/slide/convex/concave/zoom
+      backgroundTransition: 'none',
+
+      math: {
+          mathjax: 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
+          config: 'TeX-AMS_HTML-full'
+      },
+
+  		// More info https://github.com/hakimel/reveal.js#dependencies
+  		dependencies: [
+  			{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+  			{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+  			{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+  			{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+  			{ src: 'plugin/zoom-js/zoom.js', async: true },
+  			{ src: 'plugin/notes/notes.js', async: true },
+        // MathJax
+        { src: 'plugin/math/math.js', async: true },
+  		]
+  	});
+
+    // Shows the slide number using default formatting
+    Reveal.configure({ slideNumber: true });
+
+    // Slide number formatting can be configured using these variables:
+    //  "h.v":  horizontal . vertical slide number (default)
+    //  "h/v":  horizontal / vertical slide number
+    //    "c":  flattened slide number
+    //  "c/t":  flattened slide number / total slides
+    Reveal.configure({ slideNumber: 'c/t' });
+
+  </script>
+
+  </body>
+</html>

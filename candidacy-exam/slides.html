@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+
+<title>Teatro PhD Candidacy</title>
+<meta name="author" content="Timothy A. V. Teatro">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="css/reveal.css">
+<link rel="stylesheet" href="css/theme/black.css" id="theme">
+<!-- Theme used for syntax highlighting of code -->
+<link rel="stylesheet" href="lib/css/monokai.css">
+<!-- Printing and PDF exports -->
+<script>
+  var link = document.createElement( 'link' );
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+  document.getElementsByTagName( 'head' )[0].appendChild( link );
+</script>
+
+<style media="screen">
+  .slides img.shortened {
+    max-width: 50%;
+    max-height: 50%;
+  }
+</style>
+<style>
+  .lots-of-code code {
+      font-size: 0.5em;
+      line-height: 1.5;
+    }
+  .reveal .QuoteAuthor {
+    font-size: 0.5em;
+    line-height: 1.5em;
+    text-align: right;
+  }
+  .reveal section img.undecorated {
+    background:none;
+    border:none;
+    box-shadow:none;
+  }
+  .SplitScreenBg {
+    width: 100%;
+    height: 400%;
+    position: absolute;
+    top: -100%;
+    left: -50%;
+    z-index: -1;
+  }
+  .SplitScreenLeft {
+    width: 45%;
+    margin-right: 5%;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .SplitScreenRight {
+    width: 45%;
+    margin-left: 5%;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .reveal .DropShadowTextBk {
+    text-shadow: .03em .03em .1em #000;
+  }
+  .reveal .DropShadowTextWt {
+    text-shadow: .03em .03em .1em #FFF;
+  }
+  html.dimbg .slide-background {
+    opacity: 0.4 !important;
+  }
+  mark {
+    background-color: rgba(170, 117, 255, 0.65);
+    /*color: inherit;*/
+  }
+  .yuck {
+    color: #F00;
+    background-color: inherit;
+    text-decoration: line-through;
+  }
+  .BlurryTextBk {
+     color: transparent;
+     text-shadow: 0 0 .2em rgba(0,0,0,0.5);
+  }
+  .BlurryTextWt {
+     color: transparent;
+     text-shadow: 0 0 .2em rgba(255,255,255,0.5);
+  }
+</style>
+</head>
+<body>
+
+	<div class="reveal">
+		<div class="slides">
+
+<!-- colours -->
+<!--
+#272822
+#F92672
+#66D9EF
+#A6E22E
+#FD971F
+#210825 old #2B0B30
+#5c157d
+-->
+
+<section data-background="img/careertech-hinds-computer-programmer-code.jpg" data-state="dimbg">
+	<h2><em>Toward a</em><br>FUNCTIONAL REACTIVE
+PREDICTIVE CONTROL FRAMEWORK</h2>
+	<p>
+		<small><em>By</em>&nbsp; <a href="http://www.timteatro.net">Timothy A. V. Teatro</a> / <a href="http://twitter.com/timtro">@timtro</a></small>
+	</p>
+  <aside class="notes">
+    <ol>
+      <li>null</li>
+    </ol>
+  </aside>
+</section>
+
+
+
+<section data-background="img/idea-graph.mmd.svg" data-background-size='contain'>
+</section>
+
+<section data-background="img/idea-graph.mmd.svg" data-background-size='contain' data-state="dimbg">
+  <div style="background-color: rgba(0,0,0,0.3); padding:5%;">
+    <h2><span style="color: #A6E22E;">3</span>-Contributions:</h2>
+    <ol>
+      <li>the software design description</li>
+      <li>the software capital</li>
+      <li>novel control systems research</li>
+    </ol>
+  </div>
+  <aside class="notes">
+    <ol>
+      <li><ul>
+        <li>applied theory,</li>
+        <li>the code,</li>
+        <li>what I do with it.</li>
+      </ul></li>
+      <li><ul>
+        <li>design,</li>
+        <li>construction,</li>
+        <li>validation.</li>
+      </ul></li>
+    </ol>
+  </aside>
+</section>
+
+<section data-background="../img/vME_White-Green.png" data-background-color="#b9c8af">
+  <h2 style="text-align: right;">virtualME</h2>
+    <aside class="notes">
+      <ol>
+        <li>4-yars, several times, landed here</li>
+        <li>NMPC: Future of robotic autonomy</li>
+        <li>SEG: EVERY OPTIMAL CTRL PROBLEM HAS A COST OBJECTIVE</li>
+      </ol>
+    </aside>
+</section>
+
+<section data-background="../img/vME_White-Green.png" data-background-color="#b9c8af" data-state="dimbg">
+  <div style="background-color: white; padding:5%;">
+  $$
+  J  = \sum_{k=0}^{N-1}\left(
+    \tilde{\boldsymbol{x}}_k^\mathsf{T}\,\boldsymbol{Q}\,\tilde{\boldsymbol{x}}_k +
+    \boldsymbol{u}_k^\mathsf{T}\,\boldsymbol{R}\,\boldsymbol{u}_k +
+    \mathit{\Phi}(\boldsymbol{x}_k)
+  \right)
+  $$
+  <ul>
+    <li style="display: inline-block;">Tracking error</li>
+    <li style="display: inline-block;"><span style="color:YellowGreen">&bull;</span> Control effort</li>
+    <li style="display: inline-block;"><span style="color:YellowGreen">&bull;</span> Potential field</li>
+  </ul>
+</div>
+    <aside class="notes">
+      <ol>
+        <li>Environmental concerns about certain states through Φ</li>
+        <li>SEG: MINIMISE ON EVERY CTRL LOOP</li>
+      </ol>
+    </aside>
+</section>
+
+<section data-background="img/hairy-line-diagram.svg" data-background-size="contain">
+  <div class="stretch" style="position:absolute; top:300%; left:-30%; text-align: left;">
+      $$\boldsymbol{u}^{*} = \mathop{\mathrm{arg\,min}}_{\boldsymbol{u}}\ J(\boldsymbol{x}, \boldsymbol{u})$$
+  </div>
+  <aside class="notes">
+      <ul>
+        <li>Approx closed-loop stands at the limit of infinite calculation-frequency.</li>
+        <li>SEG: Engrs Worry in person, rarely in code.
+      </ul>
+  </aside>
+</section>
+
+<section data-background="img/careertech-hinds-computer-programmer-code.jpg" data-state="dimbg">
+  <blockquote>
+  … we must avoid the temptation to think of software as simply the language of
+  the implementation. Control code … is a dynamic system. It has an internal
+  state, responds to inputs, and produces outputs. … if we <span style="color:
+  YellowGreen; font-weight: bold;">take this software dynamic system and couple
+  it to the plant dynamics through the sensor and actuator dynamics, we have a
+  composite system whose properties cannot be decided from the subsystems in
+  isolation.</span>
+  </blockquote>
+  <p class="QuoteAuthor">HELEN GILL <i>and</i>&nbsp; JOHN BAY<br>
+    <i>Software-Enabled Control: Information Technology for Dynamical Systems</i><br>
+    Wiley-IEEE Press (2003)
+  </p>
+  <aside class="notes">
+    <ol>
+      <li>CRY of wholistic approach</li>
+      <li>GRAPPLE with the connection between plant and software</li>
+      <li>SEG: HOW DO WE MODEL THE REST OF THE SYSTEM?</li>
+    </ol>
+  </aside>
+</section>
+
+<section data-background="img/Rn-blob.svg" data-background-size="contain">
+  <span style="position: absolute; right:0px; top:-200px;">$\boldsymbol{F}(\dot{\boldsymbol{x}}, \boldsymbol{x}, t)=0$</span>
+  <span style="position: absolute; left:0px; top:-200px;">
+    $x\in X \simeq \mathbf{R}^n$</span>
+  <aside class="notes">
+    <ol>
+      <li>Write down a set of differential relationships describing how to move in that space</li>
+      <li>FSM: great intellectual use, limited practical use</li>
+      <li>SEG: TO MODEL SOFTWARE MATHEMATICALLY, TREAT LIKE MATHEMATICS</li>
+    </ol>
+  </aside>
+</section>
+
+<section data-background="../img/software-construction-1.jpg">
+  <h1 class="DropShadowTextBk">Software<br>Construction</h1>
+  <h2>(with mathematics)</h2>
+    <aside class="notes">
+      <ol>
+        MOVE the conversation toward construction with math.
+        SEG: Mine specifically from...
+      </ol>
+    </aside>
+</section>
+
+<section data-background="../img/software-construction-1.jpg" data-state="dimbg">
+  <ul style="font-size:2em;" class="DropShadowTextBk">
+    <li>λ-Calculus</li>
+    <li>Category theory &nbsp;&nbsp;$\bigoplus$</li>
+    <hr>
+    <li>Functional Programming</li>
+  </ul>
+    <aside class="notes">
+      <ol>
+          <li></li>
+      </ol>
+</section>
+
+<section data-background="img/nature-1.jpg">
+  <div class="stretch" style="position: absolute; top: 200%; left: 50%;">
+    <h2 style="width: 40%; text-align:left;" class="DropShadowTextBk">Functional patterns <i>are</i></h2>
+    <h2 style="width: 40%; text-align:right; color: #A6E22E;" class="DropShadowTextBk">Patterns in <i>Nature</i></h2>
+    <aside class="notes">
+      <ol>
+        <li>Discovered, not invented</li>
+      </ol>
+    </aside>
+  </div>
+</section>
+
+<section data-background="img/stacked-rocks-1.jpg" data-background-position	="bottom left">
+  <span style="position:absolute; left:300px;">
+    <h1 class="DropShadowTextBk" style="text-align:left;">Functions<br>all<br>the<br>way<br>down</h1>
+  </span>
+    <aside class="notes">
+      <ol>
+        <li>FP is a map from I -> O</li>
+        <li>Programming is just composition.</li>
+        <li>Classes are convenient notation.</li>
+      </ol>
+    </aside>
+</section>
+
+<section data-background="img/stacked-rocks-1.jpg" data-background-position	="bottom left">
+  <span style="position:absolute; left:300px; font-size:1.25em;">
+    <h2 class="DropShadowTextBk">Functions are</h2>
+    <ul class="DropShadowTextBk">
+      <li>Total</li>
+      <li>Referentially transparent</li>
+      <li><i>Pure $\Rightarrow$ Composable</i></li>
+      <li>First class</li>
+    </ul>
+  </span>
+    <aside class="notes">
+    </aside>
+</section>
+
+<section>
+  <pre><code class="cpp">
+    vector&lt;int&gt; sqr_range() {
+      vector&lt;int&gt; range{};
+      for (int i = 1; i &lt;= 10; ++i)
+        range.push_back(i);
+      return range;
+    }
+  </code></pre>
+</section>
+<section>
+  <pre><code class="cpp" data-noescape>
+    vector&lt;int&gt; sqr_range() {
+      vector&lt;int&gt; range{};
+      for (<mark class="yuck">int i = 1; i &lt;= 10; ++i</mark>)
+        range.push_back(i);
+      return range;
+    }
+  </code></pre>
+</section>
+
+<section>
+  <pre><code class="cpp" data-noescape>
+    vector&lt;int&gt; sqr_range(vector&lt;int&gt; v) {
+      for (auto &thing : v)
+        thing *= thing;
+      return v;
+    }
+  </code></pre>
+</section>
+
+<section>
+  <pre><code class="cpp" data-noescape>
+    vector&lt;int&gt; sqr_range(vector&lt;int&gt; v) {
+      for (auto &thing : v)
+        <mark class="yuck">thing *= thing;</mark>
+      return v;
+    }
+  </code></pre>
+</section>
+
+<section>
+  <pre><code class="cpp" data-noescape>
+    vector&lt;int&gt; map(function&lt;int(int)&gt; f, vector&lt;int&gt; v) {
+      for (auto &thing : v)
+        thing = f(thing);
+      return v;
+    }
+  </code></pre>
+</section>
+
+<section data-background="img/nature-1.jpg">
+  <div class="DropShadowTextBk" style="background-color: rgba(0,0,0,.3);">
+    <h1 class="DropShadowTextBk">Functor</h1>
+  </div>
+  <div class="DropShadowTextBk fragment" style="background-color: rgba(0,0,0,.3);">
+    <ul>
+      <li>two data-types and,</li>
+      <li>a <code>map</code> to turn functions for one into other</li>
+    </ul>
+  </div>
+    <aside class="notes">
+      <ol>
+        <li>Triplet: typeA, typeB, map</li>
+        <li>eg. Lift sin to sin(list of double)) or sqrt( int* )</li>
+        <li>A tool for composability</li>
+      </ol>
+    </aside>
+</section>
+
+<section>
+  <h4>Composability</h4> <br>
+
+  $$f: A\rightarrow B\qquad g: B\rightarrow C$$ <br>
+
+  <div class="fragment">
+    $$\exists\ g\circ f : A\rightarrow C$$
+  </div>
+    <aside class="notes">
+      <ol>
+        <li>SEG: If I have ∃ guarantee, then I can…</li>
+      </ol>
+    </aside>
+</section>
+
+<section>
+  <div class="SplitScreenLeft stretch">
+    <img class="undecorated" src="img/falcon-2.png" style="vertical-align: middle;">
+  </div><br>
+  <div class="SplitScreenRight">
+    $$\text{Complex} = \mathop{\bigcirc}^n_{k=0} \text{Simple}$$
+  </div>
+    <aside class="notes">
+      <ol>
+        <li>Complex, but concurrent and correct.</li>
+      </ol>
+    </aside>
+</section>
+
+<section>
+  <pre><code class="C++">
+  int sum = accumulate( view::ints(1) // inf list of ints from 1
+    | view::transform([](int x){return x*x;})
+    | view::take(10), 0);
+  </code></pre>
+    <aside class="notes">
+      <ol>
+        <li>Replace ints with</li>
+        <ol>
+          <li>Stream of time-stamped values</li>
+          <li>Sequence of discrete events, like mouseclicks</li>
+        </ol>
+      </ol>
+    </aside>
+</section>
+
+<section>
+    <h1>(<span style="color: #A6E22E;">1</span>) Software Design Description</h1>
+    <ul>
+      <li>Description of FP/FRP patterns as they apply to NMPC-systems</li>
+      <li>Function/class library with docs</li>
+      <li>Examples with directed graphs</li>
+    </ul>
+</section>
+
+<section>
+    <h1>(<span style="color: #A6E22E;">2</span>) Software Capital</h1>
+    <ul class="fragment">
+      <li>The function/class library in C++</li>
+      <li>Code examples</li>
+      <li><b>Unit tests</b></li>
+      <li>Open Source Licence (GPL/Berkley/...)</li>
+    </ul>
+</section>
+
+<section>
+  <table>
+    <tbody>
+      <tr>
+        <td style="background-color: rgba(84, 55, 89, 0.5); border-bottom: 0px;"><h2>C</h2></td>
+        <td><ul>
+          <li>Procedural</li>
+          <li>Structured</li>
+        </ul></td>
+      </tr>
+      <tr>
+        <td style="background-color: rgba(84, 55, 89, 0.5); border-bottom: 0px;"><h2>C++98</h2></td>
+        <td><ul>
+          <li>Generic</li>
+          <li>Largely O-O</li>
+        </ul></td>
+      </tr>
+      <tr>
+        <td style="background-color: rgba(84, 55, 89, 0.5); border-bottom: 0px;"><h2>C++11</h2></td>
+        <td><ul>
+          <li>Even more generic</li>
+          <li>Functional(ish) std. lib.</li>
+        </ul></td>
+      </tr>
+      <tr>
+        <td style="background-color: rgba(84, 55, 89, 0.5) "><h2 style="color: #A6E22E">C++17</h2></td>
+        <td><ul>
+          <li>Yet more generic</li>
+          <li>Yet more functional</li>
+        </ul></td>
+      </tr>
+    </tbody>
+  </table>
+  <aside class="notes">
+    <ul>
+      <li>generics = appeal to natural mathematical abstractions</li>
+    </ul>
+  </aside>
+</section>
+<section data-background="img/devhumour-cpp-functional-programming.jpg" data-background-size="contain">
+    <aside class="notes">
+      <ol>
+        <li>idea considered so painful it was funny</li>
+      </ol>
+    </aside>
+</section>
+<section data-background="img/manning-functional-programming-Cpp.jpg" data-background-size="contain">
+  <aside class="notes">
+    <ol>
+      <li></li>
+    </ol>
+  </aside>
+</section>
+
+<section>
+    <h1>(<span style="color: #A6E22E;">3</span>) Control Systems Research</h1>
+      <aside class="notes">
+        <ol>
+          <li>Not merely collateral damage</li>
+          <li>Really do have ambitions in this domain</li>
+        </ol>
+      </aside>
+</section>
+
+<section>
+  <h1 style="color: #A6E22E;">Hot swapping models</h1>
+  <h2>High fidelity is computationally expensive. How do we safely compromise, and decide so online?</h2>
+  <aside class="notes">
+    <ul>
+      <li>FRP make it easy to wonder about these things in code</li>
+    </ul>
+  </aside>
+</section>
+
+<section>
+  <h1 style="color: #A6E22E;">Hot swapping optimisers</h1>
+  <h2>A study of performance of numerical techniques for NMPC optimisation.</h2>
+</section>
+
+<section>
+  <h1 style="color: #A6E22E;">Hot swapping constraints</h1>
+  <h2>Explore mapping constraints in $\mathit{\Phi}(\boldsymbol{x})$ to and from hard constraints to balance performance and safety.</h2>
+</section>
+
+<section data-background="img/proposal-gantt.mmd.svg" data-background-size="contain"></section>
+
+<section>
+  <h1 style="color: #A6E22E;">Automatic reflexes</h1>
+  <h2>using ANN to map a sample of $\mathit{\Phi}(\boldsymbol{x})$ to $\boldsymbol{u}^*$.</h2>
+</section>
+
+<section>
+  <h1>Thanks!</h1>
+</section>
+
+
+		</div> <!-- /slides -->
+	</div>
+
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+
+  <script>
+  	// More info https://github.com/hakimel/reveal.js#configuration
+  	Reveal.initialize({
+  		controls: false,
+  		progress: true,
+  		history: true,
+  		center: true,
+      touch: true,
+
+  		transition: 'fade', // none/fade/slide/convex/concave/zoom
+      backgroundTransition: 'none',
+
+      math: {
+          mathjax: 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
+          config: 'TeX-AMS_HTML-full'
+      },
+
+  		// More info https://github.com/hakimel/reveal.js#dependencies
+  		dependencies: [
+  			{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+  			{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+  			{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+  			{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+  			{ src: 'plugin/zoom-js/zoom.js', async: true },
+  			{ src: 'plugin/notes/notes.js', async: true },
+        // MathJax
+        { src: 'plugin/math/math.js', async: true },
+  		]
+  	});
+
+    // Shows the slide number using default formatting
+    Reveal.configure({ slideNumber: true });
+
+    // Slide number formatting can be configured using these variables:
+    //  "h.v":  horizontal . vertical slide number (default)
+    //  "h/v":  horizontal / vertical slide number
+    //    "c":  flattened slide number
+    //  "c/t":  flattened slide number / total slides
+    Reveal.configure({ slideNumber: 'c/t' });
+
+  </script>
+
+  </body>
+</html>
