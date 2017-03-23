@@ -10,6 +10,8 @@ Playlist: [click here](https://www.youtube.com/playlist?list=PLbgaMIhjbmEnaH_LTk
 
 ## [2.1 Functions, epimorphisms]()
 
+* A good example of a function which can't be pure: `getchar()`. Think about memoising it.
+
 ## [2.2 Monomorphisms, simple types]()
 
 ## [3.1 Examples of categories, orders, monoids]()
