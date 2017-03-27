@@ -33,3 +33,8 @@
 
 * Good point: on _modern_ CPUs, one of the most expensive things we can do is a conditional jump. My immediate thought is the comperable overhead of multiplying optional values. There will be an inlined function call, and something tantamount to 2 null pointer checks added to every operation, but if it's paged in the cache, those should be much quicker than a jump, which can't be optimised by the compiler.
     - [Talk by Douglas Crockford](https://youtu.be/99Zacm7SsWQ?t=44m42s) at NDC 2017
+    
+
+* > So if my microscope doesn't work, maybe my telescope will work.
+
+  A [Cute idea](https://youtu.be/O2lZkr-aAqk?t=36m) and comment in reference to the idea that cetegory theory doesn't allow you to define relationships by the internal structore of the objects. So, things such as isomorphism must be defined looking outward, not inward, since we treat objects as points with no internal structure.
