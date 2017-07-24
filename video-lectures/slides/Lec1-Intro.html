@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+
+<title>Eklund Group Research Talk</title>
+<meta name="author" content="Timothy A. V. Teatro">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="css/reveal.css">
+<link rel="stylesheet" href="css/theme/black.css" id="theme">
+<!-- Theme used for syntax highlighting of code -->
+<link rel="stylesheet" href="lib/css/ir-black.css">
+<!-- <link rel="stylesheet" href="lib/css/mono-blue.css"> -->
+<!-- Printing and PDF exports -->
+<script>
+  var link = document.createElement( 'link' );
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+  document.getElementsByTagName( 'head' )[0].appendChild( link );
+</script>
+
+<style media="screen">
+  .slides img.shortened {
+    max-width: 50%;
+    max-height: 50%;
+  }
+</style>
+<style>
+  .lots-of-code code {
+      font-size: 0.5em;
+      line-height: 1.5;
+    }
+  .reveal .QuoteAuthor {
+    font-size: 0.5em;
+    line-height: 1.5em;
+    text-align: right;
+  }
+  .reveal section img.undecorated {
+    background:none;
+    border:none;
+    box-shadow:none;
+  }
+  .SplitScreenBg {
+    width: 100%;
+    height: 400%;
+    position: absolute;
+    top: -100%;
+    left: -50%;
+    z-index: -1;
+  }
+  .SplitScreenLeft {
+    width: 45%;
+    margin-right: 5%;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .SplitScreenRight {
+    width: 45%;
+    margin-left: 5%;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .reveal .DropShadowTextBk {
+    text-shadow: .03em .03em .1em #000;
+  }
+  .reveal .DropShadowTextWt {
+    text-shadow: .03em .03em .1em #FFF;
+  }
+  html.dimbg .slide-background {
+    opacity: 0.4 !important;
+  }
+  mark {
+    background-color: rgba(170, 117, 255, 0.65);
+    /*color: inherit;*/
+  }
+  .yuck {
+    color: #F00;
+    background-color: inherit;
+    text-decoration: line-through;
+  }
+  .BlurryTextBk {
+     color: transparent;
+     text-shadow: 0 0 .2em rgba(0,0,0,0.5);
+  }
+  .BlurryTextWt {
+     color: transparent;
+     text-shadow: 0 0 .2em rgba(255,255,255,0.5);
+  }
+</style>
+</head>
+<body>
+
+	<div class="reveal">
+		<div class="slides">
+
+<!-- colours -->
+<!--
+#272822
+#F92672
+#66D9EF
+#A6E22E
+#FD971F
+#210825 old #2B0B30
+#5c157d
+#154b7d
+#042e55
+-->
+
+<section data-background="../img/careertech-hinds-computer-programmer-code.jpg" data-state="dimbg">
+	<h2><em>A short bit of</em><br>LAMBDA GOODNESS</h2>
+	<p>
+		<small><em>By</em>&nbsp; <a href="http://www.timteatro.net">Timothy A. V. Teatro</a> / <a href="http://twitter.com/timtro">@timtro</a></small>
+	</p>
+</section>
+
+<section>
+  <h1>Last time…</h1>
+</section>
+
+
+<section data-background="../img/software-construction-1.jpg">
+  <h1 class="DropShadowTextBk">Software<br>Construction</h1>
+  <h2>(with mathematics)</h2>
+</section>
+
+
+<section data-background="../img/software-construction-1.jpg" data-state="dimbg">
+  <ul style="font-size:2em;" class="DropShadowTextBk">
+    <li>λ-Calculus</li>
+    <li>Type algebra</li>
+    <li>Category theory &nbsp;&nbsp;$\bigoplus$</li>
+    <hr>
+    <li>Functional Programming</li>
+  </ul>
+    <aside class="notes">
+      <ol>
+          <li></li>
+      </ol>
+</section>
+
+<section data-background="../img/nature-1.jpg">
+  <div class="stretch" style="position: absolute; top: 200%; left: 50%;">
+    <h2 style="width: 40%; text-align:left;" class="DropShadowTextBk">Functional patterns <i>are</i></h2>
+    <h2 style="width: 40%; text-align:right; color: #A6E22E;" class="DropShadowTextBk">Patterns in <i>Nature</i></h2>
+    <aside class="notes">
+      <ol>
+        <li>Discovered, not invented</li>
+      </ol>
+    </aside>
+  </div>
+</section>
+
+<section data-markdown data-background="../img/haskell-bg-dk.svg" data-state="dimbg">
+<script type="text/template">
+C++11:
+```cpp
+int a = 5;
+auto times_a = [a](int x){ return a * x; }
+auto b = times_a(5); // b = 25
+```
+
+Python:
+```Python
+a = 5
+times_a = lambda x, la = a: x+la
+b = times_a(5) # b = 25
+```
+
+Java:
+```Java
+int a = 5;
+Function<Integer, Integer> times_a = (x) -> 5 * x;
+int b = times_a.apply(5); // b = 25
+```
+</script>
+</section>
+<!-- Notes: the python lambda has no captures. If I didn't make a and optional argument, it wouldn't take a copy, but check the value of a with each call.
+
+Python has a strange relationship to FP. Idomatic python makes heavy use of iterators and list comprehention, but is also heavily O-O. -->
+
+<section data-markdown>
+<script type='text/template'>
+```
+template <typename T>
+auto cons(T a, T b) {
+  return [a, b](bool take_first) {
+    if (take_first == true)
+      return a;
+    else
+      return b;
+  };
+}
+template <typename T> auto car(T x) { return x(true); }
+template <typename T> auto cdr(T x) { return x(false); }
+
+int main() {
+  auto a = cons(4.4f, 6.f);
+  std::cout << car(a) << ", " << cdr(a) << std::endl;
+  return 1;
+}
+```
+</script>
+</section>
+
+<section data-markdown>
+<script type='text/template'>
+```cpp
+template<typename T>
+class cons{
+  T _a;
+  T _b;
+
+  cons(T a, T b) : _a(a), _b(b) {}
+
+ public:
+  operator()(bool take_first){
+    if (take_first == true)
+      return self._a;
+    else
+      return self._b;
+  }
+};
+```
+</script>
+</section>
+
+<section data-markdown data-background="../img/haskell-bg-dk.svg" data-state="dimbg">
+<script type="text/template">
+Sum the integers from $a$ to $b$: &nbsp; $\displaystyle\sum_{i=a}^b i$
+
+<br>
+
+```cpp
+int sum_ints(int a, int b) {
+  if (a > b)
+    return 0;
+  else
+    return a + sum_ints(++a, b);
+}
+```
+</script>
+</section>
+
+<section data-markdown data-background="../img/haskell-bg-dk.svg" data-state="dimbg">
+<script type="text/template">
+
+Sum the squares from $a$ to $b$:  &nbsp;  $\displaystyle\sum_{i=a}^b i^2$
+
+<br>
+
+```cpp
+int sum_sqrs(int a, int b) {
+  if (a > b)
+    return 0;
+  else
+    return a*a + sum_sqrs(++a, b);
+}
+```
+</script>
+</section>
+
+<section data-markdown data-background="../img/haskell-bg-dk.svg" data-state="dimbg">
+<script type="text/template">
+
+Sum $f(i)$ with $i=a,\ldots, b$:  &nbsp;  $\displaystyle\sum_{i=a}^b f(i)$
+
+<br>
+
+```cpp
+int "NAME"(int a, int b)
+  if (a > b)
+    return 0;
+  else
+    return f(a) + "NAME"(++a, b)
+}
+```
+</script>
+</section>
+
+<section data-markdown data-background="../img/haskell-bg-dk.svg" data-state="dimbg">
+<script type="text/template">
+
+```cpp
+int accumulate_range(std::function<int(int)> f, int a, int b) {
+  if (a > b)
+    return 0;
+  else
+    return f(a) + accumulate_range(++a, b)
+}
+```
+
+```cpp
+int sum_int (int a, int b) {
+  return accumulate_range([](int x){return x;} , a, b)
+}
+```
+
+</script>
+</section>
+
+
+<section data-markdown data-background="../img/haskell-bg-dk.svg" data-state="dimbg">
+<script type="text/template">
+```cpp
+int sum_sqr (int a, int b) {
+  return accumulate_range([](int x){return x*x;} , a, b)
+}
+
+int approx_pi(int b) {
+  auto f = [](int x){
+    return 2. / (4*x + 1) / (4*x + 3);
+  };
+  return accumulate_range(f, 0, b)
+}
+```
+</script>
+</section>
+
+
+<section data-markdown data-background="../img/haskell-bg-dk.svg" data-state="dimbg">
+<script type="text/template">
+```cpp
+  accumulate(  iota(a, b) | transform(f), 0  );
+```
+</script>
+</section>
+
+
+<section>
+  <h1>Thanks!</h1>
+</section>
+
+
+		</div> <!-- /slides -->
+	</div>
+
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+
+  <script>
+  	// More info https://github.com/hakimel/reveal.js#configuration
+  	Reveal.initialize({
+  		controls: false,
+  		progress: true,
+  		history: true,
+  		center: true,
+      touch: true,
+
+  		transition: 'fade', // none/fade/slide/convex/concave/zoom
+      backgroundTransition: 'none',
+
+      math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js',
+          config: 'TeX-AMS_HTML-full'
+      },
+
+  		// More info https://github.com/hakimel/reveal.js#dependencies
+  		dependencies: [
+  			{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+  			{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+  			{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+  			{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+  			{ src: 'plugin/zoom-js/zoom.js', async: true },
+  			{ src: 'plugin/notes/notes.js', async: true },
+        // MathJax
+        { src: 'plugin/math/math.js', async: true },
+  		]
+  	});
+
+    // Shows the slide number using default formatting
+    // Reveal.configure({ slideNumber: true });
+
+    // Slide number formatting can be configured using these variables:
+    //  "h.v":  horizontal . vertical slide number (default)
+    //  "h/v":  horizontal / vertical slide number
+    //    "c":  flattened slide number
+    //  "c/t":  flattened slide number / total slides
+    // Reveal.configure({ slideNumber: 'c/t' });
+
+  </script>
+
+  </body>
+</html>

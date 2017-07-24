@@ -1,0 +1,106 @@
+<section data-background="img/abstraction-cmap.svg" data-background-size="contain"></section>
+
+<section data-markdown>
+<script type="text/template">
+```{python}
+def imperative_style(xs):
+    results = []
+    for x in xs:
+        if x >= 7:
+            break
+        if x < 2:
+            result = 4 * x
+            results.append(result)
+    return results
+
+assert imperative_style(range(10)) == [0, 4]
+```
+<p style="position: absolute; right:-10%; bottom: -50%; font-size:.33em; width:33%">(Example borrowed from Josh Bohde's [blog post.](https://joshbohde.com/blog/functional-python))</p>
+</script>
+</section>
+
+
+<section data-markdown>
+<script type="text/template">
+```{python}
+from itertools import takewhile
+
+def functional_style(xs):
+    return map(lambda x: 4 * x,
+               filter(lambda x: x < 2,
+                      takewhile(lambda x: x < 7, xs)))
+
+assert functional_style(range(10)) == [0, 4]
+```
+<p style="position: absolute; right:-10%; bottom: -50%; font-size:.33em; width:33%">(Example borrowed from Josh Bohde's [blog post.](https://joshbohde.com/blog/functional-python))</p>
+</script>
+</section>
+<!-- Very idomatic, so easy for compiler to optimise. It's clear what you mean. Code is easy to read (if you excuse python's syntax) and it's hard to get wrong because you're explicitly stating what you want, rather than how it should be done.
+
+All based on natural, mathematically defined computational abstractions. -->
+
+<section data-markdown>
+<script type="text/template">
+```{C++}
+map( filter( people, is_female ), name );
+```
+</script>
+</section>
+
+
+<section data-markdown>
+<script type="text/template">
+C++11:
+```{Cpp}
+int a = 5;
+auto times_a = [a](int x){ return a * x; }
+auto b = times_a(5); // b = 25
+```
+
+<br>
+
+Python:
+```{Python}
+a = 5
+times_a = lambda x, la = a: x+la
+b = times_a(5) # b = 25
+```
+
+<br>
+
+Java:
+```{Java}
+int a = 5;
+Function<Integer, Integer> times_a = (x) -> 5 * x;
+int b = times_a.apply(5); // b = 25
+```
+</script>
+</section>
+<!-- Notes: the python lambda has no captures. If I didn't make a and optional argument, it wouldn't take a copy, but check the value of a with each call.
+
+Python has a strange relationship to FP. Idomatic python makes heavy use of iterators and list comprehention, but is also heavily O-O. -->
+
+
+
+<section>
+  <p style="text-align: left; color: #A6E22E;">Q: Why do software engineers like functional programming?</p>
+  <blockquote cite="https://www.quora.com/Why-do-software-engineers-like-functional-programming" style="font-size: .8em;">
+    Because it's the only practical way to write concurrent programs. Trying to write concurrent programs in imperative languages is not only hard but it leads to bugs that are very hard to discover, reproduce, and fix. In particular, [functional programming] offers the right kind of abstractions that hide the details of implementation that are not relevant to concurrency while exposing the ones that are relevant -- like the presence of mutation. Imperative and, in particular, object oriented languages are notorious for hiding mutation and the inadvertent sharing of data, and therefore are extremely prone to data races.
+  </blockquote>
+  <p class="QuoteAuthor">Bartosz Milewski</p>
+</section>
+
+<section>
+    <p class="fragment grow">grow</p>
+    <p class="fragment shrink">shrink</p>
+    <p class="fragment fade-out">fade-out</p>
+    <p class="fragment fade-up">fade-up (also down, left and right!)</p>
+    <p class="fragment current-visible">visible only once</p>
+    <p class="fragment highlight-current-blue">blue only once</p>
+    <p class="fragment highlight-red">highlight-red</p>
+    <p class="fragment highlight-green">highlight-green</p>
+    <p class="fragment highlight-blue">highlight-blue</p>
+</section>
+
+<!-- Undocumented feature to include a webpage overlay: -->
+<a href="file:///home/timtro/Documents/Talks/2017_seminar-course/slides.svg" data-preview-link>Hakim El Hattab</a>

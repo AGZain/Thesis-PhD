@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1920"
+   height="1200"
+   viewBox="0 0 507.99999 317.50001"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="abstraction-cmap.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#171717"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="919.20995"
+     inkscape:cy="627.18928"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     units="px"
+     inkscape:pagecheckerboard="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1025"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     objecttolerance="8"
+     gridtolerance="10"
+     guidetolerance="15">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4485"
+       spacingx="26.458333"
+       spacingy="26.458333"
+       originy="317.5"
+       dotted="true" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,20.500017)">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;line-height:1.25;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.22225215"
+       x="18.262423"
+       y="130.11378"
+       id="text3682"><tspan
+         sodipodi:role="line"
+         id="tspan3680"
+         x="18.262423"
+         y="130.11378"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215">.LC0:</tspan><tspan
+         sodipodi:role="line"
+         x="18.262423"
+         y="136.78136"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         id="tspan3684">        .string &quot;%d&quot;</tspan><tspan
+         sodipodi:role="line"
+         x="18.262423"
+         y="143.44891"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         id="tspan3686">main:</tspan><tspan
+         sodipodi:role="line"
+         x="18.262423"
+         y="150.11649"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         id="tspan3688">        push    rbp</tspan><tspan
+         sodipodi:role="line"
+         x="18.262423"
+         y="156.78404"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         id="tspan3690">        mov     rbp, rsp</tspan><tspan
+         sodipodi:role="line"
+         x="18.262423"
+         y="163.45161"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         id="tspan3692">        sub     rsp, 16</tspan><tspan
+         sodipodi:role="line"
+         x="18.262423"
+         y="170.11919"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         id="tspan3694">        mov     DWORD PTR [rbp-4], 0</tspan><tspan
+         sodipodi:role="line"
+         x="18.262423"
+         y="176.78674"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         id="tspan3696">.L3:</tspan><tspan
+         sodipodi:role="line"
+         x="18.262423"
+         y="183.45432"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         id="tspan3698">        cmp     DWORD PTR [rbp-4], 4</tspan><tspan
+         sodipodi:role="line"
+         x="18.262423"
+         y="190.12187"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         id="tspan3700">        jg      .L2</tspan><tspan
+         sodipodi:role="line"
+         x="18.262423"
+         y="196.78944"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         id="tspan3702">        mov     eax, DWORD PTR [rbp-4]</tspan><tspan
+         sodipodi:role="line"
+         x="18.262423"
+         y="203.457"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         id="tspan3704">        mov     esi, eax</tspan><tspan
+         sodipodi:role="line"
+         x="18.262423"
+         y="210.12457"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         id="tspan3706">        mov     edi, OFFSET FLAT:.LC0</tspan><tspan
+         sodipodi:role="line"
+         x="18.262423"
+         y="216.79214"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         id="tspan3708">        mov     eax, 0</tspan><tspan
+         sodipodi:role="line"
+         x="18.262423"
+         y="223.4597"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         id="tspan3710">        call    printf</tspan><tspan
+         sodipodi:role="line"
+         x="18.262423"
+         y="230.12727"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         id="tspan3712">        add     DWORD PTR [rbp-4], 1</tspan><tspan
+         sodipodi:role="line"
+         x="18.262423"
+         y="236.79483"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         id="tspan3714">        jmp     .L3</tspan><tspan
+         sodipodi:role="line"
+         x="18.262423"
+         y="243.4624"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         id="tspan3716">.L2:</tspan><tspan
+         sodipodi:role="line"
+         x="18.262423"
+         y="250.12997"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         id="tspan3718">        mov     eax, 0</tspan><tspan
+         sodipodi:role="line"
+         x="18.262423"
+         y="256.79755"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         id="tspan3720">        leave</tspan><tspan
+         sodipodi:role="line"
+         x="18.262423"
+         y="263.46509"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         id="tspan3722">        ret</tspan></text>
+    <text
+       id="text3766"
+       y="96.90168"
+       x="177.60332"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;line-height:1.25;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.22225215"
+       xml:space="preserve"><tspan
+         id="tspan3764"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         y="96.90168"
+         x="177.60332"
+         sodipodi:role="line">#include &lt;cstdio&gt;</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         y="103.56924"
+         x="177.60332"
+         sodipodi:role="line"
+         id="tspan3998" /><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         y="110.23681"
+         x="177.60332"
+         sodipodi:role="line"
+         id="tspan4000">int main() {</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         y="116.90438"
+         x="177.60332"
+         sodipodi:role="line"
+         id="tspan4002" /><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         y="123.57195"
+         x="177.60332"
+         sodipodi:role="line"
+         id="tspan4004">    for (int i=0; i &lt; 5; ++i)</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         y="130.2395"
+         x="177.60332"
+         sodipodi:role="line"
+         id="tspan4006">        printf(&quot;%d&quot;, i);</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         y="136.90707"
+         x="177.60332"
+         sodipodi:role="line"
+         id="tspan4008" /><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         y="143.57463"
+         x="177.60332"
+         sodipodi:role="line"
+         id="tspan4010">    return 0;</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         y="150.2422"
+         x="177.60332"
+         sodipodi:role="line"
+         id="tspan4012">}</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:9.63944244px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.24098606"
+       x="253.99167"
+       y="22.116974"
+       id="text6083"><tspan
+         sodipodi:role="line"
+         id="tspan6081"
+         x="253.99167"
+         y="22.116974"
+         style="fill:#ffffff;stroke-width:0.24098606">&quot;Print integers 1-5&quot;</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;line-height:1.25;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.22225215"
+       x="256.41406"
+       y="72.248024"
+       id="text6103"><tspan
+         id="tspan6101"
+         sodipodi:role="line"
+         x="256.41406"
+         y="72.248024"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215">for each in range(1, 6):</tspan><tspan
+         sodipodi:role="line"
+         x="256.41406"
+         y="78.915588"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33405256px;font-family:Hack;-inkscape-font-specification:'Hack, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;stroke-width:0.22225215"
+         id="tspan6149">    print(each)</tspan></text>
+    <g
+       id="g_jet"
+       transform="matrix(0,0.51004016,-0.51004016,0,407.15045,7.424682)">
+      <rect
+         id="rect1001"
+         x="0"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#00008f" />
+      <rect
+         id="rect1002"
+         x="8"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#00009f" />
+      <rect
+         id="rect1003"
+         x="16"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#0000af" />
+      <rect
+         id="rect1004"
+         x="24"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#0000bf" />
+      <rect
+         id="rect1005"
+         x="32"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#0000cf" />
+      <rect
+         id="rect1006"
+         x="40"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#0000df" />
+      <rect
+         id="rect1007"
+         x="48"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#0000ef" />
+      <rect
+         id="rect1008"
+         x="56"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#0000ff" />
+      <rect
+         id="rect1009"
+         x="64"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#000fff" />
+      <rect
+         id="rect1010"
+         x="72"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#001fff" />
+      <rect
+         id="rect1011"
+         x="80"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#002fff" />
+      <rect
+         id="rect1012"
+         x="88"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#003fff" />
+      <rect
+         id="rect1013"
+         x="96"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#004fff" />
+      <rect
+         id="rect1014"
+         x="104"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#005fff" />
+      <rect
+         id="rect1015"
+         x="112"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#006fff" />
+      <rect
+         id="rect1016"
+         x="120"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#007fff" />
+      <rect
+         id="rect1017"
+         x="128"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#008fff" />
+      <rect
+         id="rect1018"
+         x="136"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#009fff" />
+      <rect
+         id="rect1019"
+         x="144"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#00afff" />
+      <rect
+         id="rect1020"
+         x="152"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#00bfff" />
+      <rect
+         id="rect1021"
+         x="160"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#00cfff" />
+      <rect
+         id="rect1022"
+         x="168"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#00dfff" />
+      <rect
+         id="rect1023"
+         x="176"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#00efff" />
+      <rect
+         id="rect1024"
+         x="184"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#00ffff" />
+      <rect
+         id="rect1025"
+         x="192"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#0fffef" />
+      <rect
+         id="rect1026"
+         x="200"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#1fffdf" />
+      <rect
+         id="rect1027"
+         x="208"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#2fffcf" />
+      <rect
+         id="rect1028"
+         x="216"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#3fffbf" />
+      <rect
+         id="rect1029"
+         x="224"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#4fffaf" />
+      <rect
+         id="rect1030"
+         x="232"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#5fff9f" />
+      <rect
+         id="rect1031"
+         x="240"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#6fff8f" />
+      <rect
+         id="rect1032"
+         x="248"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#7fff7f" />
+      <rect
+         id="rect1033"
+         x="256"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#8fff6f" />
+      <rect
+         id="rect1034"
+         x="264"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#9fff5f" />
+      <rect
+         id="rect1035"
+         x="272"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#afff4f" />
+      <rect
+         id="rect1036"
+         x="280"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#bfff3f" />
+      <rect
+         id="rect1037"
+         x="288"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#cfff2f" />
+      <rect
+         id="rect1038"
+         x="296"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#dfff1f" />
+      <rect
+         id="rect1039"
+         x="304"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#efff0f" />
+      <rect
+         id="rect1040"
+         x="312"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#ffff00" />
+      <rect
+         id="rect1041"
+         x="320"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#ffef00" />
+      <rect
+         id="rect1042"
+         x="328"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#ffdf00" />
+      <rect
+         id="rect1043"
+         x="336"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#ffcf00" />
+      <rect
+         id="rect1044"
+         x="344"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#ffbf00" />
+      <rect
+         id="rect1045"
+         x="352"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#ffaf00" />
+      <rect
+         id="rect1046"
+         x="360"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#ff9f00" />
+      <rect
+         id="rect1047"
+         x="368"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#ff8f00" />
+      <rect
+         id="rect1048"
+         x="376"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#ff7f00" />
+      <rect
+         id="rect1049"
+         x="384"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#ff6f00" />
+      <rect
+         id="rect1050"
+         x="392"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#ff5f00" />
+      <rect
+         id="rect1051"
+         x="400"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#ff4f00" />
+      <rect
+         id="rect1052"
+         x="408"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#ff3f00" />
+      <rect
+         id="rect1053"
+         x="416"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#ff2f00" />
+      <rect
+         id="rect1054"
+         x="424"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#ff1f00" />
+      <rect
+         id="rect1055"
+         x="432"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#ff0f00" />
+      <rect
+         id="rect1056"
+         x="440"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#ff0000" />
+      <rect
+         id="rect1057"
+         x="448"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#ef0000" />
+      <rect
+         id="rect1058"
+         x="456"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#df0000" />
+      <rect
+         id="rect1059"
+         x="464"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#cf0000" />
+      <rect
+         id="rect1060"
+         x="472"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#bf0000" />
+      <rect
+         id="rect1061"
+         x="480"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#af0000" />
+      <rect
+         id="rect1062"
+         x="488"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#9f0000" />
+      <rect
+         id="rect1063"
+         x="496"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#8f0000" />
+      <rect
+         id="rect1064"
+         x="504"
+         y="0"
+         height="32"
+         width="9"
+         style="fill:#7f0000" />
+    </g>
+    <text
+       id="text9171"
+       y="18.123217"
+       x="421.01303"
+       style="font-style:normal;font-weight:normal;font-size:9.63944244px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.24098606"
+       xml:space="preserve"><tspan
+         style="fill:#ffffff;stroke-width:0.24098606"
+         y="18.123217"
+         x="421.01303"
+         id="tspan9169"
+         sodipodi:role="line">High level</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:9.63944244px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.24098606"
+       x="421.01303"
+       y="265.9946"
+       id="text9175"><tspan
+         sodipodi:role="line"
+         id="tspan9173"
+         x="421.01303"
+         y="265.9946"
+         style="fill:#ffffff;stroke-width:0.24098606">Low level</tspan></text>
+    <path
+       style="fill:none;fill-opacity:1;stroke:#cccccc;stroke-width:0.72295821;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.72295824, 1.44591647;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 146.41779,244.08331 c 4.77359,0 240.09763,24.29116 240.09763,24.29116"
+       id="path9181"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path9183"
+       d="m 264.58333,147.22777 c 4.7736,0 121.93209,102.00693 121.93209,102.00693"
+       style="fill:none;fill-opacity:1;stroke:#cccccc;stroke-width:0.72295821;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.72295824, 1.44591647;stroke-dashoffset:0;stroke-opacity:1"
+       sodipodi:nodetypes="cc" />
+    <path
+       sodipodi:nodetypes="cc"
+       style="fill:none;fill-opacity:1;stroke:#cccccc;stroke-width:0.72295821;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.72295824, 1.44591647;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 326.9494,79.199061 c 4.77359,0 59.56602,25.669669 59.56602,25.669669"
+       id="path9185"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path9187"
+       d="m 352.61063,17.756944 c 4.77359,0 33.90479,-7.237604 33.90479,-7.237604"
+       style="fill:none;fill-opacity:1;stroke:#cccccc;stroke-width:0.72295821;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.72295824, 1.44591647;stroke-dashoffset:0;stroke-opacity:1"
+       sodipodi:nodetypes="cc" />
+  </g>
+</svg>
