@@ -370,7 +370,7 @@ template <typename T, typename F> auto map(F f, const std::vector<T> &a) {
   - `join(Monad<Monad<T>> a)` returns a value of type `Monad<T>`.
 
 * Monad laws: A bit more complex to express in C++.
-  - Joining outside-in vs. inside-out shouldn't make a diૠerence.
+  - Joining outside-in vs. inside-out shouldn't make a difference.
   - See https://en.wikibooks.org/wiki/Haskell/Category_theory
 
 
@@ -418,11 +418,11 @@ template <typename T, typename F> auto map(F f, const std::vector<T> &a) {
   return a+b+c;
   ```
 
-* This was a big deal for Haskell, because then it could handle inpurity in a pure way? I/O is a monad, Haskell can do monads and so Haskell becomes more than a toy language.
+* This was a big deal for Haskell, because then it could handle impurity in a pure way? I/O is a monad, Haskell can do monads and so Haskell becomes more than a toy language.
 
 
 * But, what do monads do for us?
-  - Express diૠerent models of computation within C++.
+  - Express different models of computation within C++.
     * std::vector gives a language with nondeterminism.
     * std::optional provides a language with error fallthrough.
     * Continuation language, etc.
