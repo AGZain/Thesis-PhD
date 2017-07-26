@@ -32,7 +32,7 @@ Playlist: [click here](https://www.youtube.com/playlist?list=PLbgaMIhjbmEnaH_LTk
     ![](fiberation-1.jpg)
 
   FYI: Fiber product as defined in Spivak [p. 54]. Given the following relationships
-  ```@mermaid
+  ```mermaid
     graph TB;
     X--"f"--> Z;
     Y--"g"--> Z;
@@ -140,16 +140,16 @@ Playlist: [click here](https://www.youtube.com/playlist?list=PLbgaMIhjbmEnaH_LTk
 
 
 * In Haskell, functors are defined as
-  ```
+  ```haskell
   class Functor f where
     fmap :: (a->b) -> (f a -> f b)
   ```
   where `f` is a _type constructor_. That is, a function which takes types and returns a type. So, `f` could be the list type constructor:
-  ```
+  ```haskell
   data List a = Nil | Cons a (List a)
   ```
   So, any algebraic data structure can be a functor, and one only need define `fmap`. For the list example
-  ```
+  ```haskell
   fmap _ Nil = Nil
   fmap fn (Cons h t) = Cons fn (fmap fn t)
   ```
@@ -176,7 +176,7 @@ Playlist: [click here](https://www.youtube.com/playlist?list=PLbgaMIhjbmEnaH_LTk
 * $\mathbf{Hask}\times\mathbf{Hask} = \mathbf{Hask}^2$.
 
 * A [*bifunctor*](https://youtu.be/pUQ0mmbIdxs?t=33m58s) is a functor from a product category: $C\times D\rightarrow E$. Lifting on a bifunctor is done with a `bimap`. It lifts two functions at the same time.
-  ```
+  ```haskell
   class Bifunctor f where
     bimap :: (a->a') -> (b->b') -> (f a b -> f a' b')
 
