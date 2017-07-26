@@ -119,3 +119,15 @@ This is FunHPC.cxx, a C++ library that provides fine-grained multi-threading for
 ## [alexander-bzikadze/Project-Seized-Husky](https://github.com/alexander-bzikadze/Project-Seized-Husky): Standard Haskell library translated to C++ templates.
 
 ## [JIghtuse/functional-cpp](https://github.com/JIghtuse/functional-cpp): Some examples of Functional C++
+
+## [ericniebler/fpxx](https://github.com/ericniebler/fpxx): sandbox for my c++ functional programming experiments
+
+
+## [ericniebler/meta](https://github.com/ericniebler/meta): A tiny metaprogramming library
+
+Features on review:
+  * Metaprogramming techniques and tools.
+
+See:
+  * http://ericniebler.com/2014/11/13/tiny-metaprogramming-library/
+  * https://ericniebler.github.io/meta/index.html
