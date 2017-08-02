@@ -1,12 +1,22 @@
 # Code review
 
-## [Functional Template Library](https://github.com/beark/ftl): C++ template library for fans of functional programming
+## [awgn/Cat](https://github.com/awgn/cat): C++14 functional library http://cat.github.io
 
 Features on review:
   * Currying
   * Concepts
+  * Category theoretical traits and interfaces
 
-### Currying
+
+## [beark/ftl](https://github.com/beark/ftl): C++ template library for fans of functional programming
+
+Features on review:
+  * Currying
+  * Concepts
+  * Category theoretical traits and interfaces
+
+
+#### Currying
 
 A general currying mechanism is provided in `prelude.h`. However, that header
 only provides an interface. The support for curried functions comes from a
@@ -26,12 +36,14 @@ Features on review:
   * Currying
   * Function traits
   * Intermediate value elision in the `fwd` namespace. (Is it lazy?)
+  * [Gradient decent algorithm](
+    https://github.com/Dobiasd/FunctionalPlus/blob/master/include/fplus/optimize.hpp)
 
-### Function composition
+#### Function composition
 
 
 
-### Currying
+#### Currying
 The library contains no general currying facilities. The `curry.hpp` header file contains *macro functions* which produce hard coded, nested lambdas for currying functions of up to 5-parameters. Some sort of script generates curried instances of all of the multary library functions. Each library function contains a formatted comment specifying the number of parameters to be bound for currying purposes. For example, in `numeric.hpp` there is a function called `clamp`. In the function definition, there is a line
 ```
 // fwd bind count: 2
@@ -72,25 +84,46 @@ I Suspect the IO monad here will be the same as in splinterofchaos/Pure.
 Features on review:
   * Function composition, functor and monad implementations.
 
+## [splinterofchaos/Pure](https://github.com/splinterofchaos/Pure): An almost-pure C++ library for writing functional code.
+
+Features on review:
+  * Currying
+  * Concepts
+  * Category theoretical traits and interfaces
+
 ## [pfultz2/Fit](https://github.com/pfultz2/Fit): C++ function utility library http://fit.readthedocs.org
 
 Features on review:
-  * Capture function decorator in `capture.hpp`, provides more flexibility than lambda capture, including move and perfect capturing.
+* Capture function decorator in `capture.hpp`, provides more flexibility than lambda capture, including move and perfect capturing.
 
+* Composition (see `include/fit/compose.h`)
 
-
-## [splinterofchaos/Pure](https://github.com/splinterofchaos/Pure): An almost-pure C++ library for writing functional code.
+* Piping (see `include/fit/pipable.h`)
 
 ## [splinterofchaos/fu](https://github.com/splinterofchaos/fu): Functional Utilities for C++
 
 ## [fons/functional-cpp](https://github.com/fons/functional-cpp): functional programming in cpp.
 
+#### Notes:
+  * Very strange that list-monad/functor are implemented for `std::list` and `std::forward_list`, but not vector!
+  * Uses `std::function` and `std::bind` in functor and monad implementations
+  * `map` defined in `map.hpp` for `std::forward_list` uses insert_front.
+
+Features on review:
+  * list-monad
+  * list-functor
+
+#### List-functor
+
+In `functional-cpp/src/map.hpp` functor-maps for `std::list` and `std::forward_list` are defined. The functor itself is fleshed out in `functional-cpp/src/functor.hpp`, where `fmap` simply forward to `map` from `map.hpp`.
+
+For some reason that I can't figure out, there are `map` overloads for both `std::forward_list` and `std::list` on whether or not the type `B` in `f :: A → B` is deduced or specified as a template argument. If `B` is specified, a hand-rolled loop is used to apply the function to the elements, but if it is deduced `std::transform` is used. Strangely enough, the case where `B` is specified for the `std::forward_list` uses `std::function` in the signature instead of templatising on the callable type.
+
+In the map functions, lists are passed by reference and callables are copied. It doesn't look like a lot of thought went into value/reference semantics.
+
 ## [GJDuck/libf](https://github.com/GJDuck/libf): C++ as a Pure Functional Programming Language
 
 
-## [awgn/Cat](https://github.com/awgn/cat): C++14 functional library http://cat.github.io
-
-## [BartoszMilewski/Okasaki](https://github.com/BartoszMilewski/Okasaki): Functional data structures in C++
 
 ## [jhetherly/FCplusplus](https://github.com/jhetherly/FCplusplus): FC++ library. Functional programming in C++
 
@@ -131,3 +164,5 @@ Features on review:
 See:
   * http://ericniebler.com/2014/11/13/tiny-metaprogramming-library/
   * https://ericniebler.github.io/meta/index.html
+
+## [BartoszMilewski/Okasaki](https://github.com/BartoszMilewski/Okasaki): Functional data structures in C++
