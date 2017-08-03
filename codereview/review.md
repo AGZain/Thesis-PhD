@@ -84,6 +84,8 @@ I Suspect the IO monad here will be the same as in splinterofchaos/Pure.
 Features on review:
   * Function composition, functor and monad implementations.
 
+
+
 ## [splinterofchaos/Pure](https://github.com/splinterofchaos/Pure): An almost-pure C++ library for writing functional code.
 
 Features on review:
@@ -117,52 +119,181 @@ Features on review:
 
 In `functional-cpp/src/map.hpp` functor-maps for `std::list` and `std::forward_list` are defined. The functor itself is fleshed out in `functional-cpp/src/functor.hpp`, where `fmap` simply forward to `map` from `map.hpp`.
 
-For some reason that I can't figure out, there are `map` overloads for both `std::forward_list` and `std::list` on whether or not the type `B` in `f :: A → B` is deduced or specified as a template argument. If `B` is specified, a hand-rolled loop is used to apply the function to the elements, but if it is deduced `std::transform` is used. Strangely enough, the case where `B` is specified for the `std::forward_list` uses `std::function` in the signature instead of templatising on the callable type.
+For some reason that I can't figure out, there are `map` overloads for both `std::forward_list` and `std::list` on whether or not the type `B` in `f : A → B` is deduced or specified as a template argument. If `B` is specified, a hand-rolled loop is used to apply the function to the elements, but if it is deduced `std::transform` is used. Strangely enough, the case where `B` is specified for the `std::forward_list` uses `std::function` in the signature instead of templatising on the callable type.
 
 In the map functions, lists are passed by reference and callables are copied. It doesn't look like a lot of thought went into value/reference semantics.
-
-## [GJDuck/libf](https://github.com/GJDuck/libf): C++ as a Pure Functional Programming Language
 
 
 
 ## [jhetherly/FCplusplus](https://github.com/jhetherly/FCplusplus): FC++ library. Functional programming in C++
 
-## [jtomschroeder/lambda](https://github.com/jtomschroeder/lambda): λ → functional cpp library
+Notes:
+  * No functor or monad based on standard containers. There is a lazy list implementation.
 
-## [davber/prelude_cpp](https://github.com/davber/prelude_cpp): A functional programming library for C++, built on Boost and inspired by Haskell and FC++
+Features on review:
+  * Category theoretical traits and interfaces
+  * Lazy list
 
-## [jdduke/fpcpp](https://github.com/jdduke/fpcpp): Functional programming with C++11, inspired by Haskell.
 
-## [2012-04-functional-cpp](https://github.com/bfpg/2012-04-functional-cpp): Immutable data, algebraic types and functional programming in C++
 
-## [LoopPerfect/neither](https://github.com/LoopPerfect/neither): Either and Maybe monads for better error-handling in C++
+  ## [jdduke/fpcpp](https://github.com/jdduke/fpcpp): Functional programming with C++11, inspired by Haskell.
+
+Notes:
+  * List functor is built around the library's own lazy list.
+
+  fpcpp (functional programming in C++) is a lightweight, header-based C++ library for enabling functional programming style and features in modern C++ programs.
+
+  Features on review:
+    * Lazy list
+
+
+  ## [jtomschroeder/lambda](https://github.com/jtomschroeder/lambda): λ → functional cpp library
+
+Advertised Features:
+  * currying
+  * function composition
+  * partial application (simplified functional bind)
+  * streams
+
+Notes:
+  * The closest thing to a list-functor revolves around the stream structure.
+
+Features on review:
+  * Streams
+
+
+## [GJDuck/libf](https://github.com/GJDuck/libf): C++ as a Pure Functional Programming Language
+
+Notes:
+  * There's some sort of list-monad, but it doesn't relate to standard containers and isn't very readable.
+
+Features on review:
+  * ?
+
 
 ## [promgamer/functionalcpp](https://github.com/promgamer/functionalcpp): Code examples of functional programming using C++14
 
+Notes: Just some code from a talk. Not much useful here.
+
+Features on review:
+  * ?
+
+
 ## [christianparpart/compose](https://github.com/christianparpart/compose): Functional Programming in C++14
 
-## [eschnett/FunHPC.cxx](): FunHPC: Functional HPC Programming
+This presents a really nice API for composing functions:
+```cpp
+#include "compose.h"
+#include <iostream>
+
+int main() {
+  auto v = {1, 2, 3, 4, 5, 6, 7, 8};
+
+  auto range = compose(v)
+                   .map([](auto x) { return x * x; })
+                   .select([](auto x) { return !(x % 2); })
+                   .take(3);
+
+  for (auto a: range) {
+    std::cout << "a: " << a << std::endl;
+  }
+}
+```
+
+Features on review:
+  Composition API
+
+
+
+## [2012-04-functional-cpp](https://github.com/bfpg/2012-04-functional-cpp): Immutable data, algebraic types and functional programming in C++
+
+Notes:
+* No fmap of any kind.
+* Seems focused on an optional type.
+
+Features on review:
+
+
+
+## [eschnett/FunHPC.cxx](https://github.com/eschnett/FunHPC.cxx): FunHPC: Functional HPC Programming
 
 This is FunHPC.cxx, a C++ library that provides fine-grained multi-threading for distributed-memory systems in a functional programming style.
 
   * Check out `CONTRIBUTING.ris`.
 
-## [oagudo/either-cpp-monad](https://github.com/oagudo/either-cpp-monad): C++ implementation of the either monad
+Features on review:
+  * List-monad:
+    - FunHPC.cxx/fun/vector.hpp
+    - FunHPC.cxx/fun/array.hpp
 
-## [alexander-bzikadze/Project-Seized-Husky](https://github.com/alexander-bzikadze/Project-Seized-Husky): Standard Haskell library translated to C++ templates.
+  * Maybe-monad: FunHPC.cxx/fun/maybe.hpp
+
+  * Either-monad: FunHPC.cxx/fun/either.hpp
+
+  * Empty-monad: FunHPC.cxx/fun/empty.hpp
+
+  * Function-monad: FunHPC.cxx/fun/function.hpp
+
+  * Traits
+
 
 ## [JIghtuse/functional-cpp](https://github.com/JIghtuse/functional-cpp): Some examples of Functional C++
 
+Notes:
+  * No monads.
+
+Features on review:
+  * Composition and currying.
+
 ## [ericniebler/fpxx](https://github.com/ericniebler/fpxx): sandbox for my c++ functional programming experiments
+
+Notes:
+  * No list-monad.
+
+Features on review:
+  * State-monad: fpxx/include/fpxx/monad/state.hpp
+  * Category theoretical traits and interfaces
+  * Currying
+
+
+
+## [oagudo/either-cpp-monad](https://github.com/oagudo/either-cpp-monad): C++ implementation of the either monad
+
+Features on review:
+
+
+
+## [BartoszMilewski/Okasaki](https://github.com/BartoszMilewski/Okasaki): Functional data structures in C++
+
+Features on review:
+
+
+
+## [LoopPerfect/neither](https://github.com/LoopPerfect/neither): Either and Maybe monads for better error-handling in C++
+
+Features on review:
+
+
+
+## [alexander-bzikadze/Project-Seized-Husky](https://github.com/alexander-bzikadze/Project-Seized-Husky): Standard Haskell library translated to C++ templates.
+
+Seems like a partial implementation of Haskell's list type.
+
+Features on review:
+
 
 
 ## [ericniebler/meta](https://github.com/ericniebler/meta): A tiny metaprogramming library
 
 Features on review:
-  * Metaprogramming techniques and tools.
+* Metaprogramming techniques and tools.
 
 See:
-  * http://ericniebler.com/2014/11/13/tiny-metaprogramming-library/
-  * https://ericniebler.github.io/meta/index.html
+* http://ericniebler.com/2014/11/13/tiny-metaprogramming-library/
+* https://ericniebler.github.io/meta/index.html
 
-## [BartoszMilewski/Okasaki](https://github.com/BartoszMilewski/Okasaki): Functional data structures in C++
+
+
+## [~~davber/prelude_cpp~~](https://github.com/davber/prelude_cpp): ~~A functional programming library for C++, built on Boost and inspired by Haskell and FC++~~
+
+It seems there was never a first commit.
