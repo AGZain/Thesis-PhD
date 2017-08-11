@@ -4,9 +4,10 @@
 <!-- code_chunk_output -->
 
 * [Code review](#code-review)
-	* [awgn/Cat: C++14 functional library http://cat.github.io](#awgncathttpsgithubcomawgncat-c14-functional-library-httpcatgithubio)
+	* [awgn/Cat: C++14 functional library](#awgncathttpsgithubcomawgncat-c14-functional-library)
 	* [beark/ftl: C++ template library for fans of functional programming](#bearkftlhttpsgithubcombearkftl-c-template-library-for-fans-of-functional-programming)
 			* [Currying](#currying)
+	* [Corristo/functionalCpp:](#corristofunctionalcpphttpsgithubcomcorristofunctionalcpp)
 	* [Dobiasd/FunctionalPlus: helps you write concise and readable C++ code.](#dobiasdfunctionalplushttpsgithubcomdobiasdfunctionalplus-helps-you-write-concise-and-readable-c-code)
 			* [Function composition](#function-composition)
 			* [Currying](#currying-1)
@@ -62,6 +63,19 @@ and `std::function` is the support for curried calling.
 
 The STL library has an interesting trait: `is_monomorphic`, which
 
+
+## [Corristo/functionalCpp](https://github.com/Corristo/functionalCpp):
+C++14 with typeclasses, monads, ...
+
+Notes:
+  * Cited in [this](https://stackoverflow.com/a/39730419/1827360) Stack Overflow answer posted to a question titled _Monad interface in C++_
+
+  * For a more minimal version of the monadic interface, [see here](http://coliru.stacked-crooked.com/a/4c63d1251a74c82c).
+
+  Features on review:
+    * Currying
+    * Concepts
+    * Category theoretical traits and interfaces
 
 ## [Dobiasd/FunctionalPlus](https://github.com/Dobiasd/FunctionalPlus): helps you write concise and readable C++ code.
 
