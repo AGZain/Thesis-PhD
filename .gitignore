@@ -13,6 +13,8 @@
 
 codereview/sources
 codereview/sources/*
+litreview/sources
+litreview/sources/*
 
 ## Intermediate documents:
 *.dvi
