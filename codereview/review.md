@@ -4,13 +4,16 @@
 <!-- code_chunk_output -->
 
 * [Code review](#code-review)
+	* [Patterns mined from the sources below (so far)](#patterns-mined-from-the-sources-below-so-far)
+			* [Currying](#currying)
 	* [awgn/Cat: C++14 functional library](#awgncathttpsgithubcomawgncat-c14-functional-library)
 	* [beark/ftl: C++ template library for fans of functional programming](#bearkftlhttpsgithubcombearkftl-c-template-library-for-fans-of-functional-programming)
-			* [Currying](#currying)
+			* [Currying](#currying-1)
 	* [Corristo/functionalCpp:](#corristofunctionalcpphttpsgithubcomcorristofunctionalcpp)
+			* [Currying](#currying-2)
 	* [Dobiasd/FunctionalPlus: helps you write concise and readable C++ code.](#dobiasdfunctionalplushttpsgithubcomdobiasdfunctionalplus-helps-you-write-concise-and-readable-c-code)
 			* [Function composition](#function-composition)
-			* [Currying](#currying-1)
+			* [Currying](#currying-3)
 	* [eschnett/FunHPC.cxx: FunHPC: Functional HPC Programming](#eschnettfunhpccxxhttpsgithubcomeschnettfunhpccxx-funhpc-functional-hpc-programming)
 	* [splinterofchaos/Pure: An almost-pure C++ library for writing functional code.](#splinterofchaospurehttpsgithubcomsplinterofchaospure-an-almost-pure-c-library-for-writing-functional-code)
 	* [splinterofchaos/fu: Functional Utilities for C++](#splinterofchaosfuhttpsgithubcomsplinterofchaosfu-functional-utilities-for-c)
@@ -35,6 +38,11 @@
 
 <!-- /code_chunk_output -->
 
+## Patterns mined from the sources below (so far)
+
+#### Currying
+
+A common pattern for currying is through a templated type that stores a callable and a tuple of the arguments.
 
 
 ## [awgn/Cat](https://github.com/awgn/cat): C++14 functional library
@@ -55,11 +63,7 @@ Features on review:
 
 #### Currying
 
-A general currying mechanism is provided in `prelude.h`. However, that header
-only provides an interface. The support for curried functions comes from a
-`std::function`-like type-erasure wrapper specified in `function.h`. The
-documentation therein claims that the main difference between an `stl::function`
-and `std::function` is the support for curried calling.
+A general currying mechanism is provided in `prelude.h`. However, that header only provides an interface. The support for curried functions comes from a `std::function`-like type-erasure wrapper specified in `function.h`. The documentation therein claims that the main difference between an `stl::function` and `std::function` is the support for curried calling.
 
 The STL library has an interesting trait: `is_monomorphic`, which
 
@@ -76,6 +80,12 @@ Notes:
     * Currying
     * Concepts
     * Category theoretical traits and interfaces
+
+#### Currying
+
+Currying is implemented as a templated function object, `curried_fn`, which captures the function and arguments and stores them in a tuple.
+
+
 
 ## [Dobiasd/FunctionalPlus](https://github.com/Dobiasd/FunctionalPlus): helps you write concise and readable C++ code.
 
